@@ -1,0 +1,96 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+# SELECT ?item
+# WHERE
+# {
+# 	SERVICE <https://query.wikidata.org/sparql>
+# 	{
+# 		# wdt:P31 (instance of)  wd:Q47258130 (academic conferences)
+#         ?item wdt:P31 wd:Q47258130 .
+#     }
+# }
+
+SELECT ?item ?startTime 
+?eventInterval ?unit ?eventIntervalUnit ?eventIntervalYear 
+?location ?country ?countryName 
+?language ?website #?itemLabel ?partofSeries
+WHERE 
+{
+	SERVICE <https://query.wikidata.org/sparql>
+	{	
+		# wdt:P31 (instance of)  wd:Q47258130 (academic conferences)
+		?item wdt:P31 wd:Q47258130 .
+		?item rdfs:label ?label .  # item label
+			FILTER (LANG(?label) = "en") . # filter out all but en label
+			BIND (str(?label) AS ?itemLabel) .
+
+
+		# OPTIONAL PROPERTIES, 
+		# empty values are possible
+		OPTIONAL
+		{
+			?item wdt:P276 ?loc . 
+			?loc rdfs:label ?locLabel
+				FILTER(LANG(?locLabel) = "en") 
+				BIND (str(?locLabel) AS ?location) .
+			?loc wdt:P17 ?country . 
+		}
+
+
+		OPTIONAL
+		{	
+			?item wdt:P17 ?country . 
+			?country rdfs:label ?countryLabel .  
+				FILTER (LANG(?countryLabel) = "en") . # filter out all but en label
+				BIND (str(?countryLabel) AS ?countryName) .
+		}
+
+		OPTIONAL
+		{	
+			?item wdt:P179 ?partofS . 
+			?partofS rdfs:label ?partofSLabel .  
+				FILTER (LANG(?partofSLabel) = "en") . # filter out all but en label
+				BIND (str(?partofSLabel) AS ?partofSeries) .
+		}
+
+		OPTIONAL
+		{	
+			?item wdt:P2936 ?lang . 
+			?lang rdfs:label ?langLabel .  
+				FILTER (LANG(?langLabel) = "en") . # filter out all but en label
+				BIND (str(?langLabel) AS ?language) .
+		}
+
+		OPTIONAL
+		{	
+			?item wdt:P856 ?www . 
+			BIND (str(?www) AS ?website)
+		}
+
+		OPTIONAL
+		{
+			?item wdt:P580 ?startTime .
+
+		}
+
+		{ 
+			?item wdt:P2257 ?eventInterval .
+			# TODO handle unit
+		}
+	}
+}
+#   short name (P1813) 
+#  main subject (P921) 
+#  start time (P580) 
+ #  event interval (P2257) 
