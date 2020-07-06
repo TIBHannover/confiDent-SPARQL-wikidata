@@ -1,0 +1,9 @@
+# pycharm (IDE) dir
+.idea/
+venv/
+.ipynb_checkpoints
+schemaParse/__pycache__/
+**__pycache__**
+*.egg-info/*
+/.tox/
+*.pyc
