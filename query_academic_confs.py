@@ -1,26 +1,20 @@
 from SPARQLWrapper import SPARQLWrapper, TURTLE, JSON, RDF
+from pprint import pprint
 
-sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
-sparql.setQuery("""
-    PREFIX wd: <http://www.wikidata.org/entity/>
-    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-    PREFIX wikibase: <http://wikiba.se/ontology#>
-    PREFIX bd: <http://www.bigdata.com/rdf#>
-    
-    SELECT ?item ?itemLabel
-    WHERE
-    {
-        # wdt:P31 (instance of)  wd:Q47258130 (academic conferences)
-        ?item wdt:P31 wd:Q47258130 .
-        ?item rdfs:label ?label .  
-            FILTER (LANG(?label) = "en") . 			
-            BIND (str(?label) AS ?itemLabel) .
-        }
-    LIMIT 5
-""")
-sparql.setReturnFormat(JSON)
-results = sparql.query().convert()
 
-for entry in results['results']['bindings']:
-    print(entry)
+endpoint = SPARQLWrapper("https://query.wikidata.org/sparql")
+with open("wikidata_academic_conferences.rq", "r") as sparql_f:
+    sparql = sparql_f.read()
 
+endpoint.setQuery(sparql)
+endpoint.setReturnFormat(JSON)
+results = endpoint.query().convert()
+
+results_bindings = results['results']['bindings']
+
+for entry in results_bindings :
+    pprint(entry)
+    print('\n')
+
+print('Results returned:', len(results['results']['bindings']))
+print(len(results_bindings))
