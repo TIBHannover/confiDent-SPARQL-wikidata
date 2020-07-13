@@ -14,8 +14,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?item ?itemLabel ?locationLabel ?countryLabel ?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
 ?main_subjectLabel
 ?website
-?startTime
-?eventInterval ?unit ?eventIntervalUnit ?eventIntervalYear
+?event_interval ?event_interval_unitLabel
+
+	#?startTime
+#?eventInterval ?unit ?eventIntervalUnit ?eventIntervalYear
+
 
 WHERE
 {
@@ -31,19 +34,24 @@ WHERE
 	OPTIONAL { ?item wdt:P1813 ?short_name }
 	OPTIONAL { ?item wdt:P921 ?main_subject }
     SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } # provide Label in EN
-
 	OPTIONAL { ?item wdt:P856 ?website . }
-
+	OPTIONAL {
+		?item p:P2257 [
+		    	a wikibase:BestRank;  # best ranked unit returned
+				psv:P2257 [
+				  wikibase:quantityAmount ?event_interval;
+				  wikibase:quantityUnit ?event_interval_unit
+				]
+			].
+  	    ?event_interval_unit rdfs:label ?event_interval_unitl;
+		FILTER (LANG(?event_interval_unitl) = "en").
+		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
+	}
 #
 #	OPTIONAL
 #	{
 #		?item wdt:P580 ?startTime .
 #
-#	}
-#
-#	{
-#		?item wdt:P2257 ?eventInterval .
-#		# TODO handle unit
 #	}
 }
 
