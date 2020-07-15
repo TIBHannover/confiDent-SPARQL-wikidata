@@ -19,6 +19,13 @@ def yaml2dict(path: str) -> Dict:
 
 def yaml_get_source(relativepath2f: str) -> Dict:
     path_file = Path(__file__).parent / relativepath2f
-    path = f'{path_file}'
-    yamldict = yaml2dict(path)
+    yamldict = yaml2dict(path_file)
     return yamldict
+
+
+def yaml_get_mapping(mapping: str) -> Dict:
+    confid2ext_schema = yaml_get_source(f'../mapping2confident/{mapping}.yml')
+    # ext_schema = list(confid2ext_schema.keys())[0]
+    # ext_schema_mapping = confid2ext_schema[ext_schema]
+    return confid2ext_schema
+
