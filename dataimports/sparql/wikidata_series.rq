@@ -1,9 +1,12 @@
-SELECT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel ?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
-?main_subjectLabel ?website ?GND_ID ?WikiCFP_conference_series_ID ?Freebase_ID ?event_interval ?event_interval_unitLabel ?start_ime
+SELECT DISTINCT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel
+	?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
+	?main_subjectLabel ?website
+	?GND_ID ?WikiCFP_conference_series_ID ?Freebase_ID
+	?event_interval ?event_interval_unitLabel ?start_time
 
 WHERE
 {
-    # wdt:P31 (instance of)  wd:Q47258130 (academic conferences)
+    # wdt:P31 (instance of)  wd:Q47258130 (scientific conference series)
     ?item wdt:P31 wd:Q47258130 .
      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 
