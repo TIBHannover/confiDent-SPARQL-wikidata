@@ -1,12 +1,14 @@
 from SPARQLWrapper import SPARQLWrapper, JSON  # , TURTLE, RDF
 from typing import Dict
+from dataimports.globals import useragent
 from dataimports.utilities import file_utils
 
 
 def sparql() -> Dict:
     sources_yaml = file_utils.yaml_get_source('../datasources/sources.yml')
     wikidata_yaml = sources_yaml['wikidata']
-    endpoint = SPARQLWrapper(wikidata_yaml['sparqlendpoint'])
+    endpoint = SPARQLWrapper(wikidata_yaml['sparqlendpoint'],
+                             agent=useragent)
     sparql_f = '../sparql/wikidata_series.rq'
     sparql_query = file_utils.relative_read_f(sparql_f)
     endpoint.setQuery(sparql_query)
