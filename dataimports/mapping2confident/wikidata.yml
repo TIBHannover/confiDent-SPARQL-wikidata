@@ -1,0 +1,31 @@
+instance_of:
+  property: P31
+  URI: http://www.wikidata.org/prop/direct/P31
+start_time:
+  property: P580
+  URI: http://www.wikidata.org/prop/direct/P580
+event_interval:
+  property: P2257
+  URI: http://www.wikidata.org/prop/direct/P2257
+official_website:
+  property: P856
+  URI: http://www.wikidata.org/prop/direct/P856
+language_used:
+  property: P2936
+  URI: http://www.wikidata.org/prop/direct/P2936
+part_of_the_series:
+  property: P179
+  URI: http://www.wikidata.org/prop/direct/P179
+country:
+  property: P17
+  URI: http://www.wikidata.org/prop/direct/P17
+location:
+  property: P276
+  URI: http://www.wikidata.org/prop/direct/P276
+short_name:
+  property: P1813
+  URI: http://www.wikidata.org/prop/direct/P1813
+main_subject:
+  property: P921
+  URI: http://www.wikidata.org/prop/direct/P921
+

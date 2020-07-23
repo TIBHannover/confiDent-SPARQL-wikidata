@@ -45,3 +45,8 @@ WHERE
 		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
 	}
 }
+
+#  wd:Q1001143	schema:dateModified
+#  GND ID (P227)
+#  main subject (P921)
+#  WikiCFP conference series ID (P5127)
