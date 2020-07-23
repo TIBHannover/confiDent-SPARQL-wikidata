@@ -14,7 +14,7 @@ def importdata(source: str,
         results = wikidata.sparql()
         # print(json.dumps(results))
         for entry in results:
-            # pprint(entry)
+            pprint(entry)
             entry_simple_dict = wikidata.sparqlitem2dict(item=entry)
             pprint(entry_simple_dict)
             print('\n')
