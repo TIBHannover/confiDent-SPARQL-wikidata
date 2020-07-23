@@ -1,10 +1,12 @@
 # Wikidata Academic Conferences ingestion
 
-Example SPAQL query from file
-`arq --query wikidata_academic_conferences.rq`
+**Run:**
+`python -m dataimports`
 
-Same but with python RDFlib(SPARQLWrapper)
-`python query_academic_confs.py`
+**View SPARLQ query**: `dataimports/sparql/wikidata_series.rq`
+which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
+
+
 
 ## Requirements
 `pip install -r requirements`
