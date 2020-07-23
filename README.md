@@ -1,4 +1,4 @@
-# Wikidata Academic Conferences ingestion
+# Wikidata Academic Event Series ingestion
 
 **Run:**
 `python -m dataimports`
@@ -16,7 +16,7 @@ Result Example (as python dictionary and SPARQL(json) )
  'main_subjectLabel': 'natural language processing',
  'short_nameLabel': 'ACL'}
 ```
-```json
+```python
 {'WikiCFP_conference_series_ID': {'type': 'literal', 'value': '37'},
  'dateModified': {'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime',
                   'type': 'literal',
