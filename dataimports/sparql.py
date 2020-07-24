@@ -4,13 +4,14 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
 from dataimports import file_utils
 from dataimports.wikidata import wikidata
+from dataimports.jinja_utils import render_template
 
 
-def query(source: str, query_: str) -> Dict:
+def query(source: str, class_: str) -> Dict:
     sources_yaml = file_utils.yaml_get_source('_sources.yml')
     source_dict = sources_yaml[source]
     sparql_endpoint = source_dict['sparqlendpoint']
-    sparql_f = source_dict['sparqlqueries'][query_]
+    sparql_f = source_dict['sparqlqueries'][class_]
     endpoint = SPARQLWrapper(endpoint=sparql_endpoint,
                              agent=useragent)
     sparql_query = file_utils.relative_read_f(sparql_f)
@@ -21,7 +22,8 @@ def query(source: str, query_: str) -> Dict:
     return results_bindings
 
 
-def process_results(results: Dict, source: str, out_format:str) -> List:
+def process_results(results: Dict, source: str, out_format:str, class_: str) \
+        -> List:
     """
     :param results:
     :param source: wikidata
@@ -31,9 +33,13 @@ def process_results(results: Dict, source: str, out_format:str) -> List:
     if source == 'wikidata':
         results = wikidata.sparqlresults_simplfy(results)
 
+    # Todo: from results create new dict with confIDent properties
+
     if out_format == 'dict':
         output = results
     elif out_format == 'wiki':
-        pass
-        # TODO
+        for item in results:
+            wiki_item = render_template(class_=class_, item=item)
+            # TODO: * create item title: either simply through the itemLabel
+            #  * write function to write item to wiki
     return results

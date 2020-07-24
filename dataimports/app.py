@@ -9,12 +9,13 @@ def importdata(source: str, outformat: str, outfile: str):
 
     if source == 'wikidata':
         results = sparql.query(source='wikidata',
-                               query_='EventSeries')
+                               class_='EventSeries')
         print('**SPARL results: 1 item:**' )
         pprint(results[0])
         results = sparql.process_results(results=results,
                                          source='wikidata',
-                                         out_format=outformat)
+                                         out_format=outformat,
+                                         class_='EventSeries')
         print('\n**Simplified Dict results: 1 item:**' )
         pprint(results[0])
 

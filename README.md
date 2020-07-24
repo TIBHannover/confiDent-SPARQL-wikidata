@@ -1,7 +1,9 @@
 # Wikidata Academic Event Series ingestion
 
 **Run:**
-`python -m dataimports`
+* `python -m dataimports`
+* wiki template format: `python -m dataimports -f wiki`
+
 
 **View SPARLQ query**: `dataimports/wikidata/wikidata_series.rq`
 which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
