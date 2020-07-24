@@ -10,8 +10,8 @@ parser.add_argument('-s', '--source',
 parser.add_argument('-l', '--list', action='store_true',
                     help="list available sources")
 parser.add_argument('-f', '--format', help="Output format",
-                    choices=['wiki', 'stdout', 'json'],
-                    default='stdout')
+                    choices=['wiki', 'dict', 'json'],
+                    default='dict')
 parser.add_argument('-o', '--output',
                     help="Filename for output OR **destination wiki**. "
                          "By default output is printed to console."
