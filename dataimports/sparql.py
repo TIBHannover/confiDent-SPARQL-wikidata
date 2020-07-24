@@ -4,16 +4,16 @@ from dataimports.globals import useragent
 from dataimports import file_utils
 
 
-def query() -> Dict:
-    # TODO: make non wikidata specific
+def query(source: str, query_: str) -> Dict:
     sources_yaml = file_utils.yaml_get_source('_sources.yml')
-    wikidata_yaml = sources_yaml['wikidata']
-    endpoint = SPARQLWrapper(wikidata_yaml['sparqlendpoint'],
+    source_dict = sources_yaml[source]
+    sparql_endpoint = source_dict['sparqlendpoint']
+    sparql_f = source_dict['sparqlqueries'][query_]
+    endpoint = SPARQLWrapper(endpoint=sparql_endpoint,
                              agent=useragent)
-    sparql_f = 'wikidata/wikidata_series.rq'
     sparql_query = file_utils.relative_read_f(sparql_f)
     endpoint.setQuery(sparql_query)
     endpoint.setReturnFormat(JSON)
     results = endpoint.query().convert()
-    results_bindings = results['results']['bindings']
+    results_bindings = results['results']['bindings']  # ?wikidata specific?
     return results_bindings

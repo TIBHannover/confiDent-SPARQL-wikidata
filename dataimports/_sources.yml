@@ -1,2 +1,4 @@
 wikidata:
   sparqlendpoint: https://query.wikidata.org/sparql
+  sparqlqueries:
+     EventSeries: wikidata/wikidata_series.rq

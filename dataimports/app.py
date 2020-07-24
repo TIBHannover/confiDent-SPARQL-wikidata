@@ -11,7 +11,8 @@ def importdata(source: str,
     # mapping = file_utils.yaml_get_mapping(mapping=source)
 
     if source == 'wikidata':
-        results = sparql.query()
+        results = sparql.query(source='wikidata',
+                               query_='EventSeries')
         # print(json.dumps(results))
         for entry in results:
             pprint(entry)
