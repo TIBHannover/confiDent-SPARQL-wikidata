@@ -18,6 +18,8 @@ def yaml2dict(path: str) -> Dict:
 
 
 def yaml_get_source(relativepath2f: str) -> Dict:
+    print('CWD:', Path.cwd())
+    print('parent:', Path(__file__).parent)
     path_file = Path(__file__).parent / relativepath2f
     yamldict = yaml2dict(path_file)
     return yamldict

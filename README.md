@@ -3,7 +3,7 @@
 **Run:**
 `python -m dataimports`
 
-**View SPARLQ query**: `dataimports/sparql/wikidata_series.rq`
+**View SPARLQ query**: `dataimports/query/wikidata_series.rq`
 which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
 
 Result Example (as python dictionary and SPARQL(json) )
