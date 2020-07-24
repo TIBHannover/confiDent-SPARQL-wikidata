@@ -35,7 +35,20 @@ Result Example (as python dictionary and SPARQL(json) )
                        'value': 'natural language processing',
                        'xml:lang': 'en'},
  'short_nameLabel': {'type': 'literal', 'value': 'ACL'}}
+```
 
+As Mediawiki template:
+
+```
+{{EventSeries
+|item=http://www.wikidata.org/entity/Q97594670
+|event_interval=1
+|event_interval_unitLabel=year
+|dateModified=2020-07-22 12:03:45+00:00
+|website=https://iiif.io/
+|itemLabel=IIIF Conference
+|short_nameLabel=IIIF Conference
+}}
 ```
 
 ## Requirements
