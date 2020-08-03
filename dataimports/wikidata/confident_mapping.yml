@@ -1,31 +1,71 @@
-instance_of:
-  property: P31
-  URI: http://www.wikidata.org/prop/direct/P31
-start_time:
-  property: P580
-  URI: http://www.wikidata.org/prop/direct/P580
-event_interval:
-  property: P2257
-  URI: http://www.wikidata.org/prop/direct/P2257
-official_website:
-  property: P856
-  URI: http://www.wikidata.org/prop/direct/P856
-language_used:
-  property: P2936
-  URI: http://www.wikidata.org/prop/direct/P2936
-part_of_the_series:
-  property: P179
-  URI: http://www.wikidata.org/prop/direct/P179
-country:
-  property: P17
-  URI: http://www.wikidata.org/prop/direct/P17
-location:
-  property: P276
-  URI: http://www.wikidata.org/prop/direct/P276
-short_name:
-  property: P1813
-  URI: http://www.wikidata.org/prop/direct/P1813
-main_subject:
-  property: P921
-  URI: http://www.wikidata.org/prop/direct/P921
+# NOTES:
+# * ensure property: value match the
+#   * wikidata property label
+#   * printout key in SPARQL query
+# * spaces are replaced by _
+
+Event Series:
+  Event Frequency:
+    property: event_interval
+    propertyURI: https://www.wikidata.org/wiki/Property:P2257
+  History:
+  Series CiteCount:
+Process:
+  Subject:
+    property: main_subject # Note: it wont match confIDent control Vocabulary
+    URI: https://www.wikidata.org/wiki/Property:P921
+  Website:
+    property: official_website
+    URI: https://www.wikidata.org/wiki/Property:P856
+  Summary:
+  Summary License:
+  Logo:
+  Language:
+    property: language_used
+    URI: https://www.wikidata.org/wiki/Property:P2936
+  CORE Ranking:
+  Contact Person:
+  Contact Email:
+  Contact Phone:
+  ConfIDent ID:
+  GND:
+    property: GND_ID
+    URI: https://www.wikidata.org/wiki/Property:P227
+  DOI:
+  WDQID:
+    property: item
+  Twitter:
+    property: Twitter_username
+    URI: https://www.wikidata.org/wiki/Property:P2002
+  External_ID_URL:
+
+# Other Identifiers
+# WikiCFP_conference_series_ID
+# Freebase_ID
+
+# wikidata properties
+#short_name:
+#  property: P1813
+#  URI: https://www.wikidata.org/wiki/Property:P1813
+#
+#instance_of:
+#  property: P31
+#  URI: https://www.wikidata.org/wiki/Property:P31
+#start_time:
+#  property: P580
+#  URI: https://www.wikidata.org/wiki/Property:P580
+#event_interval:
+#  property: P2257
+#  URI: https://www.wikidata.org/wiki/Property:P2257
+#part_of_the_series:
+#  property: P179
+#  URI: https://www.wikidata.org/wiki/Property:P179
+#country:
+#  property: P17
+#  URI: https://www.wikidata.org/wiki/Property:P17
+#location:
+#  property: P276
+#  URI: https://www.wikidata.org/wiki/Property:P276
+
+
 

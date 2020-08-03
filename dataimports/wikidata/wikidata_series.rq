@@ -1,7 +1,7 @@
 SELECT DISTINCT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel
 	?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
-	?main_subjectLabel ?website
-	?GND_ID ?WikiCFP_conference_series_ID ?Freebase_ID
+	?main_subjectLabel ?official_website
+	?GND_ID ?Twitter_username ?WikiCFP_conference_series_ID ?Freebase_ID
 	?event_interval ?event_interval_unitLabel ?start_time
 
 WHERE
@@ -19,8 +19,9 @@ WHERE
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
-	OPTIONAL { ?item wdt:P856 ?website . }
+	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
+	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_ID }
 	OPTIONAL { ?item wdt:P646 ?Freebase_ID . }
 	OPTIONAL{ ?item wdt:P580 ?start_time . }
