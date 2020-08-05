@@ -7,10 +7,30 @@
 # ------ Event Series:
 Event Frequency:
   property: event_interval
-  propertyURI: https://www.wikidata.org/wiki/Property:P2257
+  URI: https://www.wikidata.org/wiki/Property:P2257
 History:
 Series CiteCount:
 #  ----- Process:
+# attempt 2: dealing w/ subobjects
+Process Name-official name:
+  property: itemLabel
+  parent_confid_prop: Process Name
+  child_confid_prop: Process Name Type
+  child_confid_value: official name
+Process Name-acronym:
+  property: short_name
+  parent_confid_prop: Process Name
+  child_confid_prop: Process Name Type
+  child_confid_value: acronym
+# attemp 1 dealing w/ subobjects
+#Process Name:
+#  - official name:
+#      property: itemLabel  # external property
+#      Process Name Type: official name
+#  - acronym:
+#      property: short_name  # external property
+#      Process Name Type: acronym
+#  # Process Name Type official name
 Subject:
   property: main_subject # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
