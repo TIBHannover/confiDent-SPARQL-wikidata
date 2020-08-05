@@ -12,12 +12,11 @@ def importdata(source: str, outformat: str, outfile: str):
                                class_='EventSeries')
         print('**SPARL results: 1 item:**' )
         pprint(results[0])
-        results = sparql.process_results(results=results,
-                                         source='wikidata',
-                                         out_format=outformat,
-                                         class_='EventSeries')
-        print('\n**Simplified Dict results: 1 item:**' )
-        pprint(results[0])
+        for item in sparql.process_results(results=results,
+                                           source='wikidata',
+                                           out_format=outformat,
+                                           class_='EventSeries'):
+            print('item:', item)
 
 
         # print(json.dumps(results))

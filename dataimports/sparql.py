@@ -30,9 +30,9 @@ def process_results(results: Dict, source: str, out_format:str, class_: str):
     :param out_format: wiki, dict, json
     :return:
     """
-    # TODO:
-    # * properties into corresping templates, perhaps by suing class
-    # * handle subobjects in template
+    # TODO: place properties into corresponding templates, perhaps by using
+    #  class_
+    # TODO: handle subobjects in template
 
     if source == 'wikidata':
         results = wikidata.sparqlresults_simplfy(results)
@@ -42,12 +42,10 @@ def process_results(results: Dict, source: str, out_format:str, class_: str):
             item_confid_keys = dataitem2confid_map(mapping=schema_map2confi_dict,
                                                    item_data=item, )
 
-            pprint(item_confid_keys)
-        if out_format == 'dict':
-            output = item_confid_keys
-        elif out_format == 'wiki':
-            output = render_template(class_=class_, item=item_confid_keys)
-            # TODO: * create item title: either simply through the itemLabel
-            #  * write function to write item to wiki
-        print('output:', output)
-    return output
+            print('item_confid_keys:', item_confid_keys)
+            if out_format == 'dict':
+                output = item_confid_keys
+            elif out_format == 'wiki':
+                output = render_template(class_=class_, item=item_confid_keys)
+                # TODO: * create item title: either simply through the itemLabel
+            yield output
