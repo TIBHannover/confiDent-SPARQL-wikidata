@@ -1,6 +1,6 @@
 from typing import Dict, List
 from pprint import pprint
-from dataimports import file_utils
+from dataimports.file_utils import yaml_get_source
 from dataimports.globals import invert_confid_map
 
 
@@ -9,7 +9,7 @@ def invert_mapping(schema: str) -> Dict:
     Inverts the {schema}/confident_mapping.yml
     confident_inv_map: {'property': schema_key} -> {schema_key: confident_key}
     """
-    confident_mapping = file_utils.yaml_get_source(
+    confident_mapping = yaml_get_source(
         f'{schema}/confident_mapping.yml')
     confident_inv_map = {}
     for k, v in confident_mapping.items():

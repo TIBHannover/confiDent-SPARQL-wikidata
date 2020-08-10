@@ -2,20 +2,20 @@ from typing import Dict, List
 from pprint import pprint
 from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
-from dataimports import file_utils
+from dataimports.file_utils import yaml_get_source, relative_read_f
 from dataimports.wikidata import wikidata
 from dataimports.jinja_utils import render_template
 from dataimports.mapping import dataitem2confid_map
 
 
 def query(source: str, class_: str) -> Dict:
-    sources_yaml = file_utils.yaml_get_source('_sources.yml')
+    sources_yaml = yaml_get_source('_sources.yml')
     source_dict = sources_yaml[source]
     sparql_endpoint = source_dict['sparqlendpoint']
     sparql_f = source_dict['sparqlqueries'][class_]
     endpoint = SPARQLWrapper(endpoint=sparql_endpoint,
                              agent=useragent)
-    sparql_query = file_utils.relative_read_f(sparql_f)
+    sparql_query = relative_read_f(sparql_f)
     endpoint.setQuery(sparql_query)
     endpoint.setReturnFormat(JSON)
     results = endpoint.query().convert()
