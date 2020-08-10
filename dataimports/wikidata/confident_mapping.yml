@@ -6,42 +6,42 @@
 
 # ------ Event Series:
 Event Frequency:
-  property: event_interval
+  external_prop: event_interval
   URI: https://www.wikidata.org/wiki/Property:P2257
 History:
 Series CiteCount:
 #  ----- Process:
 # attempt 2: dealing w/ subobjects
 Process Name-official name:
-  property: itemLabel
+  external_prop: itemLabel
   parent_confid_prop: Process Name
   child_confid_prop: Process Name Type
   child_confid_value: official name
 Process Name-acronym:
-  property: short_name
+  external_prop: short_name
   parent_confid_prop: Process Name
   child_confid_prop: Process Name Type
   child_confid_value: acronym
 # attemp 1 dealing w/ subobjects
 #Process Name:
 #  - official name:
-#      property: itemLabel  # external property
+#      external_prop: itemLabel  # external property
 #      Process Name Type: official name
 #  - acronym:
-#      property: short_name  # external property
+#      external_prop: short_name  # external property
 #      Process Name Type: acronym
 #  # Process Name Type official name
 Subject:
-  property: main_subject # Note: it wont match confIDent control Vocabulary
+  external_prop: main_subject # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
 Website:
-  property: official_website
+  external_prop: official_website
   URI: https://www.wikidata.org/wiki/Property:P856
 Summary:
 Summary License:
 Logo:
 Language:
-  property: language_used
+  external_prop: language_used
   URI: https://www.wikidata.org/wiki/Property:P2936
 CORE Ranking:
 Contact Person:
@@ -49,13 +49,13 @@ Contact Email:
 Contact Phone:
 ConfIDent ID:
 GND:
-  property: GND_ID
+  external_prop: GND_ID
   URI: https://www.wikidata.org/wiki/Property:P227
 DOI:
 WDQID:
-  property: item
+  external_prop: item
 Twitter:
-  property: Twitter_username
+  external_prop: Twitter_username
   URI: https://www.wikidata.org/wiki/Property:P2002
 #External_ID_URL:
 # Other Identifiers
@@ -64,26 +64,26 @@ Twitter:
 
 # wikidata properties
 #short_name:
-#  property: P1813
+#  external_prop: P1813
 #  URI: https://www.wikidata.org/wiki/Property:P1813
 #
 #instance_of:
-#  property: P31
+#  external_prop: P31
 #  URI: https://www.wikidata.org/wiki/Property:P31
 #start_time:
-#  property: P580
+#  external_prop: P580
 #  URI: https://www.wikidata.org/wiki/Property:P580
 #event_interval:
-#  property: P2257
+#  external_prop: P2257
 #  URI: https://www.wikidata.org/wiki/Property:P2257
 #part_of_the_series:
-#  property: P179
+#  external_prop: P179
 #  URI: https://www.wikidata.org/wiki/Property:P179
 #country:
-#  property: P17
+#  external_prop: P17
 #  URI: https://www.wikidata.org/wiki/Property:P17
 #location:
-#  property: P276
+#  external_prop: P276
 #  URI: https://www.wikidata.org/wiki/Property:P276
 
 

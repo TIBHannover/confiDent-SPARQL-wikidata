@@ -18,7 +18,8 @@ def schema2confi_map(schema: str, schema_data: List) -> Dict:
         for extschema_k in schema_data_item:
             if extschema_k not in mapping_schema2confident:
                 for confid_k, confid_dict in confident_mapping.items():
-                    if confid_dict and extschema_k in confid_dict['property']:
+                    if confid_dict and extschema_k in \
+                            confid_dict['external_prop']:
                         mapping_schema2confident[extschema_k] = confid_k
                         break
     return mapping_schema2confident
