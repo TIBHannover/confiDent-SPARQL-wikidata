@@ -34,3 +34,15 @@ def test_confid_mapping():
             assert k in confid_keys,\
                 f"confid key: {k} in inverted mapping is not in confid keys " \
                 f"of {schema}"
+
+
+@pytest.mark.mapping
+def test_confid_mapping_yaml():
+    sources = ['wikidata']
+    for schema in sources:
+        confid_mapping.clear()  # reset dict for each source
+        confid_mapping.update(
+            yaml_get_source(f'{schema}/confident_mapping.yml'))
+        for k, value_dict in confid_mapping.items():
+            assert 'range' in value_dict, \
+            f"range: is missing from {schema}/confident_mapping.yml key: {k}"

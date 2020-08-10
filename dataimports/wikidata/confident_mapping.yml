@@ -3,6 +3,7 @@
 #   * wikidata property label
 #   * printout key in SPARQL query
 # * spaces are replaced by _
+# range must be present
 
 # ------ Event Series:
 Event Frequency:
