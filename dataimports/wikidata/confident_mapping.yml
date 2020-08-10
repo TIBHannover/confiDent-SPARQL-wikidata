@@ -11,26 +11,38 @@ Event Frequency:
 History:
 Series CiteCount:
 #  ----- Process:
-# attempt 2: dealing w/ subobjects
-Process Name-official name:
+## Process Name subobjects
+official_name:
   external_prop: itemLabel
-  parent_confid_prop: Process Name
-  child_confid_prop: Process Name Type
-  child_confid_value: official name
-Process Name-acronym:
+  child_prop_vals:
+    - - Process Name Type
+      - official name
+  subobject: Subobject Process Name
+acronym:
   external_prop: short_name
-  parent_confid_prop: Process Name
-  child_confid_prop: Process Name Type
-  child_confid_value: acronym
-# attemp 1 dealing w/ subobjects
-#Process Name:
-#  - official name:
-#      external_prop: itemLabel  # external property
-#      Process Name Type: official name
-#  - acronym:
-#      external_prop: short_name  # external property
-#      Process Name Type: acronym
-#  # Process Name Type official name
+  child_prop_vals:
+    - - Process Name Type
+      - acronym
+  subobject: Subobject Process Name
+alternative_name:
+  external_prop:
+  child_prop_vals:
+    - - Process Name Type
+      - alternative name
+  subobject: Subobject Process Name
+translated_name:
+  external_prop:
+  child_prop_vals:
+    - - Process Name Type
+      - translated name
+  subobject: Subobject Process Name
+former_name:
+  external_prop:
+  child_prop_vals:
+    - - Process Name Type
+      - former name
+  subobject: Subobject Process Name
+
 Subject:
   external_prop: main_subject # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
