@@ -1,7 +1,9 @@
+import pytest
 from dataimports.file_utils import yaml_get_source
 from dataimports.mapping import invert_mapping
 
 
+@pytest.mark.mapping
 def test_confid_mapping():
     sources = ['wikidata']
     for schema in sources:
