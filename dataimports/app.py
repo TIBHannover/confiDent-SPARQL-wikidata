@@ -1,7 +1,12 @@
 from pprint import pprint
 from dataimports import sparql
-from dataimports.globals import invert_confid_map
-from dataimports.mapping import invert_mapping
+from dataimports.globals import (confid_mapping,
+                                 invert_confid_map,
+                                 )
+from dataimports.file_utils import yaml_get_source
+from dataimports.mapping import (invert_mapping,
+                                 getall_confid_ranges,
+                                 )
 
 
 def importdata(source: str, outformat: str, outfile: str):
@@ -9,9 +14,13 @@ def importdata(source: str, outformat: str, outfile: str):
     # mapping = file_utils.yaml_get_mapping(mapping=source)
 
     if source == 'wikidata':
-        schema_inv_map = invert_mapping(schema='wikidata')
-        invert_confid_map.update(schema_inv_map)  # global
-        # TODO: tests
+        # globals
+        confid_mapping.update(
+            yaml_get_source(f'{source}/confident_mapping.yml'))
+        invert_confid_map.update(invert_mapping(schema='wikidata'))
+        confid_allranges = getall_confid_ranges()
+        print('confid_allranges:', confid_allranges)
+
 
         print('schema_inv_map')
         pprint(invert_confid_map)

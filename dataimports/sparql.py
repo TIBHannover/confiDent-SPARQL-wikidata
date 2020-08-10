@@ -37,13 +37,13 @@ def process_results(results: Dict, source: str, out_format: str, class_: str):
     if source == 'wikidata':
         results = wikidata.sparqlresults_simplfy(results)
         for item in results:
-            item_confid_keys = dataitem2confid_map(item_data=item)
+            item_confid_map = dataitem2confid_map(item_data=item)
 
-            print('item_confid_keys:', item_confid_keys)
+            print('item_confid_map:', item_confid_map)
             if out_format == 'dict':
-                output = item_confid_keys
+                output = item_confid_map
             elif out_format == 'wiki':
-                output = render_template(class_=class_, item=item_confid_keys)
+                output = render_template(class_=class_, item=item_confid_map)
                 # TODO: create item title: either simply through the itemLabel
             else:
                 output = None

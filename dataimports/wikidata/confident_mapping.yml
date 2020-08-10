@@ -8,67 +8,146 @@
 Event Frequency:
   external_prop: event_interval
   URI: https://www.wikidata.org/wiki/Property:P2257
+  range:
+    - Event Series
 History:
+  external_prop:
+  URI:
+  range:
+    - Event Series
 Series CiteCount:
+  external_prop:
+  URI:
+  range:
+    - Event Series
 #  ----- Process:
 ## Process Name subobjects
 official_name:
   external_prop: itemLabel
+  URI:
+  range:
+    - Process
   child_prop_vals:
     - - Process Name Type
       - official name
   subobject: Subobject Process Name
 acronym:
   external_prop: short_name
+  URI:
+  range:
+    - Process
   child_prop_vals:
     - - Process Name Type
       - acronym
   subobject: Subobject Process Name
 alternative_name:
   external_prop:
+  URI:
+  range:
+    - Process
   child_prop_vals:
     - - Process Name Type
       - alternative name
   subobject: Subobject Process Name
 translated_name:
   external_prop:
+  URI:
+  range:
+    - Process
   child_prop_vals:
     - - Process Name Type
       - translated name
   subobject: Subobject Process Name
 former_name:
   external_prop:
+  URI:
+  range:
+    - Process
   child_prop_vals:
     - - Process Name Type
       - former name
   subobject: Subobject Process Name
-
 Subject:
   external_prop: main_subject # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
+  range:
+    - Process
 Website:
   external_prop: official_website
   URI: https://www.wikidata.org/wiki/Property:P856
+  range:
+    - Process
+    - Agent
 Summary:
+  external_prop:
+  URI:
+  range:
+    - Process
 Summary License:
+  external_prop:
+  URI:
+  range:
+    - Process
 Logo:
+  external_prop:
+  URI:
+  range:
+    - Process
 Language:
   external_prop: language_used
   URI: https://www.wikidata.org/wiki/Property:P2936
+  range:
+    - Process
 CORE Ranking:
+  external_prop:
+  URI:
+  range:
+    - Process
 Contact Person:
+  external_prop:
+  URI:
+  range:
+    - Process
 Contact Email:
+  external_prop:
+  URI:
+  range:
+    - Process
 Contact Phone:
+  external_prop:
+  URI:
+  range:
+    - Process
 ConfIDent ID:
+  external_prop:
+  URI:
+  range:
+    - Process
 GND:
   external_prop: GND_ID
   URI: https://www.wikidata.org/wiki/Property:P227
+  range:
+    - Process
+    - Agent
 DOI:
+  external_prop:
+  URI:
+  range:
+    - Process
+    - Agent
 WDQID:
   external_prop: item
+  URI:
+  range:
+    - Process
+    - Agent
 Twitter:
   external_prop: Twitter_username
   URI: https://www.wikidata.org/wiki/Property:P2002
+  range:
+    - Process
+    - Agent
+
 #External_ID_URL:
 # Other Identifiers
 # WikiCFP_conference_series_ID
