@@ -4,8 +4,8 @@ from dataimports.globals import useragent
 from dataimports.file_utils import yaml_get_source, relative_read_f
 from dataimports.wikidata import wikidata
 from dataimports.jinja_utils import render_template
-from dataimports.mapping import dataitem2confid_map
-
+from dataimports.mapping import dataitem2confid_map, seperate_subobjects
+import pprint
 
 def query(source: str, class_: str) -> Dict:
     sources_yaml = yaml_get_source('_sources.yml')
@@ -39,13 +39,22 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str):
     if source == 'wikidata':
         dataitem = wikidata.sparqlresults_simplfy(dataitem=dataitem)
 
-    item_confid_map = dataitem2confid_map(item_data=dataitem)
+    dataitem_confid_format = dataitem2confid_map(item_data=dataitem)
+    # print('\n confid_map')
 
+    dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
+        dataitem=dataitem_confid_format)
+    # print(dataitem_confid_format)
+    # print(dataitem_subobj)
     if out_format == 'dict':
-        output = item_confid_map
+        output = dataitem_confid_format
     elif out_format == 'wiki':
         output = render_template(class_=class_,
-                                 item=item_confid_map)
+                                 item=dataitem_nosubobj)
+        output += '\n' + render_template(class_=class_,
+                                         item=dataitem_subobj,
+                                         subobjs=True)
+
         # TODO: create item title: either simply through the itemLabel
     else:
         output = None

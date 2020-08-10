@@ -19,13 +19,12 @@ def importdata(source: str, outformat: str, outfile: str, limit: int):
             yaml_get_source(f'{source}/confident_mapping.yml'))
         invert_confid_map.update(invert_mapping(schema='wikidata'))
         confid_allranges = getall_confid_ranges()
-        print(confid_allranges)
         # print('schema_inv_map')
         # pprint(invert_confid_map)
         for i, result in enumerate(
                 iterable=sparql.query(source='wikidata', class_='EventSeries'),
                 start=1):
-            if i > limit:
+            if limit and i > limit:
                 break
             # print('\n', '**SPARL result:**', type(result))
             # pprint(result)
