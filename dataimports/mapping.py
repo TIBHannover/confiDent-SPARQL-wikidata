@@ -3,6 +3,22 @@ from pprint import pprint
 from dataimports import file_utils
 
 
+def invert_mapping(schema: str) -> Dict:
+    """
+    Inverts the {schema}/confident_mapping.yml
+    confident_inv_map: {'property': schema_key} -> {schema_key: confident_key}
+    """
+    confident_mapping = file_utils.yaml_get_source(
+        f'{schema}/confident_mapping.yml')
+    confident_inv_map = {}
+    for k, v in confident_mapping.items():
+        if v and v['external_prop']:
+            prop = v['external_prop']
+            if prop not in confident_inv_map.keys():
+                confident_inv_map[prop] = k
+    return confident_inv_map
+
+
 def schema2confi_map(schema: str, schema_data: List) -> Dict:
     """
     Inverts the {schema}/confident_mapping.yml
@@ -25,17 +41,21 @@ def schema2confi_map(schema: str, schema_data: List) -> Dict:
     return mapping_schema2confident
 
 
-def dataitem2confid_map(mapping: Dict, item_data: Dict) -> Dict:
+def dataitem2confid_map(inv_confid_map: Dict, item_data: Dict) -> \
+        Dict:
     """
     Puts item property + data into confIDent properties
-    :mapping: {external_property: confIDent_property, ...}
+    :inv_confid_map: the inverted property mapping of datasource
     :item_data:
     :return:
     """
     item_confid = {}
     for data_k, data_v in item_data.items():
-        if data_k in mapping:
-            confid_k = mapping[data_k]
+        if data_k in inv_confid_map:
+            confid_k = inv_confid_map[data_k]
             item_confid[confid_k] = data_v
     return item_confid
 
+# TODO: invert mapping :DONE
+
+# TODO: handle mapping entries with external_prop: with empty values

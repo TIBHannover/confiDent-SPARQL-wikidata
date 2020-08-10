@@ -1,6 +1,7 @@
 from pprint import pprint
 from dataimports import sparql
 from dataimports.wikidata import wikidata
+from dataimports.mapping import invert_mapping
 
 
 def importdata(source: str, outformat: str, outfile: str):
@@ -8,6 +9,9 @@ def importdata(source: str, outformat: str, outfile: str):
     # mapping = file_utils.yaml_get_mapping(mapping=source)
 
     if source == 'wikidata':
+        schema_inv_map = invert_mapping(schema='wikidata')
+        print('schema_inv_map')
+        pprint(schema_inv_map)
         results = sparql.query(source='wikidata',
                                class_='EventSeries')
         print('**SPARL results: 1 item:**' )
@@ -15,7 +19,8 @@ def importdata(source: str, outformat: str, outfile: str):
         for item in sparql.process_results(results=results,
                                            source='wikidata',
                                            out_format=outformat,
-                                           class_='EventSeries'):
+                                           class_='EventSeries',
+                                           inv_map=schema_inv_map):
             print('item:', item)
 
 
