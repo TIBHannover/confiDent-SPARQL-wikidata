@@ -15,7 +15,8 @@ def sparqlresults_simplfy(results: Dict) -> List:
     for item in results:
         keyvalue_dict = {}
         for k, v in item.items():
-            if v.get('datatype') == 'http://www.w3.org/2001/XMLSchema#dateTime':
+            if v.get('datatype') == \
+                    'http://www.w3.org/2001/XMLSchema#dateTime':
                 keyvalue_dict[k] = datetime.strptime(v['value'],
                                                      "%Y-%m-%dT%H:%M:%S%z")
             elif v.get(
@@ -25,4 +26,3 @@ def sparqlresults_simplfy(results: Dict) -> List:
                 keyvalue_dict[k] = v['value']
         results_new.append(keyvalue_dict)
     return results_new
-

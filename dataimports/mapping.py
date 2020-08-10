@@ -1,5 +1,4 @@
-from typing import Dict, List
-from pprint import pprint
+from typing import Dict
 from dataimports.file_utils import yaml_get_source
 from dataimports.globals import invert_confid_map
 
@@ -45,7 +44,7 @@ def invert_mapping(schema: str) -> Dict:
 def dataitem2confid_map(item_data: Dict) -> Dict:
     """
     Puts the item's  external_property:value value into confIDent_prop:value
-    :item_data: {external_property:value, ...} result from external source query
+    :item_data:{external_property:value, ...} result from external source query
     :return: {confid_property:value, ...}
     """
     item_confid = {}

@@ -1,5 +1,4 @@
-from typing import Dict, List
-from pprint import pprint
+from typing import Dict
 from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
 from dataimports.file_utils import yaml_get_source, relative_read_f
@@ -23,7 +22,7 @@ def query(source: str, class_: str) -> Dict:
     return results_bindings
 
 
-def process_results(results: Dict, source: str, out_format:str, class_: str):
+def process_results(results: Dict, source: str, out_format: str, class_: str):
     """
     :param results:
     :param source: wikidata
@@ -45,5 +44,7 @@ def process_results(results: Dict, source: str, out_format:str, class_: str):
                 output = item_confid_keys
             elif out_format == 'wiki':
                 output = render_template(class_=class_, item=item_confid_keys)
-                # TODO: * create item title: either simply through the itemLabel
+                # TODO: create item title: either simply through the itemLabel
+            else:
+                output = None
             yield output

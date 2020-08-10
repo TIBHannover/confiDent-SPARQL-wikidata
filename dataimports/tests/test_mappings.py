@@ -10,9 +10,9 @@ def test_confid_mapping():
         confid_keys_set = list(set(confid_keys))
 
         external_props = [v['external_prop']
-                          for k, v in confid_mapping.items()
-                          if v and 'external_prop' in v.keys() and
-                          v['external_prop']]
+                          for k, v in confid_mapping.items() if
+                          v and 'external_prop' in v.keys()
+                          and v['external_prop']]
 
         assert len(external_props) > 0, \
             f"Expected mapping. {confid_mapping} is empty"

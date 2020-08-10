@@ -13,4 +13,5 @@ exclude =
     .eggs,
     dist,
     build,
+    prototypes,
 max-complexity = 10

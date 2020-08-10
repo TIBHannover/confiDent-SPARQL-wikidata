@@ -30,4 +30,3 @@ def yaml_get_mapping(mapping: str) -> Dict:
     # ext_schema = list(confid2ext_schema.keys())[0]
     # ext_schema_mapping = confid2ext_schema[ext_schema]
     return confid2ext_schema
-
