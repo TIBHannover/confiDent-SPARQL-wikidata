@@ -5,7 +5,7 @@ from dataimports.globals import useragent
 from dataimports import file_utils
 from dataimports.wikidata import wikidata
 from dataimports.jinja_utils import render_template
-from dataimports.mapping import schema2confi_map, dataitem2confid_map
+from dataimports.mapping import dataitem2confid_map
 
 
 def query(source: str, class_: str) -> Dict:
@@ -23,14 +23,12 @@ def query(source: str, class_: str) -> Dict:
     return results_bindings
 
 
-def process_results(results: Dict, source: str, out_format:str, class_: str,
-                    inv_map: Dict):
+def process_results(results: Dict, source: str, out_format:str, class_: str):
     """
     :param results:
     :param source: wikidata
     :param out_format: wiki, dict, json
     :param class_:
-    :param inv_map: the inverted property mapping of datasource
     :return:
     """
     # TODO: place properties into corresponding templates, perhaps by using
@@ -40,9 +38,7 @@ def process_results(results: Dict, source: str, out_format:str, class_: str,
     if source == 'wikidata':
         results = wikidata.sparqlresults_simplfy(results)
         for item in results:
-            item_confid_keys = dataitem2confid_map(
-                inv_confid_map=inv_map,
-                item_data=item, )
+            item_confid_keys = dataitem2confid_map(item_data=item)
 
             print('item_confid_keys:', item_confid_keys)
             if out_format == 'dict':

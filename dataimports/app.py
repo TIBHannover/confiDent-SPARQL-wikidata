@@ -1,5 +1,6 @@
 from pprint import pprint
 from dataimports import sparql
+from dataimports.globals import invert_confid_map
 from dataimports.wikidata import wikidata
 from dataimports.mapping import invert_mapping
 
@@ -10,8 +11,11 @@ def importdata(source: str, outformat: str, outfile: str):
 
     if source == 'wikidata':
         schema_inv_map = invert_mapping(schema='wikidata')
+        invert_confid_map.update(schema_inv_map)  # global
+        # TODO: tests
+
         print('schema_inv_map')
-        pprint(schema_inv_map)
+        pprint(invert_confid_map)
         results = sparql.query(source='wikidata',
                                class_='EventSeries')
         print('**SPARL results: 1 item:**' )
@@ -19,8 +23,7 @@ def importdata(source: str, outformat: str, outfile: str):
         for item in sparql.process_results(results=results,
                                            source='wikidata',
                                            out_format=outformat,
-                                           class_='EventSeries',
-                                           inv_map=schema_inv_map):
+                                           class_='EventSeries'):
             print('item:', item)
 
 
