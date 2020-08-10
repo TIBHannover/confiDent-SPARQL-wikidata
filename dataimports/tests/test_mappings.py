@@ -7,6 +7,7 @@ from dataimports.globals import (confid_mapping,
 
 # TODO: Test for integraty of confident_mapping.yml
 
+
 @pytest.mark.mapping
 def test_confid_mapping():
     sources = ['wikidata']
@@ -45,4 +46,5 @@ def test_confid_mapping_yaml():
             yaml_get_source(f'{schema}/confident_mapping.yml'))
         for k, value_dict in confid_mapping.items():
             assert 'range' in value_dict, \
-            f"range: is missing from {schema}/confident_mapping.yml key: {k}"
+                f"range: is missing from {schema}/confident_mapping.yml " \
+                f"key: {k}"

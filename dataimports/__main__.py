@@ -12,6 +12,8 @@ parser.add_argument('-l', '--list', action='store_true',
 parser.add_argument('-f', '--format', help="Output format",
                     choices=['wiki', 'dict', 'json'],
                     default='dict')
+parser.add_argument('-n', default=None, type=int,
+                    help="Limit the number or results by n")
 parser.add_argument('-o', '--output',
                     help="Filename for output OR **destination wiki**. "
                          "By default output is printed to console."
@@ -26,4 +28,5 @@ if __name__ == '__main__':
     else:
         importdata(source=args.source,
                    outformat=args.format,
-                   outfile=args.output)
+                   outfile=args.output,
+                   limit=args.n)

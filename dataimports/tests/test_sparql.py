@@ -2,6 +2,7 @@ import pytest
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
 
+
 @pytest.mark.sparql
 def test_sources_file():
     srcsfile = '_sources.yml'
@@ -22,9 +23,9 @@ def test_sources_file():
 def test_sparql_queries():
     sparql_sources = ['wikidata']
     for source in sparql_sources:
-        results = sparql.query(source=source,
-                               class_='EventSeries')
+        for i, result in enumerate(
+                sparql.query(source=source, class_='EventSeries')):
+            if i > 20:
+                break
         # results_keys = results.keys()
-        assert type(results) is list and len(results) > 0
-        first_result = results[0]
-        assert type(first_result) is dict and len(first_result.keys()) > 0
+            assert type(result) is dict and result.keys()

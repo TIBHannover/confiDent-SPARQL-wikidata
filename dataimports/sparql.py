@@ -19,12 +19,15 @@ def query(source: str, class_: str) -> Dict:
     endpoint.setReturnFormat(JSON)
     results = endpoint.query().convert()
     results_bindings = results['results']['bindings']  # ?wikidata specific?
-    return results_bindings
+    for result in results_bindings:
+        yield result
 
 
-def process_results(results: Dict, source: str, out_format: str, class_: str):
+def process_result(dataitem: Dict, source: str, out_format: str, class_: str):
     """
-    :param results:
+    Maps the properties:value from  dataitem onto confIDent properties
+    And outputs them in the form of the out_format
+    :param dataitem: item printouts, from sparql query
     :param source: wikidata
     :param out_format: wiki, dict, json
     :param class_:
@@ -33,18 +36,17 @@ def process_results(results: Dict, source: str, out_format: str, class_: str):
     # TODO: place properties into corresponding templates, perhaps by using
     #  class_
     # TODO: handle subobjects in template
-
     if source == 'wikidata':
-        results = wikidata.sparqlresults_simplfy(results)
-        for item in results:
-            item_confid_map = dataitem2confid_map(item_data=item)
+        dataitem = wikidata.sparqlresults_simplfy(dataitem=dataitem)
 
-            print('item_confid_map:', item_confid_map)
-            if out_format == 'dict':
-                output = item_confid_map
-            elif out_format == 'wiki':
-                output = render_template(class_=class_, item=item_confid_map)
-                # TODO: create item title: either simply through the itemLabel
-            else:
-                output = None
-            yield output
+    item_confid_map = dataitem2confid_map(item_data=dataitem)
+
+    if out_format == 'dict':
+        output = item_confid_map
+    elif out_format == 'wiki':
+        output = render_template(class_=class_,
+                                 item=item_confid_map)
+        # TODO: create item title: either simply through the itemLabel
+    else:
+        output = None
+    return output

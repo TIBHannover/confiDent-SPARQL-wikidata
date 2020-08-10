@@ -4,3 +4,4 @@ SPARQLWrapper
 Jinja2
 pytest
 tox
+flake8

@@ -1,8 +1,8 @@
 from typing import Dict, List
-from dataimports.file_utils import yaml_get_source
 from dataimports.globals import (invert_confid_map,
                                  confid_mapping,
                                  )
+
 
 def invert_mapping(schema: str) -> Dict:
     """

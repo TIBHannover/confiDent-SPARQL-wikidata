@@ -1,4 +1,4 @@
-from pprint import pprint
+# from pprint import pprint
 from dataimports import sparql
 from dataimports.globals import (confid_mapping,
                                  invert_confid_map,
@@ -9,7 +9,7 @@ from dataimports.mapping import (invert_mapping,
                                  )
 
 
-def importdata(source: str, outformat: str, outfile: str):
+def importdata(source: str, outformat: str, outfile: str, limit: int):
     outfile = outfile
     # mapping = file_utils.yaml_get_mapping(mapping=source)
 
@@ -19,20 +19,21 @@ def importdata(source: str, outformat: str, outfile: str):
             yaml_get_source(f'{source}/confident_mapping.yml'))
         invert_confid_map.update(invert_mapping(schema='wikidata'))
         confid_allranges = getall_confid_ranges()
-        print('confid_allranges:', confid_allranges)
+        print(confid_allranges)
+        # print('schema_inv_map')
+        # pprint(invert_confid_map)
+        for i, result in enumerate(
+                iterable=sparql.query(source='wikidata', class_='EventSeries'),
+                start=1):
+            if i > limit:
+                break
+            # print('\n', '**SPARL result:**', type(result))
+            # pprint(result)
+            result_formatted = sparql.process_result(dataitem=result,
+                                                     source='wikidata',
+                                                     out_format=outformat,
+                                                     class_='EventSeries')
+            current_result_i = i
+            print(result_formatted)
 
-
-        print('schema_inv_map')
-        pprint(invert_confid_map)
-        results = sparql.query(source='wikidata',
-                               class_='EventSeries')
-        print('**SPARL results: 1 item:**')
-        pprint(results[0])
-        for item in sparql.process_results(results=results,
-                                           source='wikidata',
-                                           out_format=outformat,
-                                           class_='EventSeries'):
-            print('item:', item)
-
-        # print(json.dumps(results))
-        print('Results returned:', len(results))
+        print(f'Results returned: {current_result_i}')
