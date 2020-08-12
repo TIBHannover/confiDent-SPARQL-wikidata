@@ -20,6 +20,6 @@ setup(
     classifiers=['Programming Language :: Python',
                  'Programming Language :: Python :: 3.7'],
     keywords='spaql wikidata semantic',
-    install_requires=['SPARQLWrapper', 'pyyaml', 'Jinja2'],
+    install_requires=['SPARQLWrapper', 'pyyaml', 'Jinja2', 'mediawikitools'],
     test_require=['pytest']
 )
