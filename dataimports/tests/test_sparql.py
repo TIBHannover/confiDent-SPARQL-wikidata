@@ -1,7 +1,10 @@
 import pytest
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
-
+from dataimports.mapping import invert_mapping
+from dataimports.globals import (confid_mapping,
+                                 invert_confid_map,
+                                 )
 
 @pytest.mark.sparql
 def test_sources_file():
@@ -29,3 +32,27 @@ def test_sparql_queries():
                 break
         # results_keys = results.keys()
             assert type(result) is dict and result.keys()
+
+
+@pytest.mark.sparql
+def test_sparql_printouts_n_result_processing():
+    # test if the prop:value pairs from the test_wikidata_series.rq are
+    # still present after the results have been processed and mapped to
+    # confIDent
+    confid_mapping.update(yaml_get_source('wikidata/confident_mapping.yml'))
+    invert_confid_map.update(invert_mapping(schema='wikidata'))
+
+    for i, result in enumerate(iterable=sparql.query(
+            source='wikidata',
+            class_='Test_EventSeries'), start=1):
+        print('result:', result)
+        result_formatted = sparql.process_result(dataitem=result,
+                                                 source='wikidata',
+                                                 out_format='dict',
+                                                 class_='EventSeries')
+        assert len(result_formatted) >= 4   # sparql has 4 non optional props
+
+        result_vals = [v['value'] for k, v in result.items()]
+        result_formatted_vals = [v for v in result_formatted.values()]
+        samevals = (all(str(i) in result_vals for i in result_formatted_vals))
+        assert samevals is True

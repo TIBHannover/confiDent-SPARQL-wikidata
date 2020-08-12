@@ -1,0 +1,45 @@
+SELECT DISTINCT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel
+	?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
+	?main_subjectLabel ?official_website
+	?GND_ID ?Twitter_username ?WikiCFP_conference_series_ID ?Freebase_ID
+	?event_interval ?event_interval_unitLabel ?start_time
+
+WHERE
+{
+    # wdt:P31 (instance of)  wd:Q47258130 (scientific conference series)
+    ?item wdt:P31 wd:Q47258130 .
+     SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+
+	?item schema:dateModified ?dateModified .
+
+    # properties that are required
+
+	{ ?item wdt:P1813 ?short_name . }
+	{ ?item wdt:P856 ?official_website . }
+	{ ?item wdt:P2002 ?Twitter_username . }
+    { ?item wdt:P921 ?main_subject . }
+
+	OPTIONAL { ?item wdt:P276 ?location . }
+    OPTIONAL { ?item wdt:P17 ?country . }
+    OPTIONAL { ?item wdt:P179 ?part_of_the_series . }
+	OPTIONAL { ?item wdt:P2936 ?language_used . }
+	OPTIONAL { ?item wdt:P227 ?GND_ID . }
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_ID }
+	OPTIONAL { ?item wdt:P646 ?Freebase_ID . }
+	OPTIONAL{ ?item wdt:P580 ?start_time . }
+
+	# ?event_interval and Unit
+	OPTIONAL {
+		?item p:P2257 [
+		    	a wikibase:BestRank;  # best ranked unit returned
+				psv:P2257 [
+				  wikibase:quantityAmount ?event_interval;
+				  wikibase:quantityUnit ?event_interval_unit
+				]
+			].
+  	    ?event_interval_unit rdfs:label ?event_interval_unitl;
+		FILTER (LANG(?event_interval_unitl) = "en").
+		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
+	}
+}
+LIMIT 10
