@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Any
 from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
 from dataimports.file_utils import yaml_get_source, relative_read_f
@@ -23,7 +23,8 @@ def query(source: str, class_: str) -> Dict:
         yield result
 
 
-def process_result(dataitem: Dict, source: str, out_format: str, class_: str):
+def process_result(dataitem: Dict, source: str, out_format: str, class_: str)\
+        -> [str, Any]:
     """
     Maps the properties:value from  dataitem onto confIDent properties
     And outputs them in the form of the out_format
@@ -40,8 +41,7 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str):
         dataitem = wikidata.sparqlresults_simplfy(dataitem=dataitem)
 
     dataitem_confid_format = dataitem2confid_map(item_data=dataitem)
-    # print('\n confid_map')
-
+    title = dataitem_confid_format['official_name']
     dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
         dataitem=dataitem_confid_format)
     # print(dataitem_confid_format)
@@ -58,4 +58,4 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str):
         # TODO: create item title: either simply through the itemLabel
     else:
         output = None
-    return output
+    return title, output

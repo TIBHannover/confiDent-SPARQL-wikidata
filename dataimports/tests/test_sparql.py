@@ -30,7 +30,7 @@ def test_sparql_queries():
     sparql_sources = ['wikidata']
     for source in sparql_sources:
         for i, result in enumerate(
-                sparql.query(source=source, class_='EventSeries')):
+                sparql.query(source=source, class_='Event_Series')):
             if i > 20:
                 break
         # results_keys = results.keys()
@@ -44,14 +44,16 @@ def test_sparql_printouts_n_result_processing():
     # confIDent
     for i, result in enumerate(iterable=sparql.query(
             source='wikidata',
-            class_='Test_EventSeries'), start=1):
-        print('result:', result)
-        result_formatted = sparql.process_result(dataitem=result,
-                                                 source='wikidata',
-                                                 out_format='dict',
-                                                 class_='EventSeries')
-        assert len(result_formatted) >= 4   # sparql has 4 non optional props
-
+            class_='Test_Event_Series'), start=1):
+        # print('result:', result)
+        result_title, result_formatted = sparql.process_result(
+            dataitem=result,
+            source='wikidata',
+            out_format='dict',
+            class_='Event_Series')
+        print(result_title, result_formatted, '\n')
+        # sparql has 4 non optional props
+        assert len(result_formatted) >= 4 and result_title
         result_vals = [v['value'] for k, v in result.items()]
         result_formatted_vals = [v for v in result_formatted.values()]
         samevals = (all(str(i) in result_vals for i in result_formatted_vals))

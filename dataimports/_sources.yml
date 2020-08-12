@@ -1,5 +1,5 @@
 wikidata:
   sparqlendpoint: https://query.wikidata.org/sparql
   sparqlqueries:
-     EventSeries: wikidata/wikidata_series.rq
-     Test_EventSeries: tests/test_wikidata_series.rq
+     Event_Series: wikidata/wikidata_series.rq
+     Test_Event_Series: tests/test_wikidata_series.rq
