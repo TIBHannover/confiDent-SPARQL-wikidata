@@ -27,7 +27,7 @@ def temple4property(prop: str, class_templates: List) -> str:
     return template
 
 
-def assign_props2templates(dataitem: Dict, class_=str):
+def assign_props2templates(dataitem: Dict, class_=str) -> Dict:
     """
     Since confiDent properties have different rdfs:domain,
     And more than 1 template can be used to describe a subject.
@@ -42,15 +42,10 @@ def assign_props2templates(dataitem: Dict, class_=str):
     thisclass_templates = classes_templates[class_]
     thisclass_templates_dict = {template: {} for template in
                                 thisclass_templates}
-    thisclass_subobjs_dict = {}  # placeholder
     for dataitem_prop, val in dataitem.items():
         confid_prop_info = confid_mapping[dataitem_prop]
-        if 'subobject' in confid_prop_info.keys():
-            # thisclass_subobjs_dict = {}  # placeholder
-            pass
-        else:
-            usetemplate = temple4property(prop=confid_prop_info,
-                                          class_templates=thisclass_templates)
-            thisclass_templates_dict[usetemplate].update({dataitem_prop: val})
+        usetemplate = temple4property(prop=confid_prop_info,
+                                      class_templates=thisclass_templates)
+        thisclass_templates_dict[usetemplate].update({dataitem_prop: val})
     # pprint(thisclass_templates_dict)
-    return thisclass_templates_dict, thisclass_subobjs_dict
+    return thisclass_templates_dict

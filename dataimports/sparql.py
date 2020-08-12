@@ -44,34 +44,22 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str)\
     dataitem_confid_format = dataitem2confid_map(item_data=dataitem)
     title = dataitem_confid_format['official_name']
 
-    # print(dataitem_confid_format)
-    # print(dataitem_by_subobj)
     if out_format == 'dict':
         output = dataitem_confid_format
     elif out_format == 'wiki':
-        dataitem_nosubobj, dataitem_by_subobj = seperate_subobjects(
+        dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
             dataitem=dataitem_confid_format)
-
-        dataitem_props_bytemplate, dataitem_by_subobj = assign_props2templates(
+        dataitem_props_bytemplate = assign_props2templates(
             dataitem=dataitem_nosubobj,
             class_=class_)
-        # pprint(dataitem_props_bytemplate)
-        # pprint(dataitem_by_subobj)
-        # exit()
-        
-        # FIGURE OUT WHAT IS HAPPENING WITH SUBOBJECTS
-
         output = ''
         for template, dataitem_props in dataitem_props_bytemplate.items():
             if len(dataitem_props) > 0:
                 output += render_template(mw_template=template,
                                           item=dataitem_props) + '\n'
-
-
-        output += '\n' + render_template(mw_template=class_,
-                                         item=dataitem_by_subobj,
-                                         subobjs=True)
-
+        output += render_template(mw_template=class_,
+                                  item=dataitem_subobj,
+                                  subobjs=True)
     else:
         output = None
     return title, output
