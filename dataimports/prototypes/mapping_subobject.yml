@@ -1,0 +1,7 @@
+official name:
+  external_prop: itemLabel
+  child_prop_vals:
+    - - Process Name Type
+      - official name
+    - - Foo Prop
+      - Vakue

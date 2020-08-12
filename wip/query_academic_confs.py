@@ -1,4 +1,5 @@
-from SPARQLWrapper import SPARQLWrapper, TURTLE, JSON, RDF
+from SPARQLWrapper import SPARQLWrapper, JSON
+# from SPARQLWrapper import SPARQLWrapper, TURTLE, JSON, RDF
 from pprint import pprint
 
 

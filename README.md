@@ -1,4 +1,10 @@
-# Wikidata Academic Event Series ingestion
+# confIDent data imports 
+**Application imports external sources of Scientific Events and Scientific Events Series on to confIDdent vanilla wiki**
+
+**Current development focus:**  Wikidata Academic Event Series ingestion
+
+
+## Wikidata Academic Event Series ingestion
 
 **Run:**
 * `python -m dataimports`
@@ -53,3 +59,23 @@ As Mediawiki template:
 
 ## Requirements
 `pip install -r requirements`
+
+
+
+## tests
+`tox`<br/>
+will run tests and detect flake8s
+
+`python -m pytest`<br/>
+will run the tests/test*.py
+
+**pytest optional aguments**
+
+`python -m pytest -m read`<br/>
+* Second `-m` stands for marker; currently test use markers: read, write
+* `-s` show print statements as they are executed in stdout
+*  `--log-cli-level` log level. Option: DEBUG, INFO Default: INFO.   
+
+
+`flake8 somefile`<br/>
+lint checks
