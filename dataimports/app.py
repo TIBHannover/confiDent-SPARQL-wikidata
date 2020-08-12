@@ -5,7 +5,7 @@ from dataimports.globals import (confid_mapping,
                                  )
 from dataimports.file_utils import yaml_get_source
 from dataimports.mapping import (invert_mapping,
-                                 getall_confid_ranges,
+                                 # getall_confid_ranges,
                                  )
 
 
@@ -18,7 +18,7 @@ def importdata(source: str, outformat: str, outfile: str, limit: int):
         confid_mapping.update(
             yaml_get_source(f'{source}/confident_mapping.yml'))
         invert_confid_map.update(invert_mapping(schema='wikidata'))
-        confid_allranges = getall_confid_ranges()
+        # confid_allranges = getall_confid_ranges()
         # print('schema_inv_map')
         # pprint(invert_confid_map)
         for i, result in enumerate(

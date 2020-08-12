@@ -5,7 +5,7 @@ from dataimports.file_utils import yaml_get_source, relative_read_f
 from dataimports.wikidata import wikidata
 from dataimports.jinja_utils import render_template
 from dataimports.mapping import dataitem2confid_map, seperate_subobjects
-import pprint
+
 
 def query(source: str, class_: str) -> Dict:
     sources_yaml = yaml_get_source('_sources.yml')

@@ -13,7 +13,7 @@ def load_template(template: str):
 
 def render_template(class_: str, item: Dict, subobjs=False) -> str:
     if subobjs:
-        template_obj = load_template(template=f'wiki_subobjects.jinja')
+        template_obj = load_template(template='wiki_subobjects.jinja')
         wiki_item = template_obj.render(wikitemplate=class_, subobjs_dict=item)
     else:
         template_obj = load_template(template=f'wiki_{class_}.jinja')

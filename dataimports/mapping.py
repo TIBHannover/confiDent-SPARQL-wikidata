@@ -44,12 +44,6 @@ def getall_confid_ranges() -> List:
     return allranges
 
 
-# def getall_confid_subobj_keys() -> List:
-#     allkeys_subobjcts = [itemdict for k, itemdict in confid_mapping.items() if
-#                          'subobject' in itemdict.keys()]
-#     return allkeys_subobjcts
-
-
 def seperate_subobjects(dataitem: Dict):
     """
     Creates 2 dictictionariess of from dataitem properties:values
@@ -79,7 +73,7 @@ def seperate_subobjects(dataitem: Dict):
             dataitem_subobj[dataitem_prop] = {
                 'val': val,
                 'child_prop_vals': confid_prop['child_prop_vals'],
-                'subobject':  confid_prop['subobject']}
+                'subobject': confid_prop['subobject']}
             # supplement dataitem_subobj w/ confid_prop's child_prop_vals &
             # subobject. They will be necessary in the Jinja template
         else:
