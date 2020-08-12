@@ -5,6 +5,7 @@ from dataimports.file_utils import yaml_get_source, relative_read_f
 from dataimports.wikidata import wikidata
 from dataimports.jinja_utils import render_template
 from dataimports.mapping import dataitem2confid_map, seperate_subobjects
+from dataimports.mediawiki import assign_properties2templates
 
 
 def query(source: str, class_: str) -> Dict:
@@ -42,20 +43,30 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str)\
 
     dataitem_confid_format = dataitem2confid_map(item_data=dataitem)
     title = dataitem_confid_format['official_name']
-    dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
-        dataitem=dataitem_confid_format)
+
     # print(dataitem_confid_format)
-    # print(dataitem_subobj)
+    # print(dataitem_by_subobj)
     if out_format == 'dict':
         output = dataitem_confid_format
     elif out_format == 'wiki':
+        dataitem_by_template, dataitem_by_subobj = assign_properties2templates(
+            dataitem=dataitem_confid_format,
+            class_=class_)
+        exit()
+
+        dataitem_nosubobj, dataitem_by_subobj = seperate_subobjects(
+            dataitem=dataitem_confid_format)
+        # TODO: seperate the property:values pairs according to the Domain
+        # which they belong too
+
+        # If a property has 2 domains, we will opt for the class based on
+
         output = render_template(mw_template=class_,
                                  item=dataitem_nosubobj)
         output += '\n' + render_template(mw_template=class_,
-                                         item=dataitem_subobj,
+                                         item=dataitem_by_subobj,
                                          subobjs=True)
 
-        # TODO: create item title: either simply through the itemLabel
     else:
         output = None
     return title, output

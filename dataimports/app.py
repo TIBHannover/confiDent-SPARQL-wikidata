@@ -35,7 +35,7 @@ def importdata(source: str, outformat: str, outfile: str, limit: int,
                 dataitem=result,
                 source='wikidata',
                 out_format=outformat,
-                class_='Event_Series')
+                class_='Event_Series')  # TODO: class_ come from _source.yml
 
             current_result_i = i
             if outformat == 'wiki' and write:

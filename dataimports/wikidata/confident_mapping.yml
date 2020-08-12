@@ -5,22 +5,22 @@
 # * spaces are replaced by _
 # range must be present
 
-# ------ Event Series:
+# ------ Event_Series:
 Event Frequency:
   external_prop: event_interval
   URI: https://www.wikidata.org/wiki/Property:P2257
   domain:
-    - Event Series
+    - Event_Series
 History:
   external_prop:
   URI:
   domain:
-    - Event Series
+    - Event_Series
 Series CiteCount:
   external_prop:
   URI:
   domain:
-    - Event Series
+    - Event_Series
 #  ----- Process:
 ## Process Name subobjects
 official_name:
