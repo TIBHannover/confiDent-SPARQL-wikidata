@@ -49,9 +49,9 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str)\
     if out_format == 'dict':
         output = dataitem_confid_format
     elif out_format == 'wiki':
-        output = render_template(class_=class_,
+        output = render_template(mw_template=class_,
                                  item=dataitem_nosubobj)
-        output += '\n' + render_template(class_=class_,
+        output += '\n' + render_template(mw_template=class_,
                                          item=dataitem_subobj,
                                          subobjs=True)
 
