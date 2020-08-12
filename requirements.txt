@@ -5,3 +5,5 @@ Jinja2
 pytest
 tox
 flake8
+wheel
+mediawikitools @ git+https://github.com/TIBHannover/confiDent-mediawikitools.git@master

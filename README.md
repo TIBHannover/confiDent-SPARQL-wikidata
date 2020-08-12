@@ -58,20 +58,19 @@ As Mediawiki template:
 ```
 
 ## Requirements
-`pip install -r requirements`
-
-
+`pip install -r requirements` 
 
 ## tests
 `tox`<br/>
 will run tests and detect flake8s
 
-`python -m pytest`<br/>
+`pytest`<br/>
 will run the tests/test*.py
 
 **pytest optional aguments**
 
-`python -m pytest -m read`<br/>
+`pytest -m sparql`<br/>
+`pytest -m mapping`<br/>
 * Second `-m` stands for marker; currently test use markers: read, write
 * `-s` show print statements as they are executed in stdout
 *  `--log-cli-level` log level. Option: DEBUG, INFO Default: INFO.   
