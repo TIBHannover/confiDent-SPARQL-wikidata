@@ -1,11 +1,11 @@
 import pytest
 from dataimports.file_utils import yaml_get_source
-from dataimports.tests import populateglobals
+from dataimports.tests import test_populateglobals
 from dataimports.globals import (confid_mapping,
                                  invert_confid_map,)
 
 if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
-    populateglobals.populateglobals()
+    test_populateglobals.populateglobals()
 
 # TODO: Test for integraty of confident_mapping.yml
 
