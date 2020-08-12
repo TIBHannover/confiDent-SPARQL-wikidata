@@ -1,10 +1,13 @@
 import pytest
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
-from dataimports.mapping import invert_mapping
+from dataimports.tests import populateglobals
 from dataimports.globals import (confid_mapping,
-                                 invert_confid_map,
-                                 )
+                                 invert_confid_map,)
+
+if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
+    populateglobals.populateglobals()
+
 
 @pytest.mark.sparql
 def test_sources_file():
@@ -35,13 +38,10 @@ def test_sparql_queries():
 
 
 @pytest.mark.sparql
-def ():
+def test_sparql_printouts_n_result_processing():
     # test if the prop:value pairs from the test_wikidata_series.rq are
     # still present after the results have been processed and mapped to
     # confIDent
-    confid_mapping.update(yaml_get_source('wikidata/confident_mapping.yml'))
-    invert_confid_map.update(invert_mapping(schema='wikidata'))
-
     for i, result in enumerate(iterable=sparql.query(
             source='wikidata',
             class_='Test_EventSeries'), start=1):

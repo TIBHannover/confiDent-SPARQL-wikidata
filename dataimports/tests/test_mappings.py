@@ -1,9 +1,11 @@
 import pytest
 from dataimports.file_utils import yaml_get_source
-from dataimports.mapping import invert_mapping
+from dataimports.tests import populateglobals
 from dataimports.globals import (confid_mapping,
-                                 invert_confid_map,
-                                 )
+                                 invert_confid_map,)
+
+if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
+    populateglobals.populateglobals()
 
 # TODO: Test for integraty of confident_mapping.yml
 
@@ -27,10 +29,10 @@ def test_confid_mapping():
 
         assert sorted(confid_keys) == sorted(confid_keys_set),\
             f"Expected unique keys in mapping, Actual keys {confid_keys}"
-        invert_confid_map.update(invert_mapping(schema=schema))
-        print(schema, invert_confid_map)
-        confid_keys_in_inv_mapping = [v for v in invert_confid_map.values()]
+
         assert len(invert_confid_map) > 0
+
+        confid_keys_in_inv_mapping = [v for v in invert_confid_map.values()]
         for k in confid_keys_in_inv_mapping:
             assert k in confid_keys,\
                 f"confid key: {k} in inverted mapping is not in confid keys " \
