@@ -35,7 +35,7 @@ def test_sparql_queries():
 
 
 @pytest.mark.sparql
-def test_sparql_printouts_n_result_processing():
+def ():
     # test if the prop:value pairs from the test_wikidata_series.rq are
     # still present after the results have been processed and mapped to
     # confIDent
