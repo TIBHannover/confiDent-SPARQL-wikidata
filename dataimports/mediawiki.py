@@ -27,7 +27,7 @@ def temple4property(prop: str, class_templates: List) -> str:
     return template
 
 
-def assign_properties2templates(dataitem: Dict, class_=str):
+def assign_props2templates(dataitem: Dict, class_=str):
     """
     Since confiDent properties have different rdfs:domain,
     And more than 1 template can be used to describe a subject.

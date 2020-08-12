@@ -17,7 +17,8 @@ def render_template(mw_template: str, item: Dict, subobjs=False) -> str:
         wiki_item = template_obj.render(wikitemplate=mw_template,
                                         subobjs_dict=item)
     else:
-        template_obj = load_template(template=f'wiki_{mw_template}.jinja')
+        template_obj = load_template(
+            template=f'wiki_genericTemplate.jinja')
         wiki_item = template_obj.render(wikitemplate=mw_template,
                                         item_dict=item)
         # TODO remove wikitemplate
