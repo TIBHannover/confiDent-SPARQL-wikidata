@@ -1,5 +1,6 @@
 from typing import Dict, List
 from dataimports.globals import confid_mapping
+from dataimports.jinja_utils import render_template
 
 
 classes_templates = {
@@ -49,3 +50,55 @@ def assign_props2templates(dataitem: Dict, class_=str) -> Dict:
         thisclass_templates_dict[usetemplate].update({dataitem_prop: val})
     # pprint(thisclass_templates_dict)
     return thisclass_templates_dict
+
+
+def seperate_subobjects(dataitem: Dict):
+    """
+    Creates 2 dictictionariess of from dataitem properties:values
+    * dataitem_nosubobj for properties w/out subobject
+    * dataitem_subobj for properties w/ subobject
+    So that they can be handled by different Jinja templates
+    :param dataitem:
+    :return: dataitem_nosubobj, dataitem_nosubobj
+
+    dataitem_nosubobj structure:
+        {'WDQID': 'http://www.wikidata.org/entity/Q98073704',
+        'Website': 'https://link.springer.com/conference/lata'}
+
+    dataitem_subobj structure:
+        {'official_name':
+            {'val': 'International conference on language',
+            'child_prop_vals': [['Process Name Type', 'official name']],
+            'subobject': 'Subobject Process Name'}
+        }
+    """
+    dataitem_nosubobj = {}
+    dataitem_subobj = {}
+
+    for dataitem_prop, val in dataitem.items():
+        confid_prop = confid_mapping[dataitem_prop]
+        if 'subobject' in confid_prop.keys():
+            dataitem_subobj[dataitem_prop] = {
+                'val': val,
+                'child_prop_vals': confid_prop['child_prop_vals'],
+                'subobject': confid_prop['subobject']}
+            # supplement dataitem_subobj w/ confid_prop's child_prop_vals &
+            # subobject. They will be necessary in the Jinja template
+        else:
+            dataitem_nosubobj[dataitem_prop] = val
+    return dataitem_nosubobj, dataitem_subobj
+
+
+def dataitem2wikipage(dataitem: Dict, class_: str) -> str:
+    dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
+        dataitem=dataitem)
+    dataitem_props_bytemplate = assign_props2templates(
+        dataitem=dataitem_nosubobj, class_=class_)
+    output = ''
+    for template, dataitem_props in dataitem_props_bytemplate.items():
+        if len(dataitem_props) > 0:
+            output += render_template(mw_template=template,
+                                      item=dataitem_props) + '\n'
+    output += render_template(mw_template=class_, item=dataitem_subobj,
+                              subobjs=True)
+    return output

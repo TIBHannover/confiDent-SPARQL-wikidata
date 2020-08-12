@@ -3,10 +3,9 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
 from dataimports.file_utils import yaml_get_source, relative_read_f
 from dataimports.wikidata import wikidata
-from dataimports.jinja_utils import render_template
-from dataimports.mapping import dataitem2confid_map, seperate_subobjects
-from dataimports.mediawiki import assign_props2templates
-from pprint import pprint
+from dataimports.mapping import dataitem2confid_map
+from dataimports.mediawiki import dataitem2wikipage
+
 
 def query(source: str, class_: str) -> Dict:
     sources_yaml = yaml_get_source('_sources.yml')
@@ -47,19 +46,8 @@ def process_result(dataitem: Dict, source: str, out_format: str, class_: str)\
     if out_format == 'dict':
         output = dataitem_confid_format
     elif out_format == 'wiki':
-        dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
-            dataitem=dataitem_confid_format)
-        dataitem_props_bytemplate = assign_props2templates(
-            dataitem=dataitem_nosubobj,
-            class_=class_)
-        output = ''
-        for template, dataitem_props in dataitem_props_bytemplate.items():
-            if len(dataitem_props) > 0:
-                output += render_template(mw_template=template,
-                                          item=dataitem_props) + '\n'
-        output += render_template(mw_template=class_,
-                                  item=dataitem_subobj,
-                                  subobjs=True)
+        output = dataitem2wikipage(dataitem=dataitem_confid_format,
+                                   class_=class_)
     else:
         output = None
     return title, output
