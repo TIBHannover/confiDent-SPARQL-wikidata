@@ -33,7 +33,7 @@ official_name:
       - official name
   subobject: Subobject Process Name
 acronym:
-  external_prop: short_name
+  external_prop: short_nameLabel
   URI:
   range:
     - Process
@@ -69,7 +69,7 @@ former_name:
       - former name
   subobject: Subobject Process Name
 Subject:
-  external_prop: main_subject # Note: it wont match confIDent control Vocabulary
+  external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
   range:
     - Process
@@ -95,7 +95,7 @@ Logo:
   range:
     - Process
 Language:
-  external_prop: language_used
+  external_prop: language_usedLabel
   URI: https://www.wikidata.org/wiki/Property:P2936
   range:
     - Process
@@ -155,10 +155,7 @@ Twitter:
 # Freebase_ID
 
 # wikidata properties
-#short_name:
-#  external_prop: P1813
-#  URI: https://www.wikidata.org/wiki/Property:P1813
-#
+
 #instance_of:
 #  external_prop: P31
 #  URI: https://www.wikidata.org/wiki/Property:P31
@@ -168,13 +165,13 @@ Twitter:
 #event_interval:
 #  external_prop: P2257
 #  URI: https://www.wikidata.org/wiki/Property:P2257
-#part_of_the_series:
+#part_of_the_seriesLabel:
 #  external_prop: P179
 #  URI: https://www.wikidata.org/wiki/Property:P179
-#country:
+#countryLabel:
 #  external_prop: P17
 #  URI: https://www.wikidata.org/wiki/Property:P17
-#location:
+#locationLabel:
 #  external_prop: P276
 #  URI: https://www.wikidata.org/wiki/Property:P276
 
