@@ -9,8 +9,17 @@
 **Run:**
 * `python -m dataimports`
 * wiki template format: `python -m dataimports -f wiki`
+* write to wiki: `python -m dataimports -f wiki -w`
+    * writing to wiki requires the file `wikidetails.yml` to exist in the root application.
 
 
+**wikidetails.yml & wiki write access**
+* Ensure user your wiki user account belongs to bot group: see wiki page `Special:UserRights`
+* Create a bot password in wiki page: `Special:BotPasswords`
+* copy `wikidetails.template.yml` as `wikidetails.yml` and fill in bot name and password:<br/>
+    
+    
+    
 **View SPARLQ query**: `dataimports/wikidata/wikidata_series.rq`
 which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
 
@@ -46,7 +55,7 @@ Result Example (as python dictionary and SPARQL(json) )
 As Mediawiki template:
 
 ```
-{{EventSeries
+{{Event_Series
 |item=http://www.wikidata.org/entity/Q97594670
 |event_interval=1
 |event_interval_unitLabel=year

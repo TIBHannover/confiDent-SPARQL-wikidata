@@ -16,7 +16,7 @@ confident_map = {
     'Event Frequency': {
         'external_prop': 'event_interval',
         'external_prop_URI': 'https://www.wikidata.org/wiki/Property:P2257',
-        'range': ['Event Series']
+        'range': ['Event_Series']
     }
 }
 

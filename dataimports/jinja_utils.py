@@ -11,13 +11,15 @@ def load_template(template: str):
     return template_obj
 
 
-def render_template(class_: str, item: Dict, subobjs=False) -> str:
+def render_template(mw_template: str, item: Dict, subobjs=False) -> str:
     if subobjs:
         template_obj = load_template(template='wiki_subobjects.jinja')
-        wiki_item = template_obj.render(wikitemplate=class_, subobjs_dict=item)
+        wiki_item = template_obj.render(wikitemplate=mw_template,
+                                        subobjs_dict=item)
     else:
-        template_obj = load_template(template=f'wiki_{class_}.jinja')
-        wiki_item = template_obj.render(wikitemplate=class_,
+        template_obj = load_template(
+            template='wiki_genericTemplate.jinja')
+        wiki_item = template_obj.render(wikitemplate=mw_template,
                                         item_dict=item)
         # TODO remove wikitemplate
     return wiki_item

@@ -47,6 +47,6 @@ def test_confid_mapping_yaml():
         confid_mapping.update(
             yaml_get_source(f'{schema}/confident_mapping.yml'))
         for k, value_dict in confid_mapping.items():
-            assert 'range' in value_dict, \
-                f"range: is missing from {schema}/confident_mapping.yml " \
+            assert 'domain' in value_dict, \
+                f"domain: is missing from {schema}/confident_mapping.yml " \
                 f"key: {k}"

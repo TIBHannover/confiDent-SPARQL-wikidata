@@ -1,6 +1,17 @@
 import yaml
+import sys
 from pathlib import Path
 from typing import Dict
+from dataimports.globals import Colors
+
+
+def wikidetails_present():
+    wikidetails = Path(__file__).parent.parent / 'wikidetails.yml'
+    if not wikidetails.is_file():
+        print(f'{Colors.FAIL}Error: {wikidetails} file is essential to '
+              f'write to the wiki is missing. Use wikidetails.yml.template '
+              f'to create it.{Colors.ENDC}')
+        sys.exit(1)
 
 
 def relative_read_f(relativepath2f: str) -> str:

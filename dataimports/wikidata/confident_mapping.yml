@@ -5,38 +5,40 @@
 # * spaces are replaced by _
 # range must be present
 
-# ------ Event Series:
+# ------ Event_Series:
 Event Frequency:
   external_prop: event_interval
   URI: https://www.wikidata.org/wiki/Property:P2257
-  range:
-    - Event Series
+  domain:
+    - Event_Series
 History:
   external_prop:
   URI:
-  range:
-    - Event Series
+  domain:
+    - Event_Series
 Series CiteCount:
   external_prop:
   URI:
-  range:
-    - Event Series
+  domain:
+    - Event_Series
 #  ----- Process:
 ## Process Name subobjects
 official_name:
   external_prop: itemLabel
   URI:
-  range:
+  domain:
     - Process
-  child_prop_vals:
+  child_prop: Process Name # values will the filled by application
+  child_prop_vals:  # values already filled: [(prop, value), (prop, value)]
     - - Process Name Type
       - official name
   subobject: Subobject Process Name
 acronym:
   external_prop: short_nameLabel
   URI:
-  range:
+  domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - acronym
@@ -44,8 +46,9 @@ acronym:
 alternative_name:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - alternative name
@@ -53,8 +56,9 @@ alternative_name:
 translated_name:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - translated name
@@ -62,8 +66,9 @@ translated_name:
 former_name:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - former name
@@ -71,81 +76,81 @@ former_name:
 Subject:
   external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
-  range:
+  domain:
     - Process
 Website:
   external_prop: official_website
   URI: https://www.wikidata.org/wiki/Property:P856
-  range:
+  domain:
     - Process
     - Agent
 Summary:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Summary License:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Logo:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Language:
   external_prop: language_usedLabel
   URI: https://www.wikidata.org/wiki/Property:P2936
-  range:
+  domain:
     - Process
 CORE Ranking:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Contact Person:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Contact Email:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 Contact Phone:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 ConfIDent ID:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
 GND:
   external_prop: GND_ID
   URI: https://www.wikidata.org/wiki/Property:P227
-  range:
+  domain:
     - Process
     - Agent
 DOI:
   external_prop:
   URI:
-  range:
+  domain:
     - Process
     - Agent
 WDQID:
   external_prop: item
   URI:
-  range:
+  domain:
     - Process
     - Agent
 Twitter:
   external_prop: Twitter_username
   URI: https://www.wikidata.org/wiki/Property:P2002
-  range:
+  domain:
     - Process
     - Agent
 
