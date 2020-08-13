@@ -28,7 +28,8 @@ official_name:
   URI:
   domain:
     - Process
-  child_prop_vals:
+  child_prop: Process Name # values will the filled by application
+  child_prop_vals:  # values already filled: [(prop, value), (prop, value)]
     - - Process Name Type
       - official name
   subobject: Subobject Process Name
@@ -37,6 +38,7 @@ acronym:
   URI:
   domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - acronym
@@ -46,6 +48,7 @@ alternative_name:
   URI:
   domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - alternative name
@@ -55,6 +58,7 @@ translated_name:
   URI:
   domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - translated name
@@ -64,6 +68,7 @@ former_name:
   URI:
   domain:
     - Process
+  child_prop: Process Name
   child_prop_vals:
     - - Process Name Type
       - former name

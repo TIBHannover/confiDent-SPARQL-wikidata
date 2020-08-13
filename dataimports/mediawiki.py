@@ -67,7 +67,8 @@ def seperate_subobjects(dataitem: Dict):
 
     dataitem_subobj structure:
         {'official_name':
-            {'val': 'International conference on language',
+            {'prop': 'Process Name'
+            'val': 'International conference on language',
             'child_prop_vals': [['Process Name Type', 'official name']],
             'subobject': 'Subobject Process Name'}
         }
@@ -79,6 +80,7 @@ def seperate_subobjects(dataitem: Dict):
         confid_prop = confid_mapping[dataitem_prop]
         if 'subobject' in confid_prop.keys():
             dataitem_subobj[dataitem_prop] = {
+                'child_prop': confid_prop['child_prop'],
                 'val': val,
                 'child_prop_vals': confid_prop['child_prop_vals'],
                 'subobject': confid_prop['subobject']}
