@@ -2,6 +2,7 @@ import pytest
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
 
+
 @pytest.mark.sparql
 def test_sources_file():
     srcsfile = '_sources.yml'

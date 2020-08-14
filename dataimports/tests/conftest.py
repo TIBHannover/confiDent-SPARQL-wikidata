@@ -11,7 +11,6 @@ def appglobals():
     return _createglobals
 
 
-
 @pytest.fixture(scope="session")
 def mappings():
     def _getmapping(mapping):
