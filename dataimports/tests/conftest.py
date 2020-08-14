@@ -53,3 +53,22 @@ def onesparqlresut():
             'NonMatchingKey': {'type': 'literal', 'value': 'FOO'}}
         return result
     return _onesparqlresut
+
+
+@pytest.fixture(scope="function")
+def one_dataitem_confikeys():
+    def one_dataitem():
+        result = {
+            'Twitter': {'type': 'literal', 'value': 'swibcon'},
+            'Event Frequency': {
+                'datatype': 'http://www.w3.org/2001/XMLSchema#decimal',
+                'type': 'literal', 'value': '1'},
+            'WDQID': {'type': 'uri',
+                      'value': 'http://www.wikidata.org/entity/Q29129469'},
+            'official_name': {'type': 'literal',
+                              'value': 'Semantic Web in Libraries Conference',
+                              'xml:lang': 'en'},
+            'Website': {'type': 'uri', 'value': 'http://swib.org'},
+            'acronym': {'type': 'literal', 'value': 'SWIB'}}
+        return result
+    return one_dataitem
