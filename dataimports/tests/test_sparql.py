@@ -1,12 +1,12 @@
 import pytest
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
-from dataimports.tests import test_populateglobals
-from dataimports.globals import (confid_mapping,
-                                 invert_confid_map,)
-
-if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
-    test_populateglobals.populateglobals()
+# from dataimports.tests import test_populateglobals
+# from dataimports.globals import (confid_mapping,
+#                                  invert_confid_map,)
+#
+# if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
+#     test_populateglobals.populateglobals()
 
 
 @pytest.mark.sparql

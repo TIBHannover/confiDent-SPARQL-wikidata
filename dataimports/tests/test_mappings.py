@@ -1,6 +1,5 @@
 import pytest
 from dataimports.file_utils import yaml_get_source
-from dataimports.tests import test_populateglobals
 
 # TODO: Test for integraty of confident_mapping.yml
 
@@ -9,6 +8,8 @@ from dataimports.tests import test_populateglobals
 def test_confid_mapping(mappings):
     schema = 'wikidata'
     confid_mapping, invert_confid_map = mappings(schema)
+    assert len(invert_confid_map) > 0
+
     confid_mapping.update(
         yaml_get_source(f'{schema}/confident_mapping.yml'))
     confid_keys = list(confid_mapping.keys())
@@ -25,7 +26,6 @@ def test_confid_mapping(mappings):
     assert sorted(confid_keys) == sorted(confid_keys_set),\
         f"Expected unique keys in mapping, Actual keys {confid_keys}"
 
-    assert len(invert_confid_map) > 0
 
     confid_keys_in_inv_mapping = [v for v in invert_confid_map.values()]
     for k in confid_keys_in_inv_mapping:

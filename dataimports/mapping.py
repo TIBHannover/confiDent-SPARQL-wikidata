@@ -4,13 +4,13 @@ from dataimports.globals import (invert_confid_map,
                                  )
 
 
-def invert_mapping(schema: str) -> Dict:
+def invert_mapping(schema: str, _confid_mapping=confid_mapping) -> Dict:
     """
     Inverts the {schema}/confident_mapping.yml
     confident_inv_map: {'property': schema_key} -> {schema_key: confident_key}
     """
     confident_inv_map = {}
-    for k, v in confid_mapping.items():
+    for k, v in _confid_mapping.items():
         if v and v['external_prop']:
             prop = v['external_prop']
             if prop not in confident_inv_map.keys():
