@@ -3,6 +3,7 @@ pyyaml
 SPARQLWrapper
 Jinja2
 pytest
+pytest-random-order
 tox
 flake8
 wheel
