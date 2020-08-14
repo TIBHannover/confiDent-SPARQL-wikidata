@@ -10,19 +10,18 @@ from dataimports.mapping import (invert_mapping,
                                  )
 
 
+def createglobals(source='wikidata'):
+    confid_mapping.update(yaml_get_source(f'{source}/confident_mapping.yml'))
+    invert_confid_map.update(invert_mapping(schema=source))
+
+
 def importdata(source: str, outformat: str, outfile: str, limit: int,
                write: bool):
     outfile = outfile
     # mapping = file_utils.yaml_get_mapping(mapping=source)
 
     if source == 'wikidata':
-        # globals
-        confid_mapping.update(
-            yaml_get_source(f'{source}/confident_mapping.yml'))
-        invert_confid_map.update(invert_mapping(schema='wikidata'))
-        # confid_allranges = getall_confid_ranges()
-        # print('schema_inv_map')
-        # pprint(invert_confid_map)
+        createglobals(source='wikidata')
         for i, result in enumerate(
                 iterable=sparql.query(source='wikidata',
                                       class_='Event_Series'),

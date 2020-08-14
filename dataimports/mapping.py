@@ -25,7 +25,6 @@ def dataitem2confid_map(item_data: Dict,
     :item_data:{external_property:value, ...} result from external source query
     :return: {confid_property:value, ...}
     """
-    import pdb; pdb.set_trace()
     item_confid = {}
     for data_k, data_v in item_data.items():
         if data_k in _invert_confid_map:

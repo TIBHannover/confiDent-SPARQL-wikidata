@@ -1,6 +1,15 @@
 import pytest
 from dataimports.file_utils import yaml_get_source
 from dataimports.mapping import invert_mapping
+from dataimports.app import createglobals
+
+
+@pytest.fixture(scope="session")
+def appglobals():
+    def _createglobals():
+        createglobals()
+    return _createglobals
+
 
 
 @pytest.fixture(scope="session")
