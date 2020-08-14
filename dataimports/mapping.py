@@ -18,16 +18,18 @@ def invert_mapping(schema: str, _confid_mapping=confid_mapping) -> Dict:
     return confident_inv_map
 
 
-def dataitem2confid_map(item_data: Dict) -> Dict:
+def dataitem2confid_map(item_data: Dict,
+                        _invert_confid_map=invert_confid_map) -> Dict:
     """
     Puts the item's  external_property:value value into confIDent_prop:value
     :item_data:{external_property:value, ...} result from external source query
     :return: {confid_property:value, ...}
     """
+    import pdb; pdb.set_trace()
     item_confid = {}
     for data_k, data_v in item_data.items():
-        if data_k in invert_confid_map:
-            confid_k = invert_confid_map[data_k]
+        if data_k in _invert_confid_map:
+            confid_k = _invert_confid_map[data_k]
             item_confid[confid_k] = data_v
     return item_confid
 
