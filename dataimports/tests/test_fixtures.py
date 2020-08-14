@@ -16,7 +16,8 @@ def test_onevalueagain(onevalue):
 
 
 @pytest.mark.fixtures
-def test_mappingfixture(mappings):
+def test_mappingfixture(mappings, appglobals):
+    appglobals()
     confid_mapping, invert_confid_map = mappings('wikidata')
     assert len(confid_mapping) > 0
     assert len(invert_confid_map) > 0
@@ -25,7 +26,8 @@ def test_mappingfixture(mappings):
 
 
 @pytest.mark.fixtures
-def test_mappingfixtureagain(mappings):
+def test_mappingfixtureagain(mappings, appglobals):
+    appglobals()
     confid_mapping, invert_confid_map = mappings('wikidata')
     assert len(confid_mapping) > 0
     assert len(invert_confid_map) > 0

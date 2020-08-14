@@ -12,11 +12,12 @@ def appglobals():
 
 
 @pytest.fixture(scope="session")
-def mappings():
+def mappings(appglobals):
+    appglobals()
+
     def _getmapping(mapping):
         confid_mapping = yaml_get_source(f'{mapping}/confident_mapping.yml')
-        invert_confid_map = invert_mapping(schema=mapping,
-                                           _confid_mapping=confid_mapping)
+        invert_confid_map = invert_mapping(schema=mapping)
         print(f'invert_confid_map: {invert_confid_map}')
         return confid_mapping, invert_confid_map
     return _getmapping

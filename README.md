@@ -84,6 +84,8 @@ will run the tests/test*.py
 * `-s` show print statements as they are executed in stdout
 *  `--log-cli-level` log level. Option: DEBUG, INFO Default: INFO.   
 
-
 `flake8 somefile`<br/>
 lint checks
+
+Test coverage
+`pytest --cov=dataimports dataimports/tests/ --cov-append`

@@ -11,8 +11,7 @@ def test_dataitem2wikioutput(onesparqlresut, mappings, appglobals):
     assert len(sparql_result_dict) > 0
     confid_mapping, invert_confid_map = mappings('wikidata')
     dataitem_confid_format = dataitem2confid_map(
-        item_data=sparql_result_dict,
-        _invert_confid_map=invert_confid_map)
+        item_data=sparql_result_dict)
     assert len(dataitem_confid_format) > 0
     assert sparql_result_dict['itemLabel']['value'] == dataitem_confid_format[
         'official_name']['value']
