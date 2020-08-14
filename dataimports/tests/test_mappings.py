@@ -4,6 +4,17 @@ from dataimports.tests import test_populateglobals
 from dataimports.globals import (confid_mapping,
                                  invert_confid_map,)
 
+
+if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
+    test_populateglobals.populateglobals()
+
+# TODO: Test for integraty of confident_mapping.yml
+
+def populateglobals():
+    confid_mapping.update(yaml_get_source('wikidata/confident_mapping.yml'))
+    invert_confid_map.update(invert_mapping(schema='wikidata'))
+
+
 if len(confid_mapping) == 0 and len(invert_confid_map) == 0:
     test_populateglobals.populateglobals()
 
