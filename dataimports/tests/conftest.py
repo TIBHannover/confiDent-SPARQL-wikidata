@@ -1,7 +1,16 @@
 import pytest
+from pathlib import Path
 from dataimports.file_utils import yaml_get_source
 from dataimports.mapping import invert_mapping
 from dataimports.app import createglobals
+
+
+@pytest.fixture(scope="function")
+def test_wikidetails():
+    wikidetails = Path(__file__).parent.parent.parent / 'wikidetails.yml'
+    if not wikidetails.is_file():
+        Path.touch(wikidetails)
+    assert wikidetails.is_file()
 
 
 @pytest.fixture(scope="session")
