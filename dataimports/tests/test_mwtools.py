@@ -16,11 +16,12 @@ def test_site():
     assert major == 1 and minor > 30
 
 
-@pytest.mark.mw_write
+@pytest.mark.mw_read
 def test_user():
     assert len(site.username) > 0
 
 
+@pytest.mark.skip(reason="requires write access from the user")
 @pytest.mark.mw_ask
 def test_ask():
     # should only happen if SMW is installed. Use API find that
@@ -30,6 +31,7 @@ def test_ask():
     assert len(response) > 0
 
 
+@pytest.mark.skip(reason="requires write access from the user")
 @pytest.mark.mw_ask
 def test_ask_nonexistant_prop():
     randomprop = randstring(5)
@@ -39,7 +41,8 @@ def test_ask_nonexistant_prop():
     assert response == []
 
 
-@pytest.mark.mw_ask
+@pytest.mark.skip(reason="requires write access from the user")
+@pytest.mark.mw_write
 def test_write_and_ask():
     randomval = randstring(10).capitalize()  # mw capitalizes val
     prop = f'[[TestProp::{randomval}]]'
@@ -54,6 +57,7 @@ def test_write_and_ask():
     assert response[0]['TestProp'] == randomval
 
 
+@pytest.mark.skip(reason="requires write access from the user")
 @pytest.mark.mw_write
 def test_edit():
     rstring = randstring(10)
