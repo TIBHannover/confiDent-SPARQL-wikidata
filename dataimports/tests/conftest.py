@@ -1,8 +1,7 @@
 import pytest
 from pathlib import Path
-from dataimports.file_utils import yaml_get_source
+from dataimports.file_utils import yaml_get_source, createglobals
 from dataimports.mapping import invert_mapping
-from dataimports.app import createglobals
 
 
 @pytest.fixture(scope="function")

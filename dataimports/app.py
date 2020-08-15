@@ -1,18 +1,7 @@
 # from pprint import pprint
 from mediawikitools.wiki import actions as mwactions
 from dataimports import sparql
-from dataimports.globals import (confid_mapping,
-                                 invert_confid_map,
-                                 )
-from dataimports.file_utils import yaml_get_source
-from dataimports.mapping import (invert_mapping,
-                                 # getall_confid_ranges,
-                                 )
-
-
-def createglobals(source='wikidata'):
-    confid_mapping.update(yaml_get_source(f'{source}/confident_mapping.yml'))
-    invert_confid_map.update(invert_mapping(schema=source))
+from dataimports.file_utils import createglobals
 
 
 def importdata(source: str, outformat: str, outfile: str, limit: int,
