@@ -1,5 +1,4 @@
 from argparse import ArgumentParser, RawTextHelpFormatter
-from dataimports.app import importdata
 from dataimports.file_utils import wikidetails_present
 from dataimports.globals import Colors
 
@@ -37,8 +36,8 @@ if __name__ == '__main__':
         print('**Source available:**')
         print('\n'.join(sources))
     else:
-        if args.write and args.format == 'wiki':
-            wikidetails_present()
+        wikidetails_present()
+        from dataimports.app import importdata
         importdata(source=args.source,
                    outformat=args.format,
                    outfile=args.output,

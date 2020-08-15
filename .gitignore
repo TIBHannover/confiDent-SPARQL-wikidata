@@ -7,3 +7,4 @@ schemaParse/__pycache__/
 /.tox/
 *.pyc
 /wikidetails.yml
+/.coverage

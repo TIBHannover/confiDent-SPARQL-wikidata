@@ -10,13 +10,11 @@ def randstring(lenght=10):
     return out
 
 
-@pytest.mark.mw_read
 def test_site():
     major, minor, patch = site.version
     assert major == 1 and minor > 30
 
 
-@pytest.mark.mw_write
 def test_user():
     assert len(site.username) > 0
 
@@ -39,7 +37,7 @@ def test_ask_nonexistant_prop():
     assert response == []
 
 
-@pytest.mark.mw_ask
+@pytest.mark.mw_write
 def test_write_and_ask():
     randomval = randstring(10).capitalize()  # mw capitalizes val
     prop = f'[[TestProp::{randomval}]]'

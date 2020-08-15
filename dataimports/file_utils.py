@@ -3,6 +3,8 @@ import sys
 from pathlib import Path
 from typing import Dict
 from dataimports.globals import Colors
+from dataimports.globals import confid_mapping, invert_confid_map
+from dataimports.mapping import invert_mapping
 
 
 def wikidetails_present():
@@ -41,3 +43,8 @@ def yaml_get_mapping(mapping: str) -> Dict:
     # ext_schema = list(confid2ext_schema.keys())[0]
     # ext_schema_mapping = confid2ext_schema[ext_schema]
     return confid2ext_schema
+
+
+def createglobals(source='wikidata'):
+    confid_mapping.update(yaml_get_source(f'{source}/confident_mapping.yml'))
+    invert_confid_map.update(invert_mapping(schema=source))
