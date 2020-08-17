@@ -155,7 +155,7 @@ hasSeries_relation:
       - hasSeries
   subobject: Subobject Process Relation
 ## Organizer Subobject
-general committee:
+general committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -167,8 +167,7 @@ general committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-## Committee Subobject
-programme committee:
+programme committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -180,7 +179,7 @@ programme committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-local committee:
+local committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -192,7 +191,7 @@ local committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-publicity committee:
+publicity committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -204,7 +203,7 @@ publicity committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-publication committee:
+publication committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -216,7 +215,7 @@ publication committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-sponsorship committee:
+sponsorship committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -228,7 +227,7 @@ sponsorship committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-technical committee:
+technical committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -240,7 +239,7 @@ technical committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-finance committee:
+finance committee_Organizer:
   external_prop:
   URI:
   domain:
@@ -252,7 +251,7 @@ finance committee:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
-steering committee:
+steering committee_Organizer:
   external_prop:
   URI:
   domain:
