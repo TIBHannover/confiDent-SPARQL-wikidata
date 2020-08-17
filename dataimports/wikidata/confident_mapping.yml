@@ -5,23 +5,87 @@
 # * spaces are replaced by _
 # range must be present
 
-# ------ Event_Series:
-Event Frequency:
-  external_prop: event_interval
-  URI: https://www.wikidata.org/wiki/Property:P2257
-  domain:
-    - Event_Series
-History:
-  external_prop:
-  URI:
-  domain:
-    - Event_Series
-Series CiteCount:
-  external_prop:
-  URI:
-  domain:
-    - Event_Series
 #  ----- Process:
+Subject:
+  external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
+  URI: https://www.wikidata.org/wiki/Property:P921
+  domain:
+    - Process
+Website:
+  external_prop: official_website
+  URI: https://www.wikidata.org/wiki/Property:P856
+  domain:
+    - Process
+    - Agent
+Summary:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Summary License:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Logo:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Language:
+  external_prop: language_usedLabel
+  URI: https://www.wikidata.org/wiki/Property:P2936
+  domain:
+    - Process
+CORE Ranking:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Contact Person:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Contact Email:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Contact Phone:
+  external_prop:
+  URI:
+  domain:
+    - Process
+ConfIDent ID:
+  external_prop:
+  URI:
+  domain:
+    - Process
+GND:
+  external_prop: GND_ID
+  URI: https://www.wikidata.org/wiki/Property:P227
+  domain:
+    - Process
+    - Agent
+DOI:
+  external_prop:
+  URI:
+  domain:
+    - Process
+    - Agent
+WDQID:
+  external_prop: item
+  URI:
+  domain:
+    - Process
+    - Agent
+Twitter:
+  external_prop: Twitter_username
+  URI: https://www.wikidata.org/wiki/Property:P2002
+  domain:
+    - Process
+    - Agent
 ## Process Name subobjects
 official_name:
   external_prop: itemLabel
@@ -154,12 +218,40 @@ hasSeries_relation:
     - - Process_Relation_Type
       - hasSeries
   subobject: Subobject Process Relation
+## Sponsor subobject  # TODO: in code logic: how to add a values to Sponsor Type
+Sponsor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Sponsor
+  child_prop_vals:
+    - - Sponsor Type
+      -
+  subobject: Subobject Sponsor
+# ------ Event_Series:
+Event Frequency:
+  external_prop: event_interval
+  URI: https://www.wikidata.org/wiki/Property:P2257
+  domain:
+    - Event_Series
+History:
+  external_prop:
+  URI:
+  domain:
+    - Event_Series
+Series CiteCount:
+  external_prop:
+  URI:
+  domain:
+    - Event_Series
+# ------ Event:
 ## Organizer Subobject
 general committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -171,7 +263,7 @@ programme committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -183,7 +275,7 @@ local committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -195,7 +287,7 @@ publicity committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -207,7 +299,7 @@ publication committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -219,7 +311,7 @@ sponsorship committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -231,7 +323,7 @@ technical committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -243,7 +335,7 @@ finance committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -255,7 +347,7 @@ steering committee_Organizer:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Committee Member
   child_prop_vals:
     - - Committee_Type
@@ -268,7 +360,7 @@ keynote speaker_Contributor:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Contributor
   child_prop_vals:
     - - Contributor_Type
@@ -278,7 +370,7 @@ speaker_Contributor:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Contributor
   child_prop_vals:
     - - Contributor_Type
@@ -288,7 +380,7 @@ moderator_Contributor:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Contributor
   child_prop_vals:
     - - Contributor_Type
@@ -298,14 +390,12 @@ attendee_Contributor:
   external_prop:
   URI:
   domain:
-    - Process
+    - Event
   child_prop: Contributor
   child_prop_vals:
     - - Contributor_Type
       - attendee
   subobject: Subobject Contributor
-
-
 ## Deadline Subobject
 submission deadline:
   external_prop:
@@ -314,7 +404,7 @@ submission deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - submission deadline
   subobject: Subobject Deadline Date
 abstract deadline:
@@ -324,7 +414,7 @@ abstract deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - abstract deadline
   subobject: Subobject Deadline Date
 paper deadline:
@@ -334,7 +424,7 @@ paper deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - paper deadline
   subobject: Subobject Deadline Date
 demo deadline:
@@ -344,7 +434,7 @@ demo deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - demo deadline
   subobject: Subobject Deadline Date
 workshop deadline:
@@ -354,7 +444,7 @@ workshop deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - workshop deadline
   subobject: Subobject Deadline Date
 poster deadline:
@@ -364,7 +454,7 @@ poster deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - poster deadline
   subobject: Subobject Deadline Date
 camera-ready deadline:
@@ -374,7 +464,7 @@ camera-ready deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - camera-ready deadline
   subobject: Subobject Deadline Date
 notification deadline:
@@ -384,129 +474,11 @@ notification deadline:
     - Event
   child_prop: Deadline_Date
   child_prop_vals:
-    - - Deadline_Type 
+    - - Deadline_Type
       - notification deadline
   subobject: Subobject Deadline Date
-
 ## Fee Subobject
-
-## Sponsor subobject  # TODO: in code logic: how to add a values to Sponsor Type
-Sponsor:
-  external_prop:
-  URI:
-  domain:
-    - Process
-  child_prop: Sponsor
-  child_prop_vals:
-    - - Sponsor Type
-      -
-  subobject: Subobject Sponsor
-Subject:
-  external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
-  URI: https://www.wikidata.org/wiki/Property:P921
-  domain:
-    - Process
-Website:
-  external_prop: official_website
-  URI: https://www.wikidata.org/wiki/Property:P856
-  domain:
-    - Process
-    - Agent
-Summary:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Summary License:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Logo:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Language:
-  external_prop: language_usedLabel
-  URI: https://www.wikidata.org/wiki/Property:P2936
-  domain:
-    - Process
-CORE Ranking:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Contact Person:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Contact Email:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Contact Phone:
-  external_prop:
-  URI:
-  domain:
-    - Process
-ConfIDent ID:
-  external_prop:
-  URI:
-  domain:
-    - Process
-GND:
-  external_prop: GND_ID
-  URI: https://www.wikidata.org/wiki/Property:P227
-  domain:
-    - Process
-    - Agent
-DOI:
-  external_prop:
-  URI:
-  domain:
-    - Process
-    - Agent
-WDQID:
-  external_prop: item
-  URI:
-  domain:
-    - Process
-    - Agent
-Twitter:
-  external_prop: Twitter_username
-  URI: https://www.wikidata.org/wiki/Property:P2002
-  domain:
-    - Process
-    - Agent
-
-#External_ID_URL:
-# Other Identifiers
-# WikiCFP_conference_series_ID
-# Freebase_ID
-
-# wikidata properties
-
-#instance_of:
-#  external_prop: P31
-#  URI: https://www.wikidata.org/wiki/Property:P31
-#start_time:
-#  external_prop: P580
-#  URI: https://www.wikidata.org/wiki/Property:P580
-#event_interval:
-#  external_prop: P2257
-#  URI: https://www.wikidata.org/wiki/Property:P2257
-#part_of_the_seriesLabel:
-#  external_prop: P179
-#  URI: https://www.wikidata.org/wiki/Property:P179
-#countryLabel:
-#  external_prop: P17
-#  URI: https://www.wikidata.org/wiki/Property:P17
-#locationLabel:
-#  external_prop: P276
-#  URI: https://www.wikidata.org/wiki/Property:P276
+# TODO: Event Fee
 
 
 
