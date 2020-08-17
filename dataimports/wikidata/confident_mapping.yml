@@ -86,6 +86,12 @@ Twitter:
   domain:
     - Process
     - Agent
+External ID URL:
+  external_prop: WikiCFP_conference_series_ID
+  URI: https://www.wikidata.org/wiki/Property:P5127
+  domain:
+    - Process
+    - Agent
 ## Process Name subobjects
 official_name:
   external_prop: itemLabel
@@ -99,7 +105,7 @@ official_name:
   subobject: Subobject Process Name
 acronym:
   external_prop: short_nameLabel
-  URI:
+  URI: https://www.wikidata.org/wiki/Property:P1813
   domain:
     - Process
   child_prop: Process Name
@@ -246,6 +252,113 @@ Series CiteCount:
   domain:
     - Event_Series
 # ------ Event:
+
+## -- Event Metrics:
+Acceptance Rate:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Accepted Papers:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Accepted Short Papers:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Attendees:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Proceedings CiteCount:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Submitted Papers:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Tracks:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Country:
+  external_prop:
+  URI:
+  domain:
+    - Event
+State:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Venue:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Venue URL:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Meeting URL:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Coordinates:
+  external_prop:
+  URI:
+  domain:
+    - Event
+City:
+  external_prop:
+  URI:
+  domain:
+    - Event
+End Date:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Star Date:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Event Number:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Event Status:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Event Type:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Previous Start Date:
+  external_prop:
+  URI:
+  domain:
+    - Event
+Previous End Date:
+  external_prop:
+  URI:
+  domain:
+    - Event
 ## Organizer Subobject
 general committee_Organizer:
   external_prop:
