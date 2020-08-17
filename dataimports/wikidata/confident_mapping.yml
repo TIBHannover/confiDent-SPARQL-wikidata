@@ -73,8 +73,8 @@ former_name:
     - - Process Name Type
       - former name
   subobject: Subobject Process Name
-## Process Relation subobjects
-isUmbrellaEventOf:
+## Process Relation subobjects  # TODO: Mapping to wikidata
+isUmbrellaEvent_relation:
   external_prop:
   URI:
   domain:
@@ -84,7 +84,7 @@ isUmbrellaEventOf:
     - - Process Relation Type
       - isUmbrellaEventOf
   subobject: Subobject Process Relation
-hasUmbrellaEvent:
+hasUmbrellaEvent_relation:
   external_prop:
   URI:
   domain:
@@ -94,7 +94,7 @@ hasUmbrellaEvent:
     - - Process Relation Type
       - hasUmbrellaEvent
   subobject: Subobject Process Relation
-isJointEventOf:
+isJointEvent_relation:
   external_prop:
   URI:
   domain:
@@ -104,7 +104,7 @@ isJointEventOf:
     - - Process Relation Type
       - isJointEventOf
   subobject: Subobject Process Relation
-isColocatedEventOf:
+isColocatedEvent_relation:
   external_prop:
   URI:
   domain:
@@ -114,7 +114,7 @@ isColocatedEventOf:
     - - Process Relation Type
       - isColocatedEventOf
   subobject: Subobject Process Relation
-isSubEventOf:
+isSubEvent_relation:
   external_prop:
   URI:
   domain:
@@ -124,17 +124,7 @@ isSubEventOf:
     - - Process Relation Type
       - isSubEventOf
   subobject: Subobject Process Relation
-isSubEventOf:
-  external_prop:
-  URI:
-  domain:
-    - Process
-  child_prop: Process Relation
-  child_prop_vals:
-    - - Process Relation Type
-      - isSubEventOf
-  subobject: Subobject Process Relation
-hasSubEvent:
+hasSubEvent_relation:
   external_prop:
   URI:
   domain:
@@ -144,7 +134,7 @@ hasSubEvent:
     - - Process Relation Type
       - hasSubEvent
   subobject: Subobject Process Relation
-isSeriesOf:
+isSeries_relation:
   external_prop:
   URI:
   domain:
@@ -154,7 +144,7 @@ isSeriesOf:
     - - Process Relation Type
       - isSeriesOf
   subobject: Subobject Process Relation
-hasSeries:
+hasSeries_relation:
   external_prop:
   URI:
   domain:
@@ -164,7 +154,17 @@ hasSeries:
     - - Process Relation Type
       - hasSeries
   subobject: Subobject Process Relation
-
+## Sponsor subobjects  # TODO: in code logic: how to add a values to Sponsor Type
+Sponsor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Sponsor
+  child_prop_vals:
+    - - Sponsor Type
+      -
+  subobject: Subobject Sponsor
 Subject:
   external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
@@ -197,11 +197,6 @@ Language:
   domain:
     - Process
 CORE Ranking:
-  external_prop:
-  URI:
-  domain:
-    - Process
-Sponsor:
   external_prop:
   URI:
   domain:
