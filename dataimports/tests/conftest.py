@@ -1,7 +1,22 @@
 import pytest
+import os
 from pathlib import Path
 from dataimports.file_utils import yaml_get_source, createglobals
 from dataimports.mapping import invert_mapping
+
+
+@pytest.fixture(scope="function")
+def find_files():
+    def find_files_recursively(filename: str, startdir: str, foundfiles):
+        for dir_or_file in os.scandir(startdir):
+            if dir_or_file.is_file() and dir_or_file.name == filename:
+                foundfiles.append(dir_or_file.path)
+            elif dir_or_file.is_dir():
+                find_files_recursively(filename=filename,
+                                       startdir=dir_or_file.path,
+                                       foundfiles=foundfiles)
+        return foundfiles
+    return find_files_recursively
 
 
 @pytest.fixture(scope="function")
