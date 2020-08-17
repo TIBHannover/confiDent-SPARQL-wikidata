@@ -73,6 +73,98 @@ former_name:
     - - Process Name Type
       - former name
   subobject: Subobject Process Name
+## Process Relation subobjects
+isUmbrellaEventOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isUmbrellaEventOf
+  subobject: Subobject Process Relation
+hasUmbrellaEvent:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - hasUmbrellaEvent
+  subobject: Subobject Process Relation
+isJointEventOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isJointEventOf
+  subobject: Subobject Process Relation
+isColocatedEventOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isColocatedEventOf
+  subobject: Subobject Process Relation
+isSubEventOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isSubEventOf
+  subobject: Subobject Process Relation
+isSubEventOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isSubEventOf
+  subobject: Subobject Process Relation
+hasSubEvent:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - hasSubEvent
+  subobject: Subobject Process Relation
+isSeriesOf:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - isSeriesOf
+  subobject: Subobject Process Relation
+hasSeries:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Process Relation
+  child_prop_vals:
+    - - Process Relation Type
+      - hasSeries
+  subobject: Subobject Process Relation
+
 Subject:
   external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   URI: https://www.wikidata.org/wiki/Property:P921
@@ -105,6 +197,11 @@ Language:
   domain:
     - Process
 CORE Ranking:
+  external_prop:
+  URI:
+  domain:
+    - Process
+Sponsor:
   external_prop:
   URI:
   domain:
