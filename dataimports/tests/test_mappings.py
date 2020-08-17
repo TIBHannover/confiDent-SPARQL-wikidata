@@ -1,8 +1,25 @@
 import pytest
+from pathlib import Path
 from dataimports.file_utils import yaml_get_source
 
-# TODO: Test for integraty of confident_mapping.yml
 
+@pytest.mark.mapping
+def test_mapping_files(find_files):
+    mappingfiles = find_files(filename='confident_mapping.yml',
+                              startdir='dataimports',
+                              foundfiles=[])
+    assert len(mappingfiles) > 0
+    for mappingfile_path in mappingfiles:
+        file_ = Path(mappingfile_path).parent.name / Path(
+                Path(mappingfile_path).name)
+        mapping = yaml_get_source(file_)
+        assert type(mapping) is dict
+        for mapping_k, mapping_val in mapping.items():
+            assert 'external_prop' in mapping_val.keys()
+            assert mapping_val['domain']
+            if 'subobject' in mapping_val.keys():
+                assert mapping_val['child_prop']
+                assert type(mapping_val['child_prop_vals']) is list
 
 @pytest.mark.mapping
 def test_confid_mapping(mappings):
