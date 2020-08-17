@@ -15,7 +15,12 @@ def test_mapping_files(find_files):
         mapping = yaml_get_source(file_)
         assert type(mapping) is dict
         for mapping_k, mapping_val in mapping.items():
-            assert 'external_prop' in mapping_val.keys()
+            assert 'external_props' in mapping_val.keys()
+            assert type(mapping_val['external_props']) is list
+            assert type(mapping_val['external_props'][0]) is dict
+            assert 'URI' in mapping_val['external_props'][0].keys()
+            assert 'external_prop' in mapping_val['external_props'][0].keys()
+
             assert mapping_val['domain']
             if 'subobject' in mapping_val.keys():
                 assert mapping_val['child_prop']

@@ -7,94 +7,114 @@
 
 #  ----- Process:
 Subject:
-  external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
-  URI: https://www.wikidata.org/wiki/Property:P921
+  external_props:
+      - URI: https://www.wikidata.org/wiki/Property:P921
+        external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   domain:
     - Process
 Website:
-  external_prop: official_website
-  URI: https://www.wikidata.org/wiki/Property:P856
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P856
+      external_prop: official_website
   domain:
     - Process
     - Agent
 Summary:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 Summary License:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 Logo:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 Language:
-  external_prop: language_usedLabel
-  URI: https://www.wikidata.org/wiki/Property:P2936
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P2936
+      external_prop: language_usedLabel
   domain:
     - Process
 CORE Ranking:
-  external_prop:
-  URI:
+  external_props:
+    - URI:
+      external_prop:
   domain:
     - Process
 Contact Person:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 Contact Email:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 Contact Phone:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 ConfIDent ID:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
 GND:
-  external_prop: GND_ID
-  URI: https://www.wikidata.org/wiki/Property:P227
+  external_props:
+      - URI: https://www.wikidata.org/wiki/Property:P227
+        external_prop: GND_ID
   domain:
     - Process
     - Agent
 DOI:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
     - Agent
 WDQID:
-  external_prop: item
-  URI:
+  external_props:
+    - URI:
+      external_prop: item
   domain:
     - Process
     - Agent
 Twitter:
-  external_prop: Twitter_username
-  URI: https://www.wikidata.org/wiki/Property:P2002
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P2002
+      external_prop: Twitter_username
   domain:
     - Process
     - Agent
 External ID URL:
-  external_prop: WikiCFP_conference_series_ID
-  URI: https://www.wikidata.org/wiki/Property:P5127
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P5127
+      external_prop: WikiCFP_conference_series_ID
+    - URI: https://www.wikidata.org/wiki/Property:P646
+      external_prop: Freebase_ID
   domain:
     - Process
     - Agent
 ## Process Name subobjects
 official_name:
-  external_prop: itemLabel
+  external_props:
+    - URI:
+      external_prop: itemLabel
   URI:
   domain:
     - Process
@@ -104,8 +124,9 @@ official_name:
       - official name
   subobject: Subobject Process Name
 acronym:
-  external_prop: short_nameLabel
-  URI: https://www.wikidata.org/wiki/Property:P1813
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P1813
+      external_prop: short_nameLabel
   domain:
     - Process
   child_prop: Process Name
@@ -114,8 +135,9 @@ acronym:
       - acronym
   subobject: Subobject Process Name
 alternative_name:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Name
@@ -124,8 +146,9 @@ alternative_name:
       - alternative name
   subobject: Subobject Process Name
 translated_name:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Name
@@ -134,8 +157,9 @@ translated_name:
       - translated name
   subobject: Subobject Process Name
 former_name:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Name
@@ -145,8 +169,9 @@ former_name:
   subobject: Subobject Process Name
 ## Process Relation subobjects  # TODO: Mapping to wikidata
 isUmbrellaEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -155,8 +180,9 @@ isUmbrellaEvent_relation:
       - isUmbrellaEventOf
   subobject: Subobject Process Relation
 hasUmbrellaEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -165,8 +191,9 @@ hasUmbrellaEvent_relation:
       - hasUmbrellaEvent
   subobject: Subobject Process Relation
 isJointEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -175,8 +202,9 @@ isJointEvent_relation:
       - isJointEventOf
   subobject: Subobject Process Relation
 isColocatedEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -185,8 +213,9 @@ isColocatedEvent_relation:
       - isColocatedEventOf
   subobject: Subobject Process Relation
 isSubEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -195,8 +224,9 @@ isSubEvent_relation:
       - isSubEventOf
   subobject: Subobject Process Relation
 hasSubEvent_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -205,8 +235,9 @@ hasSubEvent_relation:
       - hasSubEvent
   subobject: Subobject Process Relation
 isSeries_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -215,8 +246,9 @@ isSeries_relation:
       - isSeriesOf
   subobject: Subobject Process Relation
 hasSeries_relation:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Process Relation
@@ -226,8 +258,9 @@ hasSeries_relation:
   subobject: Subobject Process Relation
 ## Sponsor subobject  # TODO: in code logic: how to add a values to Sponsor Type
 Sponsor:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Process
   child_prop: Sponsor
@@ -237,132 +270,157 @@ Sponsor:
   subobject: Subobject Sponsor
 # ------ Event_Series:
 Event Frequency:
-  external_prop: event_interval
-  URI: https://www.wikidata.org/wiki/Property:P2257
+  external_props:
+    - URI: https://www.wikidata.org/wiki/Property:P2257
+      external_prop: event_interval
   domain:
     - Event_Series
 History:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event_Series
 Series CiteCount:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event_Series
 # ------ Event:
 
 ## -- Event Metrics:
 Acceptance Rate:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Accepted Papers:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Accepted Short Papers:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Attendees:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Proceedings CiteCount:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Submitted Papers:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Tracks:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Country:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 State:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Venue:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Venue URL:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Meeting URL:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Coordinates:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 City:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 End Date:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Star Date:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Event Number:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Event Status:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Event Type:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Previous Start Date:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 Previous End Date:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
 ## Organizer Subobject
 general committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -373,8 +431,9 @@ general committee_Organizer:
       - No
   subobject: Subobject Organizer
 programme committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -385,8 +444,9 @@ programme committee_Organizer:
       - No
   subobject: Subobject Organizer
 local committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -397,8 +457,9 @@ local committee_Organizer:
       - No
   subobject: Subobject Organizer
 publicity committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -409,8 +470,9 @@ publicity committee_Organizer:
       - No
   subobject: Subobject Organizer
 publication committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -421,8 +483,9 @@ publication committee_Organizer:
       - No
   subobject: Subobject Organizer
 sponsorship committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -433,8 +496,9 @@ sponsorship committee_Organizer:
       - No
   subobject: Subobject Organizer
 technical committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -445,8 +509,9 @@ technical committee_Organizer:
       - No
   subobject: Subobject Organizer
 finance committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -457,8 +522,9 @@ finance committee_Organizer:
       - No
   subobject: Subobject Organizer
 steering committee_Organizer:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Committee Member
@@ -470,8 +536,9 @@ steering committee_Organizer:
   subobject: Subobject Organizer
 ## Contributor Subobject
 keynote speaker_Contributor:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Contributor
@@ -480,8 +547,9 @@ keynote speaker_Contributor:
       - keynote speaker
   subobject: Subobject Contributor
 speaker_Contributor:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Contributor
@@ -490,8 +558,9 @@ speaker_Contributor:
       - speaker
   subobject: Subobject Contributor
 moderator_Contributor:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Contributor
@@ -500,8 +569,9 @@ moderator_Contributor:
       - moderator (session/panel chair)
   subobject: Subobject Contributor
 attendee_Contributor:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Contributor
@@ -511,8 +581,9 @@ attendee_Contributor:
   subobject: Subobject Contributor
 ## Deadline Subobject
 submission deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -521,8 +592,9 @@ submission deadline:
       - submission deadline
   subobject: Subobject Deadline Date
 abstract deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -531,8 +603,9 @@ abstract deadline:
       - abstract deadline
   subobject: Subobject Deadline Date
 paper deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -541,8 +614,9 @@ paper deadline:
       - paper deadline
   subobject: Subobject Deadline Date
 demo deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -551,8 +625,9 @@ demo deadline:
       - demo deadline
   subobject: Subobject Deadline Date
 workshop deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -561,8 +636,9 @@ workshop deadline:
       - workshop deadline
   subobject: Subobject Deadline Date
 poster deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -571,8 +647,9 @@ poster deadline:
       - poster deadline
   subobject: Subobject Deadline Date
 camera-ready deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
@@ -581,8 +658,9 @@ camera-ready deadline:
       - camera-ready deadline
   subobject: Subobject Deadline Date
 notification deadline:
-  external_prop:
-  URI:
+  external_props:
+      - URI: 
+        external_prop:
   domain:
     - Event
   child_prop: Deadline_Date
