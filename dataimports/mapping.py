@@ -11,10 +11,12 @@ def invert_mapping(schema: str) -> Dict:
     """
     confident_inv_map = {}
     for k, v in confid_mapping.items():
-        if v and v['external_prop']:
-            prop = v['external_prop']
-            if prop not in confident_inv_map.keys():
-                confident_inv_map[prop] = k
+        if v and v['external_props'] and \
+                v['external_props'][0]['external_prop']:
+            for ext_prop_dict in v['external_props']:
+                prop = ext_prop_dict['external_prop']
+                if prop not in confident_inv_map.keys():
+                    confident_inv_map[prop] = k
     return confident_inv_map
 
 
