@@ -263,6 +263,53 @@ steering committee_Organizer:
     - - Committee Chair
       - No
   subobject: Subobject Organizer
+## Contributor Subobject
+keynote speaker_Contributor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Contributor
+  child_prop_vals:
+    - - Contributor Type
+      - keynote speaker
+  subobject: Subobject Contributor
+speaker_Contributor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Contributor
+  child_prop_vals:
+    - - Contributor Type
+      - speaker
+  subobject: Subobject Contributor
+moderator_Contributor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Contributor
+  child_prop_vals:
+    - - Contributor Type
+      - moderator (session/panel chair)
+  subobject: Subobject Contributor
+attendee_Contributor:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Contributor
+  child_prop_vals:
+    - - Contributor Type
+      - attendee
+  subobject: Subobject Contributor
+
+
+## Deadline Subobject
+
+## Fee Subobject
+
 ## Sponsor subobject  # TODO: in code logic: how to add a values to Sponsor Type
 Sponsor:
   external_prop:
