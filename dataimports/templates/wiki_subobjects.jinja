@@ -1,7 +1,9 @@
 {% for prop, valdict in subobjs_dict.items() -%}
 {{ '{{' }}{{ valdict['subobject'] }}
-|{{ valdict['child_prop'] }}={{  valdict['val'] }}
-{%- for prop_val in valdict['child_prop_vals'] %}
+{% for val in valdict['val'] -%}
+|{{ valdict['child_prop'] }}={{ val }}
+{%- endfor %}
+{% for prop_val in valdict['child_prop_vals'] -%}
 |{{ prop_val[0] }}={{ prop_val[1] }}
 {%- endfor %}
 {{ '}}' }}

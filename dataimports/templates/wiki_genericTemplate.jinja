@@ -1,4 +1,6 @@
 {{ '{{' }}{{ wikitemplate }}
-{% for prop, val in item_dict.items() -%}
+{%- for prop, listval in item_dict.items() -%}
+{% for val in listval %}
 |{{ prop }}={{ val }}
-{% endfor %}{{ '}}' }}
+{%- endfor %}
+{%- endfor %}{{ '}}' }}

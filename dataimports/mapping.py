@@ -30,7 +30,10 @@ def dataitem2confid_map(item_data: Dict) -> Dict:
     for data_k, data_v in item_data.items():
         if data_k in invert_confid_map:
             confid_k = invert_confid_map[data_k]
-            item_confid[confid_k] = data_v
+            if not item_confid.get(confid_k):
+                item_confid[confid_k] = [data_v]
+            else:
+                item_confid[confid_k].append(data_v)
     return item_confid
 
 
