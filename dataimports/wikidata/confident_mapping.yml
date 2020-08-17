@@ -30,7 +30,7 @@ official_name:
     - Process
   child_prop: Process Name # values will the filled by application
   child_prop_vals:  # values already filled: [(prop, value), (prop, value)]
-    - - Process Name Type
+    - - Process_Name_Type
       - official name
   subobject: Subobject Process Name
 acronym:
@@ -40,7 +40,7 @@ acronym:
     - Process
   child_prop: Process Name
   child_prop_vals:
-    - - Process Name Type
+    - - Process_Name_Type
       - acronym
   subobject: Subobject Process Name
 alternative_name:
@@ -50,7 +50,7 @@ alternative_name:
     - Process
   child_prop: Process Name
   child_prop_vals:
-    - - Process Name Type
+    - - Process_Name_Type
       - alternative name
   subobject: Subobject Process Name
 translated_name:
@@ -60,7 +60,7 @@ translated_name:
     - Process
   child_prop: Process Name
   child_prop_vals:
-    - - Process Name Type
+    - - Process_Name_Type
       - translated name
   subobject: Subobject Process Name
 former_name:
@@ -70,7 +70,7 @@ former_name:
     - Process
   child_prop: Process Name
   child_prop_vals:
-    - - Process Name Type
+    - - Process_Name_Type
       - former name
   subobject: Subobject Process Name
 ## Process Relation subobjects  # TODO: Mapping to wikidata
@@ -81,7 +81,7 @@ isUmbrellaEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - isUmbrellaEventOf
   subobject: Subobject Process Relation
 hasUmbrellaEvent_relation:
@@ -91,7 +91,7 @@ hasUmbrellaEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - hasUmbrellaEvent
   subobject: Subobject Process Relation
 isJointEvent_relation:
@@ -101,7 +101,7 @@ isJointEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - isJointEventOf
   subobject: Subobject Process Relation
 isColocatedEvent_relation:
@@ -111,7 +111,7 @@ isColocatedEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - isColocatedEventOf
   subobject: Subobject Process Relation
 isSubEvent_relation:
@@ -121,7 +121,7 @@ isSubEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - isSubEventOf
   subobject: Subobject Process Relation
 hasSubEvent_relation:
@@ -131,7 +131,7 @@ hasSubEvent_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - hasSubEvent
   subobject: Subobject Process Relation
 isSeries_relation:
@@ -141,7 +141,7 @@ isSeries_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - isSeriesOf
   subobject: Subobject Process Relation
 hasSeries_relation:
@@ -151,7 +151,7 @@ hasSeries_relation:
     - Process
   child_prop: Process Relation
   child_prop_vals:
-    - - Process Relation Type
+    - - Process_Relation_Type
       - hasSeries
   subobject: Subobject Process Relation
 ## Organizer Subobject
@@ -162,7 +162,7 @@ general committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - general committe
     - - Committee Chair
       - No
@@ -174,7 +174,7 @@ programme committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - programme committee
     - - Committee Chair
       - No
@@ -186,7 +186,7 @@ local committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - local committee
     - - Committee Chair
       - No
@@ -198,7 +198,7 @@ publicity committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - publicity committee
     - - Committee Chair
       - No
@@ -210,7 +210,7 @@ publication committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - publication committee
     - - Committee Chair
       - No
@@ -222,7 +222,7 @@ sponsorship committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - sponsorship committee
     - - Committee Chair
       - No
@@ -234,7 +234,7 @@ technical committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - technical committee
     - - Committee Chair
       - No
@@ -246,7 +246,7 @@ finance committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - finance committee
     - - Committee Chair
       - No
@@ -258,7 +258,7 @@ steering committee_Organizer:
     - Process
   child_prop: Committee Member
   child_prop_vals:
-    - - Committee Type
+    - - Committee_Type
       - steering committee
     - - Committee Chair
       - No
@@ -271,7 +271,7 @@ keynote speaker_Contributor:
     - Process
   child_prop: Contributor
   child_prop_vals:
-    - - Contributor Type
+    - - Contributor_Type
       - keynote speaker
   subobject: Subobject Contributor
 speaker_Contributor:
@@ -281,7 +281,7 @@ speaker_Contributor:
     - Process
   child_prop: Contributor
   child_prop_vals:
-    - - Contributor Type
+    - - Contributor_Type
       - speaker
   subobject: Subobject Contributor
 moderator_Contributor:
@@ -291,7 +291,7 @@ moderator_Contributor:
     - Process
   child_prop: Contributor
   child_prop_vals:
-    - - Contributor Type
+    - - Contributor_Type
       - moderator (session/panel chair)
   subobject: Subobject Contributor
 attendee_Contributor:
@@ -301,12 +301,92 @@ attendee_Contributor:
     - Process
   child_prop: Contributor
   child_prop_vals:
-    - - Contributor Type
+    - - Contributor_Type
       - attendee
   subobject: Subobject Contributor
 
 
 ## Deadline Subobject
+submission deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - submission deadline
+  subobject: Subobject Deadline Date
+abstract deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - abstract deadline
+  subobject: Subobject Deadline Date
+paper deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - paper deadline
+  subobject: Subobject Deadline Date
+demo deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - demo deadline
+  subobject: Subobject Deadline Date
+workshop deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - workshop deadline
+  subobject: Subobject Deadline Date
+poster deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - poster deadline
+  subobject: Subobject Deadline Date
+camera-ready deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - camera-ready deadline
+  subobject: Subobject Deadline Date
+notification deadline:
+  external_prop:
+  URI:
+  domain:
+    - Event
+  child_prop: Deadline_Date
+  child_prop_vals:
+    - - Deadline_Type 
+      - notification deadline
+  subobject: Subobject Deadline Date
 
 ## Fee Subobject
 
