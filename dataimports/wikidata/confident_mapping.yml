@@ -154,7 +154,117 @@ hasSeries_relation:
     - - Process Relation Type
       - hasSeries
   subobject: Subobject Process Relation
-## Sponsor subobjects  # TODO: in code logic: how to add a values to Sponsor Type
+## Organizer Subobject
+general committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - general committe
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+## Committee Subobject
+programme committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - programme committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+local committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - local committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+publicity committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - publicity committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+publication committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - publication committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+sponsorship committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - sponsorship committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+technical committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - technical committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+finance committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - finance committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+steering committee:
+  external_prop:
+  URI:
+  domain:
+    - Process
+  child_prop: Committee Member
+  child_prop_vals:
+    - - Committee Type
+      - steering committee
+    - - Committee Chair
+      - No
+  subobject: Subobject Organizer
+## Sponsor subobject  # TODO: in code logic: how to add a values to Sponsor Type
 Sponsor:
   external_prop:
   URI:
