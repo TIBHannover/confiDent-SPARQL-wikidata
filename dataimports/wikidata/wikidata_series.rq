@@ -46,3 +46,4 @@ WHERE
 		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
 	}
 }
+ORDER BY DESC(?dateModified)
