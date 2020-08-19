@@ -22,9 +22,13 @@ WHERE
 	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
-	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDnumb .
-     BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDnumb)) AS
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
+     BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDvalue)) AS
      ?WikiCFP_conference_series_ID )
+    }
+    OPTIONAL { ?item wdt:P646 ?Freebase_IDvalue .
+         BIND ( CONCAT("https://freebase.toolforge.org", STR(?Freebase_IDvalue)) AS
+     ?Freebase_ID )
     }
 	OPTIONAL{ ?item wdt:P580 ?start_time . }
 
