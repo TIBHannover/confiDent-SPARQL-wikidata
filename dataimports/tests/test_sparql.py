@@ -23,13 +23,20 @@ def test_sources_file():
 def test_sparql_queries():
     sparql_sources = ['wikidata']
     for source in sparql_sources:
+        all_results = []
         for i, result in enumerate(
                 sparql.query(source=source, class_='Event_Series')):
-            if i > 20:
-                break
-        # results_keys = results.keys()
+            # if i > 20:
+            #     break
+            # result_keys = result.keys()
+            all_results.append(result['item']['value'])
             assert type(result) is dict and result.keys()
-
+        # test repeated results
+        all_results_dups = set([r for r in all_results if
+                                all_results.count(r) > 1])
+        print(all_results_dups)
+        assert len(list(set(all_results))) == len(all_results)
+        # print(all_results)
 
 @pytest.mark.sparql
 def test_sparql_printouts_n_result_processing(appglobals, test_wikidetails) :
