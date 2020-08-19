@@ -50,6 +50,7 @@ def test_sparql_printouts_n_result_processing(appglobals, test_wikidetails) :
         # sparql has 4 non optional props
         assert len(result_formatted) >= 4 and result_title
         result_vals = [v['value'] for k, v in result.items()]
-        result_formatted_vals = [v for v in result_formatted.values()]
-        samevals = (all(str(i) in result_vals for i in result_formatted_vals))
+        result_formatted_val = result_formatted.values()
+        result_listofstr = [i for v in result_formatted_val for i in v]
+        samevals = (all(str(i) in result_vals for i in result_listofstr))
         assert samevals is True

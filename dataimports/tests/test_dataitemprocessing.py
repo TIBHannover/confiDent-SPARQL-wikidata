@@ -14,8 +14,8 @@ def test_dataitem2wikioutput(onesparqlresut, mappings, appglobals):
         item_data=sparql_result_dict)
     assert len(dataitem_confid_format) > 0
     assert sparql_result_dict['itemLabel']['value'] == dataitem_confid_format[
-        'official_name']['value']
-    assert dataitem_confid_format['acronym']['value'] == 'SWIB'
+        'official_name'][0]['value']
+    assert dataitem_confid_format['acronym'][0]['value'] == 'SWIB'
     output = dataitem2wikipage(dataitem=dataitem_confid_format,
                                class_='Event_Series')
     assert "{{Event_Series" in output

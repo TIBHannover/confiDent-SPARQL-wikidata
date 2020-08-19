@@ -24,8 +24,9 @@ WHERE
     OPTIONAL { ?item wdt:P179 ?part_of_the_series . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
-	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_ID }
-	OPTIONAL { ?item wdt:P646 ?Freebase_ID . }
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDnumb ;
+     BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDnumb)) AS
+     ?WikiCFP_conference_series_ID ) . }
 	OPTIONAL{ ?item wdt:P580 ?start_time . }
 
 	# ?event_interval and Unit

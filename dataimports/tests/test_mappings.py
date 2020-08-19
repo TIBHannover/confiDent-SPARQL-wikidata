@@ -15,7 +15,12 @@ def test_mapping_files(find_files):
         mapping = yaml_get_source(file_)
         assert type(mapping) is dict
         for mapping_k, mapping_val in mapping.items():
-            assert 'external_prop' in mapping_val.keys()
+            assert 'external_props' in mapping_val.keys()
+            assert type(mapping_val['external_props']) is list
+            assert type(mapping_val['external_props'][0]) is dict
+            assert 'URI' in mapping_val['external_props'][0].keys()
+            assert 'external_prop' in mapping_val['external_props'][0].keys()
+
             assert mapping_val['domain']
             if 'subobject' in mapping_val.keys():
                 assert mapping_val['child_prop']
@@ -30,12 +35,14 @@ def test_confid_mapping(mappings):
         yaml_get_source(f'{schema}/confident_mapping.yml'))
     confid_keys = list(confid_mapping.keys())
     confid_keys_set = list(set(confid_keys))
-    external_props = [v['external_prop']
+    external_props = [v['external_props']
                       for k, v in confid_mapping.items() if
-                      v and 'external_prop' in v.keys()
-                      and v['external_prop']]
+                      v and 'external_props' in v.keys()
+                      and v['external_props']]
     assert len(external_props) > 0, \
         f"Expected mapping. {confid_mapping} is empty"
+    assert all([isinstance(prop_tup, list) for prop_tup in external_props])
+    assert all([isinstance(prop_tup[0], dict) for prop_tup in external_props])
     assert sorted(confid_keys) == sorted(confid_keys_set),\
         f"Expected unique keys in mapping, Actual keys {confid_keys}"
     confid_keys_in_inv_mapping = [v for v in invert_confid_map.values()]
