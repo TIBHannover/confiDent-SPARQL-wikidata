@@ -61,9 +61,9 @@ def onesparqlresut():
             'dateModified': {
                 'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime',
                 'type': 'literal', 'value': '2020-07-04T09:34:49Z'},
-            'event_interval': {
+            'event_interval_inmonths': {
                 'datatype': 'http://www.w3.org/2001/XMLSchema#decimal',
-                'type': 'literal', 'value': '1'},
+                'type': 'literal', 'value': '12'},
             'event_interval_unitLabel': {'type': 'literal', 'value': 'year'},
             'item': {'type': 'uri',
                      'value': 'http://www.wikidata.org/entity/Q29129469'},

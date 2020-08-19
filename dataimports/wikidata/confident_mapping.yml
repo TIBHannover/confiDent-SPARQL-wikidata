@@ -272,7 +272,7 @@ Sponsor:
 Event Frequency:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P2257
-      external_prop: event_interval
+      external_prop: event_interval_inmonths
   domain:
     - Event_Series
 History:
