@@ -2,7 +2,7 @@ SELECT DISTINCT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel
 	?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
 	?main_subjectLabel ?official_website
 	?GND_ID ?Twitter_username ?WikiCFP_conference_series_ID ?Freebase_ID
-	?event_interval ?event_interval_unitLabel ?start_time
+	?event_interval_inmonths ?start_time
 
 WHERE
 {
@@ -41,9 +41,8 @@ WHERE
 				  wikibase:quantityUnit ?event_interval_unit
 				]
 			].
-  	    ?event_interval_unit rdfs:label ?event_interval_unitl;
-		FILTER (LANG(?event_interval_unitl) = "en").
-		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
+       # if unitLabel is wd:Q577 (year) or wd:Q1092296 (annum): *
+       BIND( IF (?event_interval_unit in (wd:Q577, wd:Q1092296 ) , ?event_interval * 12, ?event_interval) AS ?event_interval_inmonths ) .
 	}
 }
 ORDER BY DESC(?dateModified)
