@@ -1,7 +1,7 @@
 SELECT DISTINCT ?item ?dateModified ?itemLabel 
 (GROUP_CONCAT(DISTINCT ?main_subjectLabel; separator='@@@') as ?main_subjects)
 (GROUP_CONCAT(DISTINCT ?language_usedLabel; separator='@@@') as ?languages)
-(GROUP_CONCAT(DISTINCT ?short_name; separator='@@@') as ?short_names)
+(GROUP_CONCAT(DISTINCT ?short_nameLabel; separator='@@@') as ?short_names)
 (GROUP_CONCAT(DISTINCT ?official_website; separator='@@@') as ?official_websites)
 (GROUP_CONCAT(DISTINCT ?Twitter_username; separator='@@@') as ?Twitter_usernames)
 (GROUP_CONCAT(DISTINCT ?WikiCFP_conference_series_ID; separator='@@@') as ?WikiCFP_conference_series_IDs)
@@ -13,7 +13,6 @@ SELECT DISTINCT ?item ?dateModified ?itemLabel
 WHERE {
 	?item wdt:P31 wd:Q47258130 ;
 	    schema:dateModified ?dateModified .
-	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
 	OPTIONAL { ?item wdt:P580 ?start_time . }
@@ -47,6 +46,10 @@ WHERE {
 	SERVICE wikibase:label { 
 	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
 	?language_used rdfs:label ?language_usedLabel .
+	}
+		SERVICE wikibase:label { 
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?short_name rdfs:label ?short_nameLabel .
 	}
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 

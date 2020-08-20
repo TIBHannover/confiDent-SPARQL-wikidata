@@ -57,24 +57,30 @@ def onevalue():
 def onesparqlresut():
     def _onesparqlresut():
         result = {
-            'Twitter_username': {'type': 'literal', 'value': 'swibcon'},
-            'dateModified': {
-                'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime',
-                'type': 'literal', 'value': '2020-07-04T09:34:49Z'},
-            'event_interval_inmonths': {
-                'datatype': 'http://www.w3.org/2001/XMLSchema#decimal',
-                'type': 'literal', 'value': '12'},
-            'event_interval_unitLabel': {'type': 'literal', 'value': 'year'},
-            'item': {'type': 'uri',
-                     'value': 'http://www.wikidata.org/entity/Q29129469'},
-            'itemLabel': {'type': 'literal',
-                          'value': 'Semantic Web in Libraries Conference',
-                          'xml:lang': 'en'},
-            'locationLabel': {'type': 'literal', 'value': 'Hamburg',
-                              'xml:lang': 'en'},
-            'official_website': {'type': 'uri', 'value': 'http://swib.org'},
-            'short_nameLabel': {'type': 'literal', 'value': 'SWIB'},
-            'NonMatchingKey': {'type': 'literal', 'value': 'FOO'}}
+            'Freebase_IDs': {'type': 'literal', 'value': ''},
+             'GND_IDs': {'type': 'literal', 'value': ''},
+             'Twitter_usernames': {'type': 'literal', 'value': 'swibcon'},
+             'WikiCFP_conference_series_IDs': {'type': 'literal', 'value': ''},
+             'dateModified': {
+                 'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime',
+                 'type': 'literal',
+                'value': '2020-07-04T09:34:49Z'},
+             'event_intervalS_inmonths': {'type': 'literal', 'value': '12'},
+             'item': {'type': 'uri',
+                      'value': 'http://www.wikidata.org/entity/Q29129469'},
+             'itemLabel': {'type': 'literal',
+                           'value': 'Semantic Web in Libraries Conference',
+                           'xml:lang': 'en'},
+             'languages': {'type': 'literal', 'value': ''},
+             'main_subjects': {'type': 'literal', 'value': ''},
+             'official_websites': {'type': 'literal',
+                                   'value': 'http://swib.org'},
+             'short_names': {'type': 'literal', 'value': 'SWIB'},
+             'start_times': {'type': 'literal', 'value': ''}
+        }
+
+
+
         return result
     return _onesparqlresut
 

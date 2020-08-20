@@ -1,4 +1,5 @@
 import pytest
+from pprint import pprint
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
 
@@ -29,6 +30,7 @@ def test_sparql_queries():
             # if i > 20:
             #     break
             # result_keys = result.keys()
+            pprint(result)
             all_results.append(result['item']['value'])
             assert type(result) is dict and result.keys()
         # test repeated results
