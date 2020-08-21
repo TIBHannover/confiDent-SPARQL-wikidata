@@ -1,46 +1,62 @@
-SELECT DISTINCT ?item ?dateModified ?itemLabel ?locationLabel ?countryLabel
-	?part_of_the_seriesLabel ?language_usedLabel ?short_nameLabel
-	?main_subjectLabel ?official_website
-	?GND_ID ?Twitter_username ?WikiCFP_conference_series_ID ?Freebase_ID
-	?event_interval ?event_interval_unitLabel ?start_time
+SELECT DISTINCT ?item ?dateModified ?itemLabel
+(GROUP_CONCAT(DISTINCT ?main_subjectLabel; separator='@@@') as ?main_subjects)
+(GROUP_CONCAT(DISTINCT ?language_usedLabel; separator='@@@') as ?languages)
+(GROUP_CONCAT(DISTINCT ?short_nameLabel; separator='@@@') as ?short_names)
+(GROUP_CONCAT(DISTINCT ?official_website; separator='@@@') as ?official_websites)
+(GROUP_CONCAT(DISTINCT ?Twitter_username; separator='@@@') as ?Twitter_usernames)
+(GROUP_CONCAT(DISTINCT ?WikiCFP_conference_series_ID; separator='@@@') as ?WikiCFP_conference_series_IDs)
+(GROUP_CONCAT(DISTINCT ?GND_ID; separator='@@@') as ?GND_IDs)
+(GROUP_CONCAT(DISTINCT ?Freebase_ID; separator='@@@') as ?Freebase_IDs)
+(GROUP_CONCAT(DISTINCT ?event_interval_inmonths; separator='@@@') as ?event_intervalS_inmonths)
+(GROUP_CONCAT(DISTINCT ?start_time; separator='@@@') as ?start_times)
 
-WHERE
-{
-    # wdt:P31 (instance of)  wd:Q47258130 (scientific conference series)
-    ?item wdt:P31 wd:Q47258130 .
-     SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-
-	?item schema:dateModified ?dateModified .
-
-    # properties that are required
-
+WHERE {
+	?item wdt:P31 wd:Q47258130 ;
+	    schema:dateModified ?dateModified .
 	{ ?item wdt:P1813 ?short_name . }
-	{ ?item wdt:P856 ?official_website . }
+    { ?item wdt:P856 ?official_website . }
 	{ ?item wdt:P2002 ?Twitter_username . }
-    { ?item wdt:P921 ?main_subject . }
+	{ ?item wdt:P921 ?main_subject . }
 
-	OPTIONAL { ?item wdt:P276 ?location . }
-    OPTIONAL { ?item wdt:P17 ?country . }
-    OPTIONAL { ?item wdt:P179 ?part_of_the_series . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
+	OPTIONAL { ?item wdt:P580 ?start_time . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
-	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDnumb ;
-     BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDnumb)) AS
-     ?WikiCFP_conference_series_ID ) . }
-	OPTIONAL{ ?item wdt:P580 ?start_time . }
-
-	# ?event_interval and Unit
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue . }
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
+		BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDvalue)) AS ?WikiCFP_conference_series_ID )
+	}
+	OPTIONAL { ?item wdt:P646 ?Freebase_IDvalue .
+	     BIND ( CONCAT("https://freebase.toolforge.org", STR(?Freebase_IDvalue)) AS ?Freebase_ID )
+	}
 	OPTIONAL {
 		?item p:P2257 [
 		    	a wikibase:BestRank;  # best ranked unit returned
 				psv:P2257 [
-				  wikibase:quantityAmount ?event_interval;
-				  wikibase:quantityUnit ?event_interval_unit
+					wikibase:quantityAmount ?event_interval;
+					wikibase:quantityUnit ?event_interval_unit
 				]
 			].
-  	    ?event_interval_unit rdfs:label ?event_interval_unitl;
-		FILTER (LANG(?event_interval_unitl) = "en").
-		BIND (str(?event_interval_unitl) AS ?event_interval_unitLabel) .
+	   # if unitLabel is wd:Q577 (year) or wd:Q1092296 (annum): *
+	   BIND( IF (?event_interval_unit in (wd:Q577, wd:Q1092296 ), ?event_interval * 12, ?event_interval) AS ?event_interval_inmonths ) .
 	}
+
+	SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?main_subject rdfs:label ?main_subjectLabel .
+	}
+	SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?language_used rdfs:label ?language_usedLabel .
+	}
+		SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?short_name rdfs:label ?short_nameLabel .
+	}
+	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+
 }
-LIMIT 10
+GROUP BY ?item ?itemLabel ?dateModified
+ORDER BY DESC(?dateModified)
+
+
+

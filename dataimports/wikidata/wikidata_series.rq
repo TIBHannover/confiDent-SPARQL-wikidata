@@ -1,4 +1,4 @@
-SELECT DISTINCT ?item ?dateModified ?itemLabel 
+SELECT DISTINCT ?item ?dateModified ?itemLabel
 (GROUP_CONCAT(DISTINCT ?main_subjectLabel; separator='@@@') as ?main_subjects)
 (GROUP_CONCAT(DISTINCT ?language_usedLabel; separator='@@@') as ?languages)
 (GROUP_CONCAT(DISTINCT ?short_nameLabel; separator='@@@') as ?short_names)
@@ -9,17 +9,17 @@ SELECT DISTINCT ?item ?dateModified ?itemLabel
 (GROUP_CONCAT(DISTINCT ?Freebase_ID; separator='@@@') as ?Freebase_IDs)
 (GROUP_CONCAT(DISTINCT ?event_interval_inmonths; separator='@@@') as ?event_intervalS_inmonths)
 (GROUP_CONCAT(DISTINCT ?start_time; separator='@@@') as ?start_times)
- 
+
 WHERE {
 	?item wdt:P31 wd:Q47258130 ;
 	    schema:dateModified ?dateModified .
+	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
 	OPTIONAL { ?item wdt:P580 ?start_time . }
 	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
-	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
 		BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDvalue)) AS ?WikiCFP_conference_series_ID )
@@ -38,23 +38,23 @@ WHERE {
 	   # if unitLabel is wd:Q577 (year) or wd:Q1092296 (annum): *
 	   BIND( IF (?event_interval_unit in (wd:Q577, wd:Q1092296 ), ?event_interval * 12, ?event_interval) AS ?event_interval_inmonths ) .
 	}
-  
-	SERVICE wikibase:label { 
+
+	SERVICE wikibase:label {
 	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
 	?main_subject rdfs:label ?main_subjectLabel .
 	}
-	SERVICE wikibase:label { 
+	SERVICE wikibase:label {
 	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
 	?language_used rdfs:label ?language_usedLabel .
 	}
-		SERVICE wikibase:label { 
+		SERVICE wikibase:label {
 	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
 	?short_name rdfs:label ?short_nameLabel .
 	}
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 
 }
-GROUP BY ?item ?itemLabel ?dateModified 
+GROUP BY ?item ?itemLabel ?dateModified
 ORDER BY DESC(?dateModified)
 
 
