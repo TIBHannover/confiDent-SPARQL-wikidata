@@ -13,13 +13,15 @@ def sparqlresults_simplfy(dataitem: Dict) -> List:
     """
     keyvalue_dict = {}
     for k, v in dataitem.items():
-        if v.get('datatype') == \
-                'http://www.w3.org/2001/XMLSchema#dateTime':
-            keyvalue_dict[k] = datetime.strptime(v['value'],
-                                                 "%Y-%m-%dT%H:%M:%S%z")
-        elif v.get(
-                'datatype') == 'http://www.w3.org/2001/XMLSchema#decimal':
-            keyvalue_dict[k] = int(v['value'])
-        else:
-            keyvalue_dict[k] = v['value']
+        value = (v['value'].split('@@@'))[0]
+        if value:
+            if v.get('datatype') == \
+                    'http://www.w3.org/2001/XMLSchema#dateTime':
+                keyvalue_dict[k] = datetime.strptime(value,
+                                                     "%Y-%m-%dT%H:%M:%S%z")
+            elif v.get(
+                    'datatype') == 'http://www.w3.org/2001/XMLSchema#decimal':
+                keyvalue_dict[k] = int(value)
+            else:
+                keyvalue_dict[k] = value
     return keyvalue_dict
