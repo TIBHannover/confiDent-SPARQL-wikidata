@@ -1,13 +1,88 @@
-SELECT DISTINCT ?item ?itemLabel ?dateModified ?locationLabel ?start_time ?end_time
+SELECT DISTINCT ?item ?dateModified ?itemLabel ?event_type ?countryLabel
+(GROUP_CONCAT(DISTINCT ?main_subjectLabel; separator='@@@') as ?main_subjects)
+(GROUP_CONCAT(DISTINCT ?language_usedLabel; separator='@@@') as ?languages)
+(GROUP_CONCAT(DISTINCT ?short_nameLabel; separator='@@@') as ?short_names)
+(GROUP_CONCAT(DISTINCT ?official_website; separator='@@@') as ?official_websites)
+(GROUP_CONCAT(DISTINCT ?Twitter_username; separator='@@@') as ?Twitter_usernames)
+(GROUP_CONCAT(DISTINCT ?WikiCFP_conference_series_ID; separator='@@@') as ?WikiCFP_conference_series_IDs)
+(GROUP_CONCAT(DISTINCT ?GND_ID; separator='@@@') as ?GND_IDs)
+(GROUP_CONCAT(DISTINCT ?Freebase_ID; separator='@@@') as ?Freebase_IDs)
+(GROUP_CONCAT(DISTINCT ?start_time; separator='@@@') as ?start_times)
+(GROUP_CONCAT(DISTINCT ?end_time; separator='@@@') as ?end_times)
+
 WHERE {
-  ?item wdt:P31 wd:Q2020153;
-  schema:dateModified ?dateModified .
-  ?item wdt:P276 ?location . 
-  ?item wdt:P580 ?start_time . 
-  ?item wdt:P582 ?end_time . 
+  {
+    ?item wdt:P31 wd:Q2495862 .  
+    ?item schema:dateModified ?dateModified;
+    wdt:P580 ?start_time;
+    wdt:P582 ?end_time . 
+    BIND ('congress' as ?event_type) 
+  }
+  UNION
+  {
+    ?item wdt:P31 wd:Q40444998 .  
+    ?item schema:dateModified ?dateModified;
+    wdt:P580 ?start_time;
+    wdt:P582 ?end_time . 
+    BIND ('workshop' as ?event_type) 
+  }
+  UNION 
+  {
+    ?item wdt:P31 wd:Q2020153 .  
+    ?item schema:dateModified ?dateModified;
+    wdt:P580 ?start_time;
+    wdt:P582 ?end_time . 
+    BIND ('conference' as ?event_type) 
+  }
+  UNION 
+  {
+    ?item wdt:P31 wd:Q504703 .  
+    ?item schema:dateModified ?dateModified;
+    wdt:P580 ?start_time;
+    wdt:P582 ?end_time . 
+    BIND ('seminar' as ?event_type) 
+  }  
+  UNION
+  {
+    ?item wdt:P31 wd:Q46855.
+    ?item schema:dateModified ?dateModified;
+    wdt:P580 ?start_time;
+    wdt:P582 ?end_time . 
+    BIND ('hackthon' as ?event_type )
+  }
+	
+	OPTIONAL { ?item wdt:P921 ?main_subject . }
+	OPTIONAL { ?item wdt:P2936 ?language_used . }
+	OPTIONAL { ?item wdt:P1813 ?short_name . }
+    OPTIONAL  {?item wdt:P17 ?country }
 
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-  
+	OPTIONAL { ?item wdt:P856 ?official_website . }
+	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
+	OPTIONAL { ?item wdt:P227 ?GND_ID . }
+	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
+		BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDvalue)) AS ?WikiCFP_conference_series_ID )
+	}
+	OPTIONAL { ?item wdt:P646 ?Freebase_IDvalue .
+	     BIND ( CONCAT("https://freebase.toolforge.org", STR(?Freebase_IDvalue)) AS ?Freebase_ID )
+	}
+
+	SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?main_subject rdfs:label ?main_subjectLabel .
+	}
+	SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?language_used rdfs:label ?language_usedLabel .
+	}
+		SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?short_name rdfs:label ?short_nameLabel .
+	}
+	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+
 }
-
+GROUP BY ?item ?itemLabel ?dateModified ?event_type ?countryLabel
 ORDER BY DESC(?dateModified)
+
+
+

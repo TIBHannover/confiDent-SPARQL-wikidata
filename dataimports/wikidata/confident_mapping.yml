@@ -401,7 +401,7 @@ Event Status:
 Event Type:
   external_props:
       - URI: 
-        external_prop:
+        external_prop: event_type
   domain:
     - Event
 Previous Start Date:
