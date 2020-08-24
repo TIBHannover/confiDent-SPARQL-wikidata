@@ -1,7 +1,7 @@
 # from pprint import pprint
 from mediawikitools.wiki import actions as mwactions
 from dataimports import sparql
-from dataimports.file_utils import createglobals
+from dataimports.file_utils import createglobals, yaml_get_source
 
 
 def loop_sparql_results(source: str, class_: str, outformat: str, outfile: str,
@@ -15,7 +15,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str, outfile: str,
         # pprint(result)
         result_title, result_formatted = sparql.process_result(
             dataitem=result, source=source, out_format=outformat,
-            class_=class_)  # TODO: class_ come from _source.yml
+            class_=class_)
 
         current_result_i = i
         if outformat == 'wiki' and write:
@@ -26,7 +26,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str, outfile: str,
         else:
             print(result_formatted)
 
-    return f'Source:{source} class:{class_}, returned:{current_result_i} ' \
+    return f'Source:{source} class:{class_} returned:{current_result_i} ' \
            f'results'
 
 
@@ -34,16 +34,17 @@ def importdata(source: str, outformat: str, outfile: str, limit: int,
                write: bool):
     outfile = outfile
     # mapping = file_utils.yaml_get_mapping(mapping=source)
+    sources_yaml = yaml_get_source('_sources.yml')
+    source_dict = sources_yaml[source]
 
     if source == 'wikidata':
         createglobals(source='wikidata')
-        summary = loop_sparql_results(source='wikidata', class_='Event_Series',
-                                      outformat=outformat, outfile=outfile,
-                                      limit=limit, write=write)
-        print(summary)
-
-        summary = loop_sparql_results(source='wikidata',
-                                      class_='Event',
-                                      outformat=outformat, outfile=outfile,
-                                      limit=limit, write=write)
-        print(summary)
+        for query_class in source_dict['sparqlqueries'].keys():
+            if 'Test' not in query_class:
+                summary = loop_sparql_results(source='wikidata',
+                                              class_=query_class,
+                                              outformat=outformat,
+                                              outfile=outfile,
+                                              limit=limit,
+                                              write=write)
+                print(summary)
