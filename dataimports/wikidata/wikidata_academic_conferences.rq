@@ -1,0 +1,13 @@
+SELECT DISTINCT ?item ?itemLabel ?dateModified ?locationLabel ?start_time ?end_time
+WHERE {
+  ?item wdt:P31 wd:Q2020153;
+  schema:dateModified ?dateModified .
+  ?item wdt:P276 ?location . 
+  ?item wdt:P580 ?start_time . 
+  ?item wdt:P582 ?end_time . 
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+  
+}
+
+ORDER BY DESC(?dateModified)

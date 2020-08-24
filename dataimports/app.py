@@ -41,3 +41,9 @@ def importdata(source: str, outformat: str, outfile: str, limit: int,
                                       outformat=outformat, outfile=outfile,
                                       limit=limit, write=write)
         print(summary)
+
+        summary = loop_sparql_results(source='wikidata',
+                                      class_='Academic_Conferences',
+                                      outformat=outformat, outfile=outfile,
+                                      limit=limit, write=write)
+        print(summary)
