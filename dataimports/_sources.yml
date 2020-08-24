@@ -2,5 +2,5 @@ wikidata:
   sparqlendpoint: https://query.wikidata.org/sparql
   sparqlqueries:
      Event_Series: wikidata/wikidata_series.rq
-     Academic_Conferences: wikidata/wikidata_academic_conferences.rq
+     Event: wikidata/wikidata_event.rq
      Test_Event_Series: tests/test_wikidata_series.rq
