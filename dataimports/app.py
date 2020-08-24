@@ -13,8 +13,8 @@ def loop_sparql_results(source: str, class_: str, outformat: str, outfile: str,
             break
         # print('\n', '**SPARL result:**', type(result))
         # pprint(result)
-        result_title, result_formatted = sparql.process_result(dataitem=result,
-            source=source, out_format=outformat,
+        result_title, result_formatted = sparql.process_result(
+            dataitem=result, source=source, out_format=outformat,
             class_=class_)  # TODO: class_ come from _source.yml
 
         current_result_i = i

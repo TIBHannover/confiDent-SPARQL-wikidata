@@ -30,7 +30,7 @@ def yaml2dict(path: str) -> Dict:
     return yaml_dict
 
 
-def dict2yaml(path:str, data:Dict):
+def dict2yaml(path: str, data: Dict):
     with open(path, 'w') as yaml_f:
         yaml.safe_dump(data=data, stream=yaml_f)
 

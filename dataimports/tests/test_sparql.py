@@ -40,6 +40,7 @@ def test_sparql_queries():
         assert len(list(set(all_results))) == len(all_results)
         # print(all_results)
 
+
 @pytest.mark.sparql
 def test_sparql_printouts_n_result_processing(appglobals, test_wikidetails):
     # test if the prop:value pairs from the test_wikidata_series.rq are
