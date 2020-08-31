@@ -9,13 +9,14 @@ SELECT DISTINCT ?item ?dateModified ?itemLabel ?event_type ?countryLabel
 (GROUP_CONCAT(DISTINCT ?Freebase_ID; separator='@@@') as ?Freebase_IDs)
 (GROUP_CONCAT(DISTINCT ?start_time; separator='@@@') as ?start_times)
 (GROUP_CONCAT(DISTINCT ?end_time; separator='@@@') as ?end_times)
+(GROUP_CONCAT(DISTINCT ?organizerLabel; separator='@@@') as ?organizers)
 
 WHERE {
   {
     ?item wdt:P31 wd:Q2495862 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time .
     BIND ('congress' as ?event_type) 
   }
   UNION
@@ -23,7 +24,7 @@ WHERE {
     ?item wdt:P31 wd:Q40444998 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time .
     BIND ('workshop' as ?event_type) 
   }
   UNION 
@@ -31,7 +32,7 @@ WHERE {
     ?item wdt:P31 wd:Q2020153 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time .
     BIND ('conference' as ?event_type) 
   }
   UNION 
@@ -39,7 +40,7 @@ WHERE {
     ?item wdt:P31 wd:Q504703 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time .
     BIND ('seminar' as ?event_type) 
   }  
   UNION
@@ -47,14 +48,15 @@ WHERE {
     ?item wdt:P31 wd:Q46855.
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time .
     BIND ('hackthon' as ?event_type )
   }
 	
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
-    OPTIONAL  {?item wdt:P17 ?country }
+    OPTIONAL {?item wdt:P17 ?country . }
+    OPTIONAL {?item wdt:P664 ?organizer .}
 
 	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
@@ -77,6 +79,10 @@ WHERE {
 		SERVICE wikibase:label {
 	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
 	?short_name rdfs:label ?short_nameLabel .
+	}
+	SERVICE wikibase:label {
+	bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+	?organizer rdfs:label ?organizerLabel .
 	}
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 

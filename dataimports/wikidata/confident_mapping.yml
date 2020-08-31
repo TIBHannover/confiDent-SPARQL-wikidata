@@ -419,8 +419,8 @@ Previous End Date:
 ## Organizer Subobject
 general committee_Organizer:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P664
+        external_prop: organizers
   domain:
     - Event
   child_prop: Committee Member
