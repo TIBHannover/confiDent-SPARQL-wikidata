@@ -2,7 +2,7 @@ import pytest
 from pprint import pprint
 from dataimports import sparql
 from dataimports.file_utils import yaml_get_source, relative_read_f
-
+from dataimports.app import loop_sparql_results
 
 @pytest.mark.sparql
 def test_sources_file():
@@ -22,11 +22,13 @@ def test_sources_file():
 
 @pytest.mark.sparql
 def test_sparql_queries():
-    sparql_sources = ['wikidata']
-    for source in sparql_sources:
-        all_results = []
+    source = 'wikidata'
+    sources_yaml = yaml_get_source('_sources.yml')
+    source_dict = sources_yaml[source]
+    all_results = []
+    for query_class in source_dict['sparqlqueries'].keys():
         for i, result in enumerate(
-                sparql.query(source=source, class_='Event_Series')):
+                sparql.query(source=source, class_=query_class)):
             # if i > 20:
             #     break
             # result_keys = result.keys()

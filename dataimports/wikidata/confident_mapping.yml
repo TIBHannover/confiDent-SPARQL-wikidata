@@ -334,8 +334,8 @@ Tracks:
     - Event
 Country:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P17
+        external_prop: countryLabel
   domain:
     - Event
 State:
@@ -376,14 +376,14 @@ City:
     - Event
 End Date:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P582
+        external_prop: end_times
   domain:
     - Event
-Star Date:
+Start Date:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P580
+        external_prop: start_times
   domain:
     - Event
 Event Number:
