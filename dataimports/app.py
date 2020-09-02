@@ -1,7 +1,7 @@
-from pprint import pprint
 from mediawikitools.wiki import actions as mwactions
 from dataimports import sparql
 from dataimports.file_utils import createglobals, yaml_get_source
+from dataimports.wikidata import wikidata
 
 
 def loop_sparql_results(source: str, class_: str, outformat: str,
@@ -14,7 +14,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
             break
         # print('\n', '**SPARL result:**', type(result))
         # pprint(result)
-        simplified_result = sparql.simplify_result(dataitem=result)
+        simplified_result = wikidata.sparqlresults_simplify(dataitem=result)
         s_key = simplified_result['item'][0]
         if s_key not in aggregated_results.keys():
             aggregated_results[s_key] = simplified_result
@@ -35,7 +35,6 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
                            summary="Edited by confIDent Data Importer")
         else:
             print(result_formatted)
-        current_aggregated_i = i
 
     return f'Source:{source} class:{class_} returned:{current_result_i} ' \
            f'results aggregated into {len(aggregated_results)} items.'
@@ -56,4 +55,3 @@ def importdata(source: str, outformat: str, outfile: str, limit: int,
                                               limit=limit,
                                               write=write)
                 print(summary)
-

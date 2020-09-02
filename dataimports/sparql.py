@@ -2,7 +2,6 @@ from typing import Dict, Any
 from SPARQLWrapper import SPARQLWrapper, JSON
 from dataimports.globals import useragent
 from dataimports.file_utils import yaml_get_source, relative_read_f
-from dataimports.wikidata import wikidata
 from dataimports.mapping import dataitem2confid_map
 from dataimports.mediawiki import dataitem2wikipage
 
@@ -50,11 +49,6 @@ def process_results(results: Dict, source: str, out_format: str, class_: str)\
         else:
             output = None
         yield title, output
-
-
-def simplify_result(dataitem: Dict) -> [str, Any]:
-    dataitem = wikidata.sparqlresults_simplfy(dataitem=dataitem)
-    return dataitem
 
 
 def append_nonpresent_vals(srcdict: Dict, destdict: Dict) -> Dict:

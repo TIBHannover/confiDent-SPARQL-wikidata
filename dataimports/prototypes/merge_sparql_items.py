@@ -7,7 +7,7 @@ from dataimports.wikidata import wikidata
 def simplify_result(dataitem: Dict, source: str, out_format: str, class_: str)\
         -> [str, Any]:
     if source == 'wikidata':
-        dataitem = wikidata.sparqlresults_simplfy(dataitem=dataitem)
+        dataitem = wikidata.sparqlresults_simplify(dataitem=dataitem)
     return dataitem
 
 

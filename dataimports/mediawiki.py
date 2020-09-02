@@ -106,7 +106,6 @@ def dataitem2wikipage(dataitem: Dict, class_: str) -> str:
     output = ''
     for template, dataitem_props in dataitem_props_bytemplate.items():
         if len(dataitem_props) > 0:
-            # import pdb; pdb.set_trace()
             output += render_template(mw_template=template,
                                       item=dataitem_props) + '\n'
     output += render_template(mw_template=class_,

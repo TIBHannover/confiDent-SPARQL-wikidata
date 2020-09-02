@@ -56,31 +56,14 @@ def onevalue():
 @pytest.fixture(scope="function")
 def onesparqlresut():
     def _onesparqlresut():
-        result = {
-            'Freebase_IDs': {'type': 'literal', 'value': ''},
-             'GND_IDs': {'type': 'literal', 'value': ''},
-             'Twitter_usernames': {'type': 'literal', 'value': 'swibcon'},
-             'WikiCFP_conference_series_IDs': {'type': 'literal', 'value': ''},
-             'dateModified': {
-                 'datatype': 'http://www.w3.org/2001/XMLSchema#dateTime',
-                 'type': 'literal',
-                'value': '2020-07-04T09:34:49Z'},
-             'event_intervalS_inmonths': {'type': 'literal', 'value': '12'},
-             'item': {'type': 'uri',
-                      'value': 'http://www.wikidata.org/entity/Q29129469'},
-             'itemLabel': {'type': 'literal',
-                           'value': 'Semantic Web in Libraries Conference',
-                           'xml:lang': 'en'},
-             'languages': {'type': 'literal', 'value': ''},
-             'main_subjects': {'type': 'literal', 'value': ''},
-             'official_websites': {'type': 'literal',
-                                   'value': 'http://swib.org'},
-             'short_names': {'type': 'literal', 'value': 'SWIB'},
-             'start_times': {'type': 'literal', 'value': ''}
-        }
-
-
-
+        result = {'WDQID': ['http://www.wikidata.org/entity/Q1961016'],
+                  'official_name': [
+                      'Conference on Neural Information Processing Systems'],
+                  'acronym': ['NeurIPS'], 'Website': ['https://nips.cc/'],
+                  'Subject': ['deep learning'], 'Twitter': ['NeurIPSConf'],
+                  'Language': ['English'],
+                  'External ID URL': ['http://wikicfp.com/cfp/program?id=2212']
+                  }
         return result
     return _onesparqlresut
 
