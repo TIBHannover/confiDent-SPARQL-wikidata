@@ -1,7 +1,7 @@
 SELECT DISTINCT ?item ?dateModified ?itemLabel
 ?main_subjectLabel ?language_usedLabel ?short_nameLabel ?official_website 
 ?Twitter_username ?WikiCFP_conference_series_ID ?GND_ID ?Freebase_ID 
-?event_interval_inmonths ?start_time 
+?event_interval_inmonths 
 
 WHERE {
 	?item wdt:P31 wd:Q47258130 ;
@@ -9,7 +9,6 @@ WHERE {
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
-	OPTIONAL { ?item wdt:P580 ?start_time . }
 	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
