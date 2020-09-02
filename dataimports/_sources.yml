@@ -3,3 +3,4 @@ wikidata:
   sparqlqueries:
      Event_Series: wikidata/wikidata_series.rq
      Test_Event_Series: tests/test_wikidata_series.rq
+     Test_Repeated_Items: prototypes/wikidata_series_repeatingitems.rq

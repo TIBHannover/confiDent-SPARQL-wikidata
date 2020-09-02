@@ -17,11 +17,11 @@ def sparqlresults_simplfy(dataitem: Dict) -> List:
         if value:
             if v.get('datatype') == \
                     'http://www.w3.org/2001/XMLSchema#dateTime':
-                keyvalue_dict[k] = datetime.strptime(value,
-                                                     "%Y-%m-%dT%H:%M:%S%z")
+                keyvalue_dict[k] = [datetime.strptime(value,
+                                                     "%Y-%m-%dT%H:%M:%S%z")]
             elif v.get(
                     'datatype') == 'http://www.w3.org/2001/XMLSchema#decimal':
-                keyvalue_dict[k] = int(value)
+                keyvalue_dict[k] = [int(value)]
             else:
-                keyvalue_dict[k] = value
+                keyvalue_dict[k] = [value]
     return keyvalue_dict
