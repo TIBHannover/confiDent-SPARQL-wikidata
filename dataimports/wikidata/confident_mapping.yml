@@ -9,13 +9,13 @@
 Subject:
   external_props:
       - URI: https://www.wikidata.org/wiki/Property:P921
-        external_prop: main_subjects # Note: it wont match confIDent control Vocabulary
+        external_prop: main_subjectLabel # Note: it wont match confIDent control Vocabulary
   domain:
     - Process
 Website:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P856
-      external_prop: official_websites
+      external_prop: official_website
   domain:
     - Process
     - Agent
@@ -40,7 +40,7 @@ Logo:
 Language:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P2936
-      external_prop: languages
+      external_prop: language_usedLabel
   domain:
     - Process
 CORE Ranking:
@@ -76,7 +76,7 @@ ConfIDent ID:
 GND:
   external_props:
       - URI: https://www.wikidata.org/wiki/Property:P227
-        external_prop: GND_IDs
+        external_prop: GND_ID
   domain:
     - Process
     - Agent
@@ -97,16 +97,16 @@ WDQID:
 Twitter:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P2002
-      external_prop: Twitter_usernames
+      external_prop: Twitter_username
   domain:
     - Process
     - Agent
 External ID URL:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P5127
-      external_prop: WikiCFP_conference_series_IDs
+      external_prop: WikiCFP_conference_series_ID
     - URI: https://www.wikidata.org/wiki/Property:P646
-      external_prop: Freebase_IDs
+      external_prop: Freebase_ID
   domain:
     - Process
     - Agent
@@ -126,7 +126,7 @@ official_name:
 acronym:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P1813
-      external_prop: short_names
+      external_prop: short_nameLabel
   domain:
     - Process
   child_prop: Process Name
@@ -272,7 +272,7 @@ Sponsor:
 Event Frequency:
   external_props:
     - URI: https://www.wikidata.org/wiki/Property:P2257
-      external_prop: event_intervalS_inmonths
+      external_prop: event_intervalLabel_inmonths
   domain:
     - Event_Series
 History:
