@@ -334,8 +334,8 @@ Tracks:
     - Event
 Country:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P17
+        external_prop: countryLabel
   domain:
     - Event
 State:
@@ -376,14 +376,14 @@ City:
     - Event
 End Date:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P582
+        external_prop: end_time
   domain:
     - Event
-Star Date:
+Start Date:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P580
+        external_prop: start_time
   domain:
     - Event
 Event Number:
@@ -401,7 +401,7 @@ Event Status:
 Event Type:
   external_props:
       - URI: 
-        external_prop:
+        external_prop: event_type
   domain:
     - Event
 Previous Start Date:
@@ -419,8 +419,8 @@ Previous End Date:
 ## Organizer Subobject
 general committee_Organizer:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P664
+        external_prop: organizer
   domain:
     - Event
   child_prop: Committee Member
@@ -548,8 +548,8 @@ keynote speaker_Contributor:
   subobject: Subobject Contributor
 speaker_Contributor:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P823
+        external_prop: speaker
   domain:
     - Event
   child_prop: Contributor
@@ -570,8 +570,8 @@ moderator_Contributor:
   subobject: Subobject Contributor
 attendee_Contributor:
   external_props:
-      - URI: 
-        external_prop:
+      - URI: https://www.wikidata.org/wiki/Property:P710
+        external_prop: participant
   domain:
     - Event
   child_prop: Contributor
