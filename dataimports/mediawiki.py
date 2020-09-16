@@ -112,9 +112,8 @@ def dataitem2wikipage(dataitem: Dict, class_: str) -> str:
         dataitem=dataitem_nosubobj, class_=class_)
     output = ''
     for template, dataitem_props in dataitem_props_bytemplate.items():
-        if len(dataitem_props) > 0:
-            output += render_template(mw_template=template,
-                                      item=dataitem_props) + '\n'
+        output += render_template(mw_template=template,
+                                  item=dataitem_props) + '\n'
     output += render_template(mw_template=class_,
                               item=dataitem_subobj,
                               subobjs=True)
