@@ -24,7 +24,7 @@ def test_dataitem2wikioutput(onesparqlresut, mappings, appglobals):
     # assert "{{Process" in output
     # assert "{{Subobject Process Name" in output
 
-# assert that each dataitem_confid_format.keys() in confident_mapping.yml
+# assert that each dataitem_confid_format.keys() in confident2wikidata_mapping.yml
 
 
 @pytest.mark.processing

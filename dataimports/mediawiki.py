@@ -33,7 +33,7 @@ def assign_props2templates(dataitem: Dict, class_=str) -> Dict:
     Since confiDent properties have different rdfs:domain,
     And more than 1 template can be used to describe a subject.
     We need to assign each properity:value to the correct templates
-    We'll use key:property in confident_mapping.yml to do handle it
+    We'll use key:property in confident2wikidata_mapping.yml to do handle it
     And classes_templates dict to determine what templates a class uses
     # TODO: classes_templates should be created from wiki templates with
     # property Template4Class::

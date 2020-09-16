@@ -6,7 +6,7 @@ from dataimports.globals import (invert_confid_map,
 
 def invert_mapping(schema: str) -> Dict:
     """
-    Inverts the {schema}/confident_mapping.yml
+    Inverts the {schema}/confident2wikidata_mapping.yml
     confident_inv_map: {'property': schema_key} -> {schema_key: confident_key}
     """
     confident_inv_map = {}
