@@ -1,4 +1,4 @@
-SELECT DISTINCT ?item ?dateModified ?itemLabel ?event_type ?countryLabel
+SELECT DISTINCT ?item ?itemID ?dateModified ?itemLabel ?event_type ?countryLabel
  ?main_subject ?language ?short_name ?official_website 
  ?Twitter_username ?WikiCFP_conference_series_ID ?GND_ID  ?Freebase_ID  ?start_time ?end_time
 
@@ -42,11 +42,11 @@ WHERE {
     wdt:P582 ?end_time . 
     BIND ('hackthon' as ?event_type )
   }
-	
+    BIND(STRAFTER(STR(?item), 'http://www.wikidata.org/entity/') AS ?itemID)
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
-  OPTIONAL  {?item wdt:P17 ?country . }
+    OPTIONAL  {?item wdt:P17 ?country . }
 	OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }

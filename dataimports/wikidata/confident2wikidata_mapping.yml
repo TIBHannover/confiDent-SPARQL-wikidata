@@ -22,7 +22,7 @@ has_WDQID:
   domain: BFO_0000015
   external_props:
   - URI: None
-    external_prop: item
+    external_prop: itemID
 has_attendee:
   domain: Event
   external_props:
