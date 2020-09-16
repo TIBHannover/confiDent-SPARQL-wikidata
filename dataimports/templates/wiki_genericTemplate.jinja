@@ -1,6 +1,4 @@
 {{ '{{' }}{{ wikitemplate }}
 {%- for prop, listval in item_dict.items() -%}
-{% for val in listval %}
-|{{ prop }}={{ val }}
-{%- endfor %}
+|{{ prop }}={{ listval|join('@@') }}
 {%- endfor %}{{ '}}' }}

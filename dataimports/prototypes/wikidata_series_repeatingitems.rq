@@ -1,0 +1,16 @@
+SELECT DISTINCT ?item ?main_subjectLabel ?organizerLabel ?language_usedLabel ?short_name ?countryLabel ?official_website ?Twitter_username
+
+WHERE {
+  # instance of: academic conference
+  ?item wdt:P31 wd:Q2020153; 
+        wdt:P921 ?main_subject; 
+        wdt:P664 ?organizer;
+        wdt:P2936 ?language_used;
+        wdt:P1813 ?short_name;
+        wdt:P17 ?country;  
+        wdt:P856 ?official_website;
+        wdt:P2002 ?Twitter_username . 
+   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+
+

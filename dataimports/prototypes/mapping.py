@@ -112,6 +112,3 @@ for k, v in dataitem_confid.items():
         subobj_child_propvals =  confident_map[k]['child_prop_vals']
         print(f'-> {subobj_template}')
         print(subobj_child_propvals)
-
-
-
