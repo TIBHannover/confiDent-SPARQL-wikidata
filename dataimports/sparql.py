@@ -39,7 +39,7 @@ def process_results(results: Dict, source: str, out_format: str, class_: str)\
 
     for dataitem in results.values():
         dataitem_confid_format = dataitem2confid_map(item_data=dataitem)
-        title = dataitem_confid_format['official_name'][0]
+        title = dataitem_confid_format['process_name'][0]
 
         if out_format == 'dict':
             output = dataitem_confid_format
