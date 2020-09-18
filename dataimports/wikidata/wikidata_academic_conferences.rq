@@ -61,6 +61,3 @@ WHERE {
 
 }
 ORDER BY DESC(?dateModified)
-
-
-
