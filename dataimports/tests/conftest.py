@@ -39,7 +39,8 @@ def mappings(appglobals):
     appglobals()
 
     def _getmapping(mapping):
-        confid_mapping = yaml_get_source(f'{mapping}/confident_mapping.yml')
+        confid_mapping = yaml_get_source(
+            f'{mapping}/confident2wikidata_mapping.yml')
         invert_confid_map = invert_mapping(schema=mapping)
         print(f'invert_confid_map: {invert_confid_map}')
         return confid_mapping, invert_confid_map
@@ -72,7 +73,6 @@ def onesparqlresut():
 def one_dataitem_confikeys():
     def one_dataitem():
         result = {
-            'Twitter': {'type': 'literal', 'value': 'swibcon'},
             'Event Frequency': {
                 'datatype': 'http://www.w3.org/2001/XMLSchema#decimal',
                 'type': 'literal', 'value': '1'},

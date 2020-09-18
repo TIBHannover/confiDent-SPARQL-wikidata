@@ -1,3 +1,4 @@
+import sys
 from typing import Dict, List
 from dataimports.globals import confid_mapping
 from dataimports.jinja_utils import render_template
@@ -7,14 +8,14 @@ classes_templates = {
     'Agent': [],
     'Contributor': [],
     'RoleAgent': [],
-    'Event': ['Event', 'Process'],
-    'Event_Series': ['Event_Series', 'Process'],
+    'Event': ['Event', 'BFO_0000015'],
+    'EventSeries': ['EventSeries', 'BFO_0000015'],
     'Group_of_Agents': [],
     'Imported_vocabulary': [],
     'Organization': [],
     'Organizer': [],
     'Person': [],
-    'Process': [],
+    'BFO_0000015': ['BFO_0000015'],
     'Role': [],
 }
 
@@ -23,8 +24,14 @@ def temple4property(prop: str, class_templates: List) -> str:
     # in the context of this class_ and the property domain
     # what template shall be used?
     prop_domain = prop['domain']
-    # assumes there is only 1 intersection
-    template = list(set(prop_domain).intersection(class_templates))[0]
+    if type(prop_domain) is str:
+        template = prop_domain
+    else:
+        print('Handling list of domains to template missing')
+        # TODO:
+        # # assumes there is only 1 intersection
+        # template = list(set(prop_domain).intersection(class_templates))[0]
+        sys.exit()
     return template
 
 
@@ -33,7 +40,7 @@ def assign_props2templates(dataitem: Dict, class_=str) -> Dict:
     Since confiDent properties have different rdfs:domain,
     And more than 1 template can be used to describe a subject.
     We need to assign each properity:value to the correct templates
-    We'll use key:property in confident_mapping.yml to do handle it
+    We'll use key:property in confident2wikidata_mapping.yml to do handle it
     And classes_templates dict to determine what templates a class uses
     # TODO: classes_templates should be created from wiki templates with
     # property Template4Class::
@@ -105,9 +112,8 @@ def dataitem2wikipage(dataitem: Dict, class_: str) -> str:
         dataitem=dataitem_nosubobj, class_=class_)
     output = ''
     for template, dataitem_props in dataitem_props_bytemplate.items():
-        if len(dataitem_props) > 0:
-            output += render_template(mw_template=template,
-                                      item=dataitem_props) + '\n'
+        output += render_template(mw_template=template,
+                                  item=dataitem_props) + '\n'
     output += render_template(mw_template=class_,
                               item=dataitem_subobj,
                               subobjs=True)

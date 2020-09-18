@@ -5,7 +5,7 @@ from dataimports.file_utils import yaml_get_source
 
 @pytest.mark.mapping
 def test_mapping_files(find_files):
-    mappingfiles = find_files(filename='confident_mapping.yml',
+    mappingfiles = find_files(filename='confident2wikidata_mapping.yml',
                               startdir='dataimports',
                               foundfiles=[])
     assert len(mappingfiles) > 0
@@ -33,7 +33,7 @@ def test_confid_mapping(mappings):
     confid_mapping, invert_confid_map = mappings(schema)
     assert len(invert_confid_map) > 0
     confid_mapping.update(
-        yaml_get_source(f'{schema}/confident_mapping.yml'))
+        yaml_get_source(f'{schema}/confident2wikidata_mapping.yml'))
     confid_keys = list(confid_mapping.keys())
     confid_keys_set = list(set(confid_keys))
     external_props = [v['external_props']
@@ -59,8 +59,8 @@ def test_confid_mapping_yaml(mappings):
     confid_mapping, invert_confid_map = mappings('wikidata')
     confid_mapping.clear()  # reset dict for each source
     confid_mapping.update(
-        yaml_get_source(f'{schema}/confident_mapping.yml'))
+        yaml_get_source(f'{schema}/confident2wikidata_mapping.yml'))
     for k, value_dict in confid_mapping.items():
         assert 'domain' in value_dict, \
-            f"domain: is missing from {schema}/confident_mapping.yml " \
-            f"key: {k}"
+            f"domain: is missing from " \
+            f"{schema}/confident2wikidata_mapping.yml key: {k}"

@@ -30,7 +30,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
 
         if outformat == 'wiki' and write:
             mwactions.edit(page=result_title,
-                           content=result_formatted + '[[Category:Test]]',
+                           content=result_formatted,
                            newpageonly=False,
                            summary="Edited by confIDent Data Importer")
         else:

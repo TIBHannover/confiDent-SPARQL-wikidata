@@ -18,7 +18,7 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
     from dataimports.file_utils import yaml_get_source, dict2yaml
 
-    mappingfiles = find_files_recursively(filename='confident_mapping.yml',
+    mappingfiles = find_files_recursively(filename='confident2wikidata_mapping.yml',
                                           startdir='dataimports',
                                           foundfiles=[])
     mappingfile_path = mappingfiles[0]
