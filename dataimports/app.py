@@ -10,6 +10,7 @@ def is_empty(generator):
         return False
     return True
 
+
 def loop_sparql_results(source: str, class_: str, outformat: str,
                         limit: int, write: bool):
     aggregated_results = {}
@@ -27,13 +28,15 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
             #     break
             # print('\n', '**SPARL result:**', type(result))
             # pprint(result)
-            simplified_result = wikidata.sparqlresults_simplify(dataitem=result)
+            simplified_result = wikidata.sparqlresults_simplify(
+                dataitem=result)
             s_key = simplified_result['item'][0]
             if s_key not in aggregated_results.keys():
                 aggregated_results[s_key] = simplified_result
             else:
                 aggregated_results[s_key] = sparql.append_nonpresent_vals(
-                    srcdict=simplified_result, destdict=aggregated_results[s_key])
+                    srcdict=simplified_result,
+                    destdict=aggregated_results[s_key])
             current_result_i = i  # TODO: test aggregated_results
 
     for result_title, result_formatted in sparql.process_results(
