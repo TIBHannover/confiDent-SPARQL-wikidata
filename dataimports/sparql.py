@@ -14,7 +14,7 @@ def query(source: str, class_: str, limit=None, offset=None) -> Dict:
     endpoint = SPARQLWrapper(endpoint=sparql_endpoint,
                              agent=useragent)
     sparql_query = relative_read_f(sparql_f)
-    if limit and offset:
+    if limit is not None and offset is not None:
         sparql_query += f'\nLIMIT {limit}\nOFFSET {offset}'
     endpoint.setQuery(sparql_query)
     endpoint.setReturnFormat(JSON)
