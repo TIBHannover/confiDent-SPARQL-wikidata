@@ -74,6 +74,16 @@ def test_edit():
     assert newrstring not in content
 
 
+@pytest.mark.mw_write
+def test_edit_protected_page():
+    edit_result = actions.edit(page='PIDapalooza', content='Edit by ~~~~',
+                               summary='Testing writing', append=True)
+    assert edit_result is False
+    edit_result = actions.edit(page='Test', content='Edit by ~~~~',
+                               summary='Testing writing', append=True)
+    assert edit_result is True
+
+
 @pytest.mark.skip(reason="test takes to long")
 def test_largenumber_edits():
     # test if mw api rate limit is not exceeded

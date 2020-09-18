@@ -6,7 +6,7 @@ from dataimports.mapping import dataitem2confid_map
 from dataimports.mediawiki import dataitem2wikipage
 
 
-def query(source: str, class_: str) -> Dict:
+def query(source: str, class_: str, limit=None, offset=None) -> Dict:
     sources_yaml = yaml_get_source('_sources.yml')
     source_dict = sources_yaml[source]
     sparql_endpoint = source_dict['sparqlendpoint']
@@ -14,6 +14,8 @@ def query(source: str, class_: str) -> Dict:
     endpoint = SPARQLWrapper(endpoint=sparql_endpoint,
                              agent=useragent)
     sparql_query = relative_read_f(sparql_f)
+    if limit and offset:
+        sparql_query += f'\nLIMIT {limit}\nOFFSET {offset}'
     endpoint.setQuery(sparql_query)
     endpoint.setReturnFormat(JSON)
     results = endpoint.query().convert()

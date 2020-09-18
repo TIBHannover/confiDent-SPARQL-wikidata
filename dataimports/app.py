@@ -1,3 +1,4 @@
+from time import sleep
 from mediawikitools.wiki import actions as mwactions
 from dataimports import sparql
 from dataimports.file_utils import createglobals, yaml_get_source
@@ -7,8 +8,9 @@ from dataimports.wikidata import wikidata
 def loop_sparql_results(source: str, class_: str, outformat: str,
                         limit: int, write: bool):
     aggregated_results = {}
+    query = sparql.query(source=source, class_=class_)  # limit=100, offset=0)
     for i, result in enumerate(
-            iterable=sparql.query(source=source, class_=class_),
+            iterable=query,
             start=1):
         if limit and i > limit:
             break
@@ -29,6 +31,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
         print(result_title)
 
         if outformat == 'wiki' and write:
+            sleep(1)
             mwactions.edit(page=result_title,
                            content=result_formatted,
                            newpageonly=False,
