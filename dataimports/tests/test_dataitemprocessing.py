@@ -1,7 +1,7 @@
 import pytest
 # from dataimports.mapping import dataitem2confid_map
 # from dataimports.mediawiki import dataitem2wikipage
-from dataimports.mediawiki import seperate_subobjects
+# from dataimports.mediawiki import seperate_subobjects
 
 
 @pytest.mark.processing
@@ -24,14 +24,16 @@ def test_dataitem2wikioutput(onesparqlresut, mappings, appglobals):
     # assert "{{Process" in output
     # assert "{{Subobject Process Name" in output
 
-# assert that each dataitem_confid_format.keys() in confident2wikidata_mapping.yml
+# assert that each dataitem_confid_format.keys() in
+# confident2wikidata_mapping.yml
 
-## TODO: uncomment and run when subobjects are integrated
+# TODO: uncomment and run when subobjects are integrated
 # @pytest.mark.processing
 # def test_seperate_subobjects(one_dataitem_confikeys, appglobals):
 #     appglobals()
 #     dataitem = one_dataitem_confikeys()
-#     dataitem_nosubobj, dataitem_subobj = seperate_subobjects(dataitem=dataitem)
+#     dataitem_nosubobj, dataitem_subobj = seperate_subobjects(
+#     dataitem=dataitem)
 #     assert all([False if k in ['official_name', 'acronym'] else True for k in
 #                 dataitem_nosubobj])
 #     assert dataitem_nosubobj['Website']['value'] == 'http://swib.org'

@@ -62,5 +62,5 @@ def test_confid_mapping_yaml(mappings):
         yaml_get_source(f'{schema}/confident2wikidata_mapping.yml'))
     for k, value_dict in confid_mapping.items():
         assert 'domain' in value_dict, \
-            f"domain: is missing from {schema}/confident2wikidata_mapping.yml " \
-            f"key: {k}"
+            f"domain: is missing from " \
+            f"{schema}/confident2wikidata_mapping.yml key: {k}"
