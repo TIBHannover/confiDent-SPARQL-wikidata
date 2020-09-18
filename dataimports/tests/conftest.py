@@ -72,7 +72,6 @@ def onesparqlresut():
 def one_dataitem_confikeys():
     def one_dataitem():
         result = {
-            'Twitter': {'type': 'literal', 'value': 'swibcon'},
             'Event Frequency': {
                 'datatype': 'http://www.w3.org/2001/XMLSchema#decimal',
                 'type': 'literal', 'value': '1'},

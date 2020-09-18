@@ -27,7 +27,7 @@ def test_sparql_queries():
     for source in sparql_sources:
         all_results = []
         for i, result in enumerate(
-                sparql.query(source=source, class_='Event_Series')):
+                sparql.query(source=source, class_='EventSeries')):
             # if i > 20:
             #     break
             # result_keys = result.keys()
@@ -68,7 +68,7 @@ def test_sparql_printouts_n_result_processing(appglobals, test_wikidetails):
             print(result_title, result_formatted, '\n')
             assert result_title
             # sparql has 2 or more non optional props
-            assert len(result_formatted) >= 2
+            assert len(result_formatted) >= 1
             # print(result.items())
             result_vals = [v['value'] for k, v in result.items()]
             print(f'result_vals: {result_vals}')
