@@ -75,6 +75,26 @@ def test_edit():
 
 
 @pytest.mark.mw_write
+def test_edit_samecontent():
+    # Test should succeed if the same content is not written to the page
+    # since it is well ... the same
+    pagename = 'Test'
+    test_content = "Hello \n'''wiki page'''"
+    new_content = "This is new content"
+    actions.edit(page=pagename, content=test_content,
+                 summary='Testing writing', append=False)
+    wiki_page_content = (actions.read(page=pagename))[0]
+
+    if wiki_page_content != test_content:
+        actions.edit(page=pagename, content=new_content,
+                     summary='Testing writing',
+                     append=False)
+    actual_content = (actions.read(page=pagename))[0]
+    assert actual_content != new_content
+    assert actual_content == test_content
+
+
+@pytest.mark.mw_write
 def test_edit_protected_page():
     edit_result = actions.edit(page='PIDapalooza', content='Edit by ~~~~',
                                summary='Testing writing', append=True)

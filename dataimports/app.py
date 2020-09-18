@@ -46,10 +46,12 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
 
         if outformat == 'wiki' and write:
             sleep(4)
-            mwactions.edit(page=result_title,
-                           content=result_formatted,
-                           newpageonly=False,
-                           summary="Edited by confIDent Data Importer")
+            wiki_page_content = (mwactions.read(page=result_title))[0]
+            if result_formatted != wiki_page_content:
+                mwactions.edit(page=result_title,
+                               content=result_formatted,
+                               newpageonly=False,
+                               summary="Edited by confIDent Data Importer")
         else:
             print(result_formatted)
 
