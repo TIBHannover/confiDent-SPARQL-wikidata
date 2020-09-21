@@ -27,7 +27,7 @@ has_attendee:
   domain: Event
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P710
-    external_prop: participant
+    external_prop: participantLabel
 has_event_type:
   domain: Event
   external_props:
