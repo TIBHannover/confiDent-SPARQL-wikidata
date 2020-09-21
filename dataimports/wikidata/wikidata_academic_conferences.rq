@@ -1,48 +1,48 @@
 SELECT DISTINCT ?item ?itemID ?dateModified ?itemLabel ?event_type ?countryLabel
- ?main_subject ?language ?short_name ?official_website 
+ ?main_subject ?language ?short_name ?official_website ?organizerLabel ?participantLabel
  ?Twitter_username ?WikiCFP_conference_series_ID ?GND_ID  ?Freebase_ID  ?start_time ?end_time
 
 WHERE {
   {
-    ?item wdt:P31 wd:Q2495862 .  
+    ?item wdt:P31 wd:Q2495862 .
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
     wdt:P582 ?end_time;
     rdfs:label ?item_label.
         FILTER (LANG(?item_label) = "en"). # although SERVICE wikibase:label is used to get the ?itemLabel
                                            # this will prevent titles that are not in EN, to appear in results
-    BIND ('congress' as ?event_type) 
+    BIND ('congress' as ?event_type)
   }
   UNION
   {
-    ?item wdt:P31 wd:Q40444998 .  
+    ?item wdt:P31 wd:Q40444998 .
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
     wdt:P582 ?end_time;
     rdfs:label ?item_label.
         FILTER (LANG(?item_label) = "en").
-    BIND ('workshop' as ?event_type) 
+    BIND ('workshop' as ?event_type)
   }
-  UNION 
+  UNION
   {
-    ?item wdt:P31 wd:Q2020153 .  
+    ?item wdt:P31 wd:Q2020153 .
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
     wdt:P582 ?end_time;
     rdfs:label ?item_label.
         FILTER (LANG(?item_label) = "en").
-    BIND ('conference' as ?event_type) 
+    BIND ('conference' as ?event_type)
   }
-  UNION 
+  UNION
   {
-    ?item wdt:P31 wd:Q504703 .  
+    ?item wdt:P31 wd:Q504703 .
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
     wdt:P582 ?end_time;
     rdfs:label ?item_label.
         FILTER (LANG(?item_label) = "en").
-    BIND ('seminar' as ?event_type) 
-  }  
+    BIND ('seminar' as ?event_type)
+  }
   UNION
   {
     ?item wdt:P31 wd:Q46855.
@@ -57,8 +57,10 @@ WHERE {
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
-    OPTIONAL  {?item wdt:P17 ?country . }
+    OPTIONAL { ?item wdt:P17 ?country . }
 	OPTIONAL { ?item wdt:P856 ?official_website . }
+	OPTIONAL { ?item wdt:P664 ?organizer .}
+  	OPTIONAL { ?item wdt:P710 ?participant .}
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
@@ -67,6 +69,7 @@ WHERE {
 	OPTIONAL { ?item wdt:P646 ?Freebase_IDvalue .
 	     BIND ( CONCAT("https://freebase.toolforge.org", STR(?Freebase_IDvalue)) AS ?Freebase_ID )
 	}
+
 
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }

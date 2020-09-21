@@ -2,17 +2,17 @@ duration:
   domain: Event
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P2047
-    external_prop: durationLabel
+    external_prop: duration
 end_date:
   domain: Event
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P582
-    external_prop: end_timeLabel
+    external_prop: end_time
 event_frequency:
   domain: EventSeries
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P2257
-    external_prop: event_intervalLabel_inmonths
+    external_prop: event_interval_inmonths
 has_GND:
   domain: BFO_0000015
   external_props:
@@ -27,7 +27,7 @@ has_attendee:
   domain: Event
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P710
-    external_prop: participant
+    external_prop: participantLabel
 has_event_type:
   domain: Event
   external_props:
@@ -36,15 +36,15 @@ has_event_type:
 has_external_identifier:
   domain: BFO_0000015
   external_props:
-  - URI: https://www.wikidata.org/wiki/Property:P646
-    external_prop: Freebase_ID
   - URI: https://www.wikidata.org/wiki/Property:P5127
     external_prop: WikiCFP_conference_series_ID
+  - URI: https://www.wikidata.org/wiki/Property:P646
+    external_prop: Freebase_ID
 has_organizer:
   domain: BFO_0000015
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P664
-    external_prop: organizer
+    external_prop: organizerLabel
 has_speaker:
   domain: Event
   external_props:

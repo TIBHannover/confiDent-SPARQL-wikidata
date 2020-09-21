@@ -15,7 +15,7 @@ def loop_sparql_results(source: str, class_: str, outformat: str,
                         limit: int, write: bool):
     aggregated_results = {}
     for index in range(1000):  # 50000 items is a safe bet
-        limit = 50
+        limit = 500
         offset = limit * index
         query_results_gen = sparql.query(source=source, class_=class_,
                                          limit=limit, offset=offset)
