@@ -36,15 +36,15 @@ has_event_type:
 has_external_identifier:
   domain: BFO_0000015
   external_props:
-  - URI: https://www.wikidata.org/wiki/Property:P646
-    external_prop: Freebase_ID
   - URI: https://www.wikidata.org/wiki/Property:P5127
     external_prop: WikiCFP_conference_series_ID
+  - URI: https://www.wikidata.org/wiki/Property:P646
+    external_prop: Freebase_ID
 has_organizer:
   domain: BFO_0000015
   external_props:
   - URI: https://www.wikidata.org/wiki/Property:P664
-    external_prop: organizer
+    external_prop: organizerLabel
 has_speaker:
   domain: Event
   external_props:
