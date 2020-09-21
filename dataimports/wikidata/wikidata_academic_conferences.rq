@@ -7,7 +7,10 @@ WHERE {
     ?item wdt:P31 wd:Q2495862 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time;
+    rdfs:label ?item_label.
+        FILTER (LANG(?item_label) = "en"). # although SERVICE wikibase:label is used to get the ?itemLabel
+                                           # this will prevent titles that are not in EN, to appear in results
     BIND ('congress' as ?event_type) 
   }
   UNION
@@ -15,7 +18,9 @@ WHERE {
     ?item wdt:P31 wd:Q40444998 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time;
+    rdfs:label ?item_label.
+        FILTER (LANG(?item_label) = "en").
     BIND ('workshop' as ?event_type) 
   }
   UNION 
@@ -23,7 +28,9 @@ WHERE {
     ?item wdt:P31 wd:Q2020153 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time;
+    rdfs:label ?item_label.
+        FILTER (LANG(?item_label) = "en").
     BIND ('conference' as ?event_type) 
   }
   UNION 
@@ -31,7 +38,9 @@ WHERE {
     ?item wdt:P31 wd:Q504703 .  
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time;
+    rdfs:label ?item_label.
+        FILTER (LANG(?item_label) = "en").
     BIND ('seminar' as ?event_type) 
   }  
   UNION
@@ -39,7 +48,9 @@ WHERE {
     ?item wdt:P31 wd:Q46855.
     ?item schema:dateModified ?dateModified;
     wdt:P580 ?start_time;
-    wdt:P582 ?end_time . 
+    wdt:P582 ?end_time;
+    rdfs:label ?item_label.
+        FILTER (LANG(?item_label) = "en").
     BIND ('hackthon' as ?event_type )
   }
     BIND(STRAFTER(STR(?item), 'http://www.wikidata.org/entity/') AS ?itemID)
@@ -58,6 +69,5 @@ WHERE {
 	}
 
 	SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-
 }
 ORDER BY DESC(?dateModified)

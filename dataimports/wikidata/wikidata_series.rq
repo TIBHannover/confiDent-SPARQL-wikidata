@@ -4,8 +4,11 @@ SELECT DISTINCT ?item ?itemID ?dateModified ?itemLabel
 ?event_interval_inmonths 
 
 WHERE {
-	?item wdt:P31 wd:Q47258130 ;
-	    schema:dateModified ?dateModified .
+	?item wdt:P31 wd:Q47258130;
+	    schema:dateModified ?dateModified;
+	    rdfs:label ?item_label.
+	    	FILTER (LANG(?item_label) = "en"). # although SERVICE wikibase:label is used to get the ?itemLabel
+                                               # this will prevent titles that are not in EN, to appear in results
     BIND(STRAFTER(STR(?item), 'http://www.wikidata.org/entity/') AS ?itemID)
 	OPTIONAL { ?item wdt:P921 ?main_subject . }
 	OPTIONAL { ?item wdt:P2936 ?language_used . }
