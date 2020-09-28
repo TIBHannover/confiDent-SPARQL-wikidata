@@ -1,16 +1,21 @@
 # confIDent data imports 
-**Application imports external sources of Scientific Events and Scientific Events Series on to confIDdent vanilla wiki**
+**Application imports external sources of Scientific Events and Scientific Events Series onto confIDdent vanilla Mediawiki**
 
-**Current development focus:**  Wikidata Academic Event Series ingestion
+**Current development focus:**  Wikidata's Academic Events & Academic Event Series ingestion
+
+![](docs/data_imports.svg)
 
 
 ## Wikidata Academic Event Series ingestion
 
-**Run:**
+###  Requirements
+`pip install -r requirements` 
+
+### Run:
 * `python -m dataimports`
 * wiki template format: `python -m dataimports -f wiki`
 * write to wiki: `python -m dataimports -f wiki -w`
-    * writing to wiki requires the file `wikidetails.yml` to exist in the root application.
+    * writing to wiki requires the file `wikidetails.yml` to exist in the root application (more below).
 
 
 **wikidetails.yml & wiki write access**
@@ -20,10 +25,12 @@
     
     
     
-**View SPARLQ query**: `dataimports/wikidata/wikidata_series.rq`
-which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
+**Wikidata SPARQL queries**: can be run in [query.wikidata.org](https://query.wikidata.org/) to see results
+* `dataimports/wikidata/wikidata_series.rq` 
+* `dataimports/wikidata/wikidata_academic_conferences.rq`
 
-Result Example (as python dictionary and SPARQL(json) )
+**Example Output**  
+As python dictionary and SPARQL(json) 
 ```python
 {'WikiCFP_conference_series_ID': '37',
  'dateModified': datetime.datetime(2019, 12, 2, 20, 59, 53, tzinfo=datetime.timezone.utc),
@@ -53,7 +60,6 @@ Result Example (as python dictionary and SPARQL(json) )
 ```
 
 As Mediawiki template:
-
 ```
 {{Event_Series
 |item=http://www.wikidata.org/entity/Q97594670
@@ -66,9 +72,6 @@ As Mediawiki template:
 }}
 ```
 
-## Requirements
-`pip install -r requirements` 
-
 ## tests
 `tox`<br/>
 will run tests and detect flake8s
@@ -76,7 +79,7 @@ will run tests and detect flake8s
 `pytest`<br/>
 will run the tests/test*.py
 
-**pytest optional aguments**
+**pytest optional arguments**
 
 `pytest -m sparql`<br/>
 `pytest -m mapping`<br/>
