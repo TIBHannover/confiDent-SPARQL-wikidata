@@ -1,16 +1,21 @@
 # confIDent data imports 
-**Application imports external sources of Scientific Events and Scientific Events Series on to confIDdent vanilla wiki**
+**Application imports external sources of Scientific Events and Scientific Events Series onto confIDdent vanilla Mediawiki**
 
-**Current development focus:**  Wikidata Academic Event Series ingestion
+**Current development focus:**  Wikidata's Academic Events & Academic Event Series ingestion
+
+![](docs/data_imports.svg)
 
 
 ## Wikidata Academic Event Series ingestion
 
-**Run:**
+###  Requirements
+`pip install -r requirements` 
+
+### Run:
 * `python -m dataimports`
 * wiki template format: `python -m dataimports -f wiki`
 * write to wiki: `python -m dataimports -f wiki -w`
-    * writing to wiki requires the file `wikidetails.yml` to exist in the root application.
+    * writing to wiki requires the file `wikidetails.yml` to exist in the root application (more below).
 
 
 **wikidetails.yml & wiki write access**
@@ -20,8 +25,9 @@
     
     
     
-**View SPARLQ query**: `dataimports/wikidata/wikidata_series.rq`
-which can be copy pasta to [query.wikidata.org](https://query.wikidata.org/)
+**Wikidata SPARQL queries**: can be run in [query.wikidata.org](https://query.wikidata.org/) to see results
+* `dataimports/wikidata/wikidata_series.rq` 
+* `dataimports/wikidata/wikidata_academic_conferences.rq`
 
 Result Example (as python dictionary and SPARQL(json) )
 ```python
@@ -65,9 +71,6 @@ As Mediawiki template:
 |short_nameLabel=IIIF Conference
 }}
 ```
-
-## Requirements
-`pip install -r requirements` 
 
 ## tests
 `tox`<br/>
