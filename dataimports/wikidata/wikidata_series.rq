@@ -16,7 +16,8 @@ WHERE {
 	OPTIONAL { ?item wdt:P664 ?organizer .
       ?organizer wdt:P31 ?organizer_instance_of.
       FILTER(?organizer_instance_of NOT IN (wd:Q5))  # FILTER OUT insances of HUMANE (wd:Q5)
-    }	OPTIONAL { ?item wdt:P856 ?official_website . }
+    }
+    OPTIONAL { ?item wdt:P856 ?official_website . }
 	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue . }
