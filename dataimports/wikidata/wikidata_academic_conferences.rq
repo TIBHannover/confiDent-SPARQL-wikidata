@@ -1,5 +1,5 @@
 SELECT DISTINCT ?item ?itemID ?dateModified ?itemLabel ?event_type ?countryLabel
- ?main_subject ?language ?short_name ?official_website
+ ?main_subject ?language ?short_name ?official_website ?organizerLabel ?participantLabel
  ?Twitter_username ?WikiCFP_conference_series_ID ?GND_ID  ?Freebase_ID  ?start_time ?end_time
 
 WHERE {
@@ -59,7 +59,15 @@ WHERE {
 	OPTIONAL { ?item wdt:P1813 ?short_name . }
     OPTIONAL { ?item wdt:P17 ?country . }
 	OPTIONAL { ?item wdt:P856 ?official_website . }
-	OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
+	OPTIONAL { ?item wdt:P664 ?organizer .
+      ?organizer wdt:P31 ?organizer_instance_of.
+      FILTER(?organizer_instance_of NOT IN (wd:Q5))  # FILTER OUT insances of HUMANE (wd:Q5)
+    }
+  	OPTIONAL { ?item wdt:P710 ?participant .
+              ?participant wdt:P31 ?participant_instance_of.
+              FILTER(?participant_instance_of NOT IN (wd:Q5))  # FILTER OUT insances of HUMANE (wd:Q5)
+    }
+    OPTIONAL { ?item wdt:P2002 ?Twitter_username . }
 	OPTIONAL { ?item wdt:P227 ?GND_ID . }
 	OPTIONAL { ?item wdt:P5127 ?WikiCFP_conference_series_IDvalue .
 		BIND ( CONCAT("http://wikicfp.com/cfp/program?id=", STR(?WikiCFP_conference_series_IDvalue)) AS ?WikiCFP_conference_series_ID )
