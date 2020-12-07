@@ -92,3 +92,7 @@ lint checks
 
 Test coverage
 `pytest --cov=dataimports dataimports/tests/ --cov-append`
+
+
+## Mapping 
+YAML mapping between data source (wikidata) and confIDent properties, in gist https://gist.github.com/andrecastro0o/1b5c096184f6835855a5007862b60bb3
